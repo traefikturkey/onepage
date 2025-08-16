@@ -45,6 +45,22 @@
             margin-bottom: 30px;
         }
 
+        /* Tighter single-line header row (label + actions) */
+        .input-section.label-row {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        /* Make the label in the compact header align its text to the bottom */
+        .input-section.label-row > label {
+            align-self: flex-end;
+            display: inline-block;
+            margin: 0;
+        }
+
         label {
             display: block;
             margin-bottom: 10px;
@@ -55,7 +71,7 @@
         textarea {
             width: 100%;
             height: 120px;
-            padding: 15px;
+            padding: 5px 15px 15px 15px; /* top 5px, right 15px, bottom 15px, left 15px */
             border: 2px solid #4a5568;
             border-radius: 8px;
             background: #2d3748;
@@ -97,7 +113,7 @@
             font-size: 14px;
             line-height: 1.4;
             text-align: right;
-            padding: 15px 10px 15px 0;
+            padding: 5px 10px 15px 0;
             pointer-events: none;
             background: #1a202c;
             border-right: 1px solid #4a5568;
@@ -296,6 +312,25 @@
             z-index: 10;
         }
 
+        .copy-button {
+            /* inline, placed in the label row */
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            box-shadow: 0 6px 18px rgba(102,126,234,0.12);
+            transition: all 0.12s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .copy-button:active { transform: translateY(1px); }
+
         .undo-button:hover {
             box-shadow: 0 4px 15px rgba(229, 62, 62, 0.3);
         }
@@ -314,8 +349,14 @@
             Commands are tested against your configured patterns. If any pattern matches, the command would be auto-approved.
         </div>
 
-        <div class="input-section">
+    <div class="input-section label-row">
             <label for="patternsInput">Auto-approve patterns (JSON format):</label>
+            <div style="display:flex; gap:12px; align-items:center;">
+                <button id="copyPatternsBtn" class="copy-button" title="Copy patterns">📋 Copy</button>
+                <div id="copyFeedback" style="color:#cbd5e0; font-size:12px; display:none;">Copied</div>
+            </div>
+        </div>
+        <div class="input-section">
             <div class="textarea-container" id="patternsContainer">
                 <div id="patternsLines" class="line-numbers"></div>
                 <textarea 
@@ -327,8 +368,10 @@
             </div>
         </div>
 
-        <div class="input-section">
+        <div class="input-section label-row">
             <label for="commandInput">Enter your terminal command(s):</label>
+        </div>
+        <div class="input-section">
             <div class="textarea-container">
                 <div id="commandLines" class="line-numbers"></div>
                 <textarea 
@@ -1008,6 +1051,43 @@ print('Hello World')
             commandTextarea.addEventListener('scroll', function() {
                 commandLines.scrollTop = commandTextarea.scrollTop;
             });
+
+            // Copy to clipboard button
+            const copyBtn = document.getElementById('copyPatternsBtn');
+            const copyFeedback = document.getElementById('copyFeedback');
+            copyBtn.addEventListener('click', () => {
+                copyPatternsToClipboard();
+            });
+
+            function showCopyFeedback() {
+                copyFeedback.style.display = 'block';
+                copyFeedback.style.opacity = '1';
+                setTimeout(() => {
+                    copyFeedback.style.transition = 'opacity 400ms ease';
+                    copyFeedback.style.opacity = '0';
+                    setTimeout(() => copyFeedback.style.display = 'none', 400);
+                }, 800);
+            }
+
+            async function copyPatternsToClipboard() {
+                const val = document.getElementById('patternsInput').value;
+                try {
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        await navigator.clipboard.writeText(val);
+                    } else {
+                        // fallback
+                        const ta = document.createElement('textarea');
+                        ta.value = val;
+                        document.body.appendChild(ta);
+                        ta.select();
+                        document.execCommand('copy');
+                        ta.remove();
+                    }
+                    showCopyFeedback();
+                } catch (e) {
+                    console.error('Copy failed', e);
+                }
+            }
         });
     </script>
 </body>
