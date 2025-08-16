@@ -287,7 +287,7 @@
             padding: 4px 12px;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 12px;
+            font-size: 10px;
             font-weight: 600;
             margin-left: 10px;
             transition: all 0.3s ease;
@@ -297,7 +297,6 @@
         }
 
         .undo-button:hover {
-            transform: translateY(-1px);
             box-shadow: 0 4px 15px rgba(229, 62, 62, 0.3);
         }
 
@@ -364,6 +363,45 @@
 }`;
 
         let undoHistory = [];
+        let redoHistory = [];
+
+        function pushUndo(before, after) {
+            try {
+                undoHistory.push({ before, after });
+                // Clearing redo stack on new edit
+                redoHistory = [];
+            } catch (e) {
+                console.error('pushUndo error', e);
+            }
+        }
+
+        function undoMostRecent() {
+            const patternsTextarea = document.getElementById('patternsInput');
+            if (undoHistory.length === 0) return false;
+            const entry = undoHistory.pop();
+            // Save for redo
+            redoHistory.push(entry);
+            patternsTextarea.value = entry.before;
+            updateLineNumbers();
+            // Remove any updated highlight
+            const container = document.getElementById('patternsContainer');
+            const updatedHighlight = container.querySelector('.pattern-updated-highlight');
+            if (updatedHighlight) updatedHighlight.remove();
+            testCommand();
+            return true;
+        }
+
+        function redoMostRecent() {
+            const patternsTextarea = document.getElementById('patternsInput');
+            if (redoHistory.length === 0) return false;
+            const entry = redoHistory.pop();
+            // Put back on undo stack
+            undoHistory.push(entry);
+            patternsTextarea.value = entry.after;
+            updateLineNumbers();
+            testCommand();
+            return true;
+        }
 
         function parsePatterns(jsonText) {
             try {
@@ -496,7 +534,17 @@
             const undoBtn = document.createElement('button');
             undoBtn.className = 'undo-button';
             undoBtn.textContent = '↩ Undo';
+            // Position the button vertically to match the target line
             undoBtn.style.top = `${paddingTop + (lineIndex * lineHeight)}px`;
+
+            // Make the undo button the same vertical size as the highlighted line
+            const textareaFontSize = computedStyle.fontSize || '12px';
+            const btnHeight = `${lineHeight}px`;
+            undoBtn.style.height = btnHeight;
+            undoBtn.style.lineHeight = btnHeight;
+            undoBtn.style.padding = '0 12px';
+            undoBtn.style.boxSizing = 'border-box';
+            undoBtn.style.fontSize = textareaFontSize;
             
             undoBtn.onclick = function() {
                 patternsTextarea.value = previousContent;
@@ -517,7 +565,7 @@
             // Remove undo button after animation completes
             setTimeout(() => {
                 undoBtn.remove();
-            }, 5000);
+            }, 10 * 1000);
         }
 
         function generatePatternSuggestions(command, existingPatterns) {
@@ -609,27 +657,42 @@
             const patternsTextarea = document.getElementById('patternsInput');
             let currentText = patternsTextarea.value.trim();
             const previousContent = currentText;
-            
+
+            // Utility to escape for JSONC
+            function escapeForJsonc(str) {
+                return str.replace(/\\/g, "\\\\").replace(/\"/g, "\\\"");
+            }
+
             try {
                 if (currentText.startsWith('"chat.tools.terminal.autoApprove"')) {
                     const startIndex = currentText.indexOf('{');
                     const endIndex = currentText.lastIndexOf('}');
-                    
+
                     if (startIndex !== -1 && endIndex !== -1) {
                         let beforeObject = currentText.substring(0, startIndex + 1);
                         let afterObject = currentText.substring(endIndex);
                         let objectContent = currentText.substring(startIndex + 1, endIndex);
-                        
+
+                        // Escape the pattern for JSONC
+                        let escapedPattern = suggestion.pattern;
+                        if (escapedPattern.startsWith('/')) {
+                            // regex pattern, escape inside quotes
+                            escapedPattern = escapeForJsonc(escapedPattern);
+                        } else {
+                            // normal string, escape quotes and backslashes
+                            escapedPattern = escapeForJsonc(escapedPattern);
+                        }
+
                         if (suggestion.expandsPattern) {
                             const lines = objectContent.split('\n');
                             let patternFound = false;
                             let actualLineIndex = -1;
-                            
+
                             const updatedLines = lines.map((line, index) => {
                                 const trimmedLine = line.trim();
                                 const patternToFind = suggestion.expandsPattern;
                                 const escapedPatternToFind = patternToFind.replace(/\\/g, '\\\\');
-                                
+
                                 if ((trimmedLine.includes(patternToFind) || trimmedLine.includes(escapedPatternToFind)) && 
                                     trimmedLine.includes(': true')) {
                                     const indent = line.match(/^\s*/)[0];
@@ -638,31 +701,35 @@
                                     // Count lines before the object content + current index + 1 (for header line)
                                     const linesBeforeObject = beforeObject.split('\n').length - 1;
                                     actualLineIndex = linesBeforeObject + index;
-                                    return `${indent}"${suggestion.pattern}": true,`;
+                                    return `${indent}"${escapedPattern}": true,`;
                                 }
                                 return line;
                             });
-                            
+
                             if (patternFound) {
                                 objectContent = updatedLines.join('\n');
                                 const updatedContent = beforeObject + objectContent + '\n' + afterObject;
+                                // record undo/redo
+                                pushUndo(previousContent, updatedContent);
                                 patternsTextarea.value = updatedContent;
                                 updateLineNumbers();
-                                
+
                                 // Highlight the updated line
                                 highlightLine(actualLineIndex, 'pattern-updated-highlight');
-                                
+
                                 // Add undo button
                                 addUndoButton(actualLineIndex, previousContent);
-                                
+
                                 testCommand();
                             }
                         } else {
                             const needsComma = objectContent.trim() && !objectContent.trim().endsWith(',');
                             const comma = needsComma ? ',' : '';
-                            objectContent = objectContent + comma + '\n    ' + suggestion.pattern;
-                            
+                            objectContent = objectContent + comma + '\n    ' + `"${escapedPattern}": true`;
+
                             const updatedContent = beforeObject + objectContent + '\n' + afterObject;
+                            // record undo/redo
+                            pushUndo(previousContent, updatedContent);
                             patternsTextarea.value = updatedContent;
                             updateLineNumbers();
                             testCommand();
@@ -892,6 +959,29 @@
             if (e.key === 'Enter' && !e.shiftKey && !e.ctrlKey) {
                 e.preventDefault();
                 testCommand();
+            }
+        });
+
+        // Ctrl+Z / Ctrl+Y handling for patterns input
+        const patternsTextarea = document.getElementById('patternsInput');
+        patternsTextarea.addEventListener('keydown', function(e) {
+            // Windows/linux: Ctrl, Mac: metaKey
+            const ctrl = e.ctrlKey || e.metaKey;
+            if (ctrl && e.key.toLowerCase() === 'z') {
+                e.preventDefault();
+                const undone = undoMostRecent();
+                if (!undone) {
+                    // fall back to native undo if nothing in our stack
+                    document.execCommand('undo');
+                }
+            }
+
+            if (ctrl && e.key.toLowerCase() === 'y') {
+                e.preventDefault();
+                const redone = redoMostRecent();
+                if (!redone) {
+                    document.execCommand('redo');
+                }
             }
         });
 
