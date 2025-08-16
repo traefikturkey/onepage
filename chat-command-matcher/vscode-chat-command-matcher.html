@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VS Code Terminal Auto-Approve Matcher</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e1e2e 0%, #2d3748 100%);
+            color: #e2e8f0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(45, 55, 72, 0.9);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .input-section {
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #cbd5e0;
+        }
+
+        textarea {
+            width: 100%;
+            height: 120px;
+            padding: 15px;
+            border: 2px solid #4a5568;
+            border-radius: 8px;
+            background: #2d3748;
+            color: #e2e8f0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            resize: vertical;
+            transition: all 0.3s ease;
+            line-height: 1.4;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .textarea-container {
+            position: relative;
+            border: 2px solid #4a5568;
+            border-radius: 8px;
+            background: #2d3748;
+            overflow: hidden;
+        }
+
+        .textarea-container:focus-within {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .line-numbers {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 40px;
+            color: #718096;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.4;
+            text-align: right;
+            padding: 15px 10px 15px 0;
+            pointer-events: none;
+            background: #1a202c;
+            border-right: 1px solid #4a5568;
+            overflow: hidden;
+            overflow-y: scroll;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .line-numbers::-webkit-scrollbar {
+            display: none;
+        }
+
+        .textarea-with-lines {
+            padding-left: 55px;
+            border: none;
+            background: transparent;
+            width: 100%;
+            resize: vertical;
+        }
+
+        .textarea-with-lines:focus {
+            outline: none;
+            border: none;
+            box-shadow: none;
+        }
+
+        .test-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 20px 0;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .test-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .results {
+            margin-top: 30px;
+        }
+
+        .results h2 {
+            color: #cbd5e0;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .result-item {
+            background: #2d3748;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid #4a5568;
+            transition: all 0.3s ease;
+        }
+
+        .result-item.matched {
+            border-left-color: #48bb78;
+            background: rgba(72, 187, 120, 0.1);
+        }
+
+        .result-item.no-match {
+            border-left-color: #f56565;
+            background: rgba(245, 101, 101, 0.1);
+        }
+
+        .pattern {
+            font-family: 'Courier New', monospace;
+            background: #1a202c;
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin: 5px 0;
+            font-size: 13px;
+            word-break: break-all;
+        }
+
+        .status {
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .matched .status {
+            color: #48bb78;
+        }
+
+        .no-match .status {
+            color: #f56565;
+        }
+
+        .summary {
+            background: #1a202c;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .summary.approved {
+            border: 2px solid #48bb78;
+        }
+
+        .summary.rejected {
+            border: 2px solid #f56565;
+        }
+
+        .note {
+            background: rgba(102, 126, 234, 0.1);
+            border: 1px solid #667eea;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .suggestion-button {
+            background: linear-gradient(135deg, #f6ad55 0%, #ed8936 100%);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .suggestion-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(246, 173, 85, 0.3);
+        }
+
+        .pattern-highlight-overlay {
+            position: absolute;
+            background-color: rgba(72, 187, 120, 0.2);
+            border-left: 3px solid #48bb78;
+            pointer-events: none;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .pattern-hover-highlight {
+            position: absolute;
+            background-color: rgba(246, 173, 85, 0.3);
+            border-left: 4px solid #f6ad55;
+            pointer-events: none;
+            z-index: 2;
+            transition: all 0.3s ease;
+            border-radius: 3px;
+        }
+
+        .pattern-updated-highlight {
+            position: absolute;
+            background-color: rgba(72, 187, 120, 0.4);
+            border-left: 4px solid #48bb78;
+            pointer-events: none;
+            z-index: 3;
+            transition: all 0.3s ease;
+            border-radius: 3px;
+            animation: pulse 5s ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0; background-color: rgba(72, 187, 120, 0.6); }
+            10% { opacity: 1; background-color: rgba(72, 187, 120, 0.5); }
+            50% { opacity: 1; background-color: rgba(72, 187, 120, 0.4); }
+            90% { opacity: 1; background-color: rgba(72, 187, 120, 0.3); }
+            100% { opacity: 0; background-color: rgba(72, 187, 120, 0.2); }
+        }
+
+        .undo-button {
+            background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
+            color: white;
+            border: none;
+            padding: 4px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 10px;
+            transition: all 0.3s ease;
+            position: absolute;
+            right: 20px;
+            z-index: 10;
+        }
+
+        .undo-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(229, 62, 62, 0.3);
+        }
+
+        .suggestion-item {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 VS Code Terminal Auto-Approve Matcher</h1>
+        
+        <div class="note">
+            <strong>How it works:</strong> Paste your terminal commands below to see if they would be auto-approved by VS Code. 
+            Commands are tested against your configured patterns. If any pattern matches, the command would be auto-approved.
+        </div>
+
+        <div class="input-section">
+            <label for="patternsInput">Auto-approve patterns (JSON format):</label>
+            <div class="textarea-container" id="patternsContainer">
+                <div id="patternsLines" class="line-numbers"></div>
+                <textarea 
+                    id="patternsInput" 
+                    class="textarea-with-lines"
+                    placeholder="Paste your VS Code settings JSON here"
+                    style="height: 180px;"
+                ></textarea>
+            </div>
+        </div>
+
+        <div class="input-section">
+            <label for="commandInput">Enter your terminal command(s):</label>
+            <div class="textarea-container">
+                <div id="commandLines" class="line-numbers"></div>
+                <textarea 
+                    id="commandInput" 
+                    class="textarea-with-lines"
+                    placeholder="Paste your command here"
+                ></textarea>
+            </div>
+        </div>
+
+        <button class="test-button" onclick="testCommand()">🧪 Test Command</button>
+
+        <div id="results" class="results" style="display: none;">
+            <h2>Results</h2>
+            <div id="summary" class="summary"></div>
+            <div id="patternResults"></div>
+        </div>
+    </div>
+
+    <script>
+        const defaultPatternsConfig = `"chat.tools.terminal.autoApprove": {
+    "ls": true,
+    "uv sync": true,
+    "/^uv run (pytest|black|isort|behave|python)[\\\\s\\\\S]*/m": true,
+    "/^make (test|lint)$/": true,
+    "/^git (status|show\\\\b.*).*/": true,
+    "/^docker (build|run|compose|rm|logs).*/": true,
+    "/^make (format|lint|run|test|)$/": true,
+    "behave": true,
+    "sed -n": true,
+    "sleep": true
+}`;
+
+        let undoHistory = [];
+
+        function parsePatterns(jsonText) {
+            try {
+                let cleanedJson = jsonText.trim();
+                
+                if (cleanedJson.startsWith('"chat.tools.terminal.autoApprove"')) {
+                    const startIndex = cleanedJson.indexOf('{');
+                    const endIndex = cleanedJson.lastIndexOf('}');
+                    if (startIndex !== -1 && endIndex !== -1) {
+                        cleanedJson = cleanedJson.substring(startIndex, endIndex + 1);
+                    }
+                }
+                
+                const patternsObj = JSON.parse(cleanedJson);
+                const patterns = {};
+                
+                Object.entries(patternsObj).forEach(([key, value]) => {
+                    if (value === true) {
+                        if (key.startsWith('/') && key.includes('/')) {
+                            const lastSlashIndex = key.lastIndexOf('/');
+                            if (lastSlashIndex > 0) {
+                                const regexStr = key.slice(1, lastSlashIndex);
+                                const flags = key.slice(lastSlashIndex + 1);
+                                try {
+                                    patterns[key] = { type: 'regex', value: new RegExp(regexStr, flags) };
+                                } catch (e) {
+                                    console.warn('Invalid regex pattern:', key, e);
+                                    patterns[key] = { type: 'invalid', value: key };
+                                }
+                            } else {
+                                console.warn('Invalid regex format:', key);
+                                patterns[key] = { type: 'invalid', value: key };
+                            }
+                        } else if (key.includes('(') || key.includes('[') || key.startsWith('^') || key.includes('*') || key.includes('+') || key.includes('?')) {
+                            try {
+                                patterns[key] = { type: 'regex', value: new RegExp(key) };
+                            } catch (e) {
+                                console.warn('Invalid regex pattern:', key, e);
+                                patterns[key] = { type: 'invalid', value: key };
+                            }
+                        } else {
+                            const prefixCommands = ['sed -n', 'sleep', 'git ', 'docker ', 'make '];
+                            if (prefixCommands.some(cmd => key.startsWith(cmd.trim()))) {
+                                patterns[key] = { type: 'prefix', value: key };
+                            } else {
+                                patterns[key] = { type: 'exact', value: key };
+                            }
+                        }
+                    }
+                });
+                
+                return patterns;
+            } catch (e) {
+                console.error('Error parsing patterns:', e);
+                throw new Error('Invalid JSON format. Please check your input.');
+            }
+        }
+
+        function testPattern(command, patternKey, patternData) {
+            const trimmedCommand = command.trim();
+            
+            switch (patternData.type) {
+                case 'exact':
+                    return trimmedCommand === patternData.value;
+                case 'prefix':
+                    return trimmedCommand.startsWith(patternData.value);
+                case 'regex':
+                    return patternData.value.test(trimmedCommand);
+                default:
+                    return false;
+            }
+        }
+
+        function findPatternLineIndex(patternToFind) {
+            const patternsTextarea = document.getElementById('patternsInput');
+            const lines = patternsTextarea.value.split('\n');
+            
+            for (let i = 0; i < lines.length; i++) {
+                const trimmedLine = lines[i].trim();
+                const escapedPattern = patternToFind.replace(/\\/g, '\\\\');
+                
+                if ((trimmedLine.includes(`"${patternToFind}"`) || 
+                     trimmedLine.includes(patternToFind) || 
+                     trimmedLine.includes(escapedPattern)) && 
+                    trimmedLine.includes(': true')) {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        function highlightLine(lineIndex, className = 'pattern-hover-highlight') {
+            const patternsTextarea = document.getElementById('patternsInput');
+            const container = document.getElementById('patternsContainer');
+            
+            // Remove existing hover highlights
+            const existingHovers = container.querySelectorAll('.' + className);
+            existingHovers.forEach(highlight => highlight.remove());
+            
+            if (lineIndex < 0) return null;
+            
+            const computedStyle = getComputedStyle(patternsTextarea);
+            const lineHeight = parseFloat(computedStyle.lineHeight);
+            const paddingTop = parseFloat(computedStyle.paddingTop);
+            
+            const highlight = document.createElement('div');
+            highlight.className = className;
+            
+            const topPosition = paddingTop + (lineIndex * lineHeight);
+            
+            highlight.style.cssText = `
+                left: 55px;
+                top: ${topPosition}px;
+                right: 15px;
+                height: ${lineHeight}px;
+            `;
+            
+            container.appendChild(highlight);
+            return highlight;
+        }
+
+        function addUndoButton(lineIndex, previousContent) {
+            const patternsTextarea = document.getElementById('patternsInput');
+            const container = document.getElementById('patternsContainer');
+            
+            const computedStyle = getComputedStyle(patternsTextarea);
+            const lineHeight = parseFloat(computedStyle.lineHeight);
+            const paddingTop = parseFloat(computedStyle.paddingTop);
+            
+            const undoBtn = document.createElement('button');
+            undoBtn.className = 'undo-button';
+            undoBtn.textContent = '↩ Undo';
+            undoBtn.style.top = `${paddingTop + (lineIndex * lineHeight)}px`;
+            
+            undoBtn.onclick = function() {
+                patternsTextarea.value = previousContent;
+                updateLineNumbers();
+                undoBtn.remove();
+                
+                // Remove the updated highlight
+                const updatedHighlight = container.querySelector('.pattern-updated-highlight');
+                if (updatedHighlight) {
+                    updatedHighlight.remove();
+                }
+                
+                testCommand();
+            };
+            
+            container.appendChild(undoBtn);
+            
+            // Remove undo button after animation completes
+            setTimeout(() => {
+                undoBtn.remove();
+            }, 5000);
+        }
+
+        function generatePatternSuggestions(command, existingPatterns) {
+            const trimmedCommand = command.trim();
+            const suggestions = [];
+            const words = trimmedCommand.split(/\s+/);
+            
+            Object.keys(existingPatterns).forEach(patternKey => {
+                if (words[0] && words[1] && patternKey.includes(`${words[0]} ${words[1]}`)) {
+                    if (patternKey.startsWith('/') && patternKey.includes('/')) {
+                        const lastSlashIndex = patternKey.lastIndexOf('/');
+                        const regexStr = patternKey.slice(1, lastSlashIndex);
+                        const flags = patternKey.slice(lastSlashIndex + 1);
+                        
+                        const groupMatch = regexStr.match(/\(([^)]+)\)/);
+                        if (groupMatch && words[2]) {
+                            const currentOptions = groupMatch[1].split('|');
+                            
+                            if (!currentOptions.includes(words[2])) {
+                                const newOptions = [...currentOptions, words[2]].sort();
+                                const newRegex = regexStr.replace(/\([^)]+\)/, `(${newOptions.join('|')})`);
+                                
+                                suggestions.push({
+                                    type: `Expand existing pattern to include "${words[2]}"`,
+                                    pattern: `/${newRegex}/${flags}`,
+                                    expandsPattern: patternKey
+                                });
+                            }
+                        }
+                    }
+                }
+            });
+            
+            if (suggestions.length === 0) {
+                const baseCommand = words.slice(0, 2).join(' ');
+                
+                if (words.length === 1) {
+                    suggestions.push({
+                        type: "New exact match pattern",
+                        pattern: `"${trimmedCommand}": true`
+                    });
+                } else if (words.length === 2) {
+                    suggestions.push({
+                        type: "New exact match pattern",
+                        pattern: `"${trimmedCommand}": true`
+                    });
+                    suggestions.push({
+                        type: "New prefix pattern (allows arguments)",
+                        pattern: `"/^${escapeRegex(trimmedCommand)}.*/": true`
+                    });
+                } else {
+                    suggestions.push({
+                        type: "New exact match pattern",
+                        pattern: `"${trimmedCommand}": true`
+                    });
+                    
+                    if (baseCommand) {
+                        suggestions.push({
+                            type: "New flexible pattern (base command + arguments)",
+                            pattern: `"/^${escapeRegex(baseCommand)}.*/": true`
+                        });
+                    }
+                    
+                    if (trimmedCommand.includes('"') || trimmedCommand.includes('\n')) {
+                        suggestions.push({
+                            type: "New multiline pattern (supports complex commands)",
+                            pattern: `"/^${escapeRegex(baseCommand)}[\\\\s\\\\S]*/m": true`
+                        });
+                    }
+                }
+            }
+            
+            return suggestions.slice(0, 3);
+        }
+
+        function escapeRegex(text) {
+            return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        }
+
+        function applySuggestion(suggestionData) {
+            let suggestion;
+            try {
+                suggestion = JSON.parse(suggestionData);
+            } catch (e) {
+                console.error('Error parsing suggestion data:', e);
+                return;
+            }
+            
+            const patternsTextarea = document.getElementById('patternsInput');
+            let currentText = patternsTextarea.value.trim();
+            const previousContent = currentText;
+            
+            try {
+                if (currentText.startsWith('"chat.tools.terminal.autoApprove"')) {
+                    const startIndex = currentText.indexOf('{');
+                    const endIndex = currentText.lastIndexOf('}');
+                    
+                    if (startIndex !== -1 && endIndex !== -1) {
+                        let beforeObject = currentText.substring(0, startIndex + 1);
+                        let afterObject = currentText.substring(endIndex);
+                        let objectContent = currentText.substring(startIndex + 1, endIndex);
+                        
+                        if (suggestion.expandsPattern) {
+                            const lines = objectContent.split('\n');
+                            let patternFound = false;
+                            let actualLineIndex = -1;
+                            
+                            const updatedLines = lines.map((line, index) => {
+                                const trimmedLine = line.trim();
+                                const patternToFind = suggestion.expandsPattern;
+                                const escapedPatternToFind = patternToFind.replace(/\\/g, '\\\\');
+                                
+                                if ((trimmedLine.includes(patternToFind) || trimmedLine.includes(escapedPatternToFind)) && 
+                                    trimmedLine.includes(': true')) {
+                                    const indent = line.match(/^\s*/)[0];
+                                    patternFound = true;
+                                    // Calculate the actual line index in the full text
+                                    // Count lines before the object content + current index + 1 (for header line)
+                                    const linesBeforeObject = beforeObject.split('\n').length - 1;
+                                    actualLineIndex = linesBeforeObject + index;
+                                    return `${indent}"${suggestion.pattern}": true,`;
+                                }
+                                return line;
+                            });
+                            
+                            if (patternFound) {
+                                objectContent = updatedLines.join('\n');
+                                const updatedContent = beforeObject + objectContent + '\n' + afterObject;
+                                patternsTextarea.value = updatedContent;
+                                updateLineNumbers();
+                                
+                                // Highlight the updated line
+                                highlightLine(actualLineIndex, 'pattern-updated-highlight');
+                                
+                                // Add undo button
+                                addUndoButton(actualLineIndex, previousContent);
+                                
+                                testCommand();
+                            }
+                        } else {
+                            const needsComma = objectContent.trim() && !objectContent.trim().endsWith(',');
+                            const comma = needsComma ? ',' : '';
+                            objectContent = objectContent + comma + '\n    ' + suggestion.pattern;
+                            
+                            const updatedContent = beforeObject + objectContent + '\n' + afterObject;
+                            patternsTextarea.value = updatedContent;
+                            updateLineNumbers();
+                            testCommand();
+                        }
+                    }
+                }
+            } catch (e) {
+                console.error('Error in applySuggestion:', e);
+            }
+        }
+
+        function updateLineNumbers() {
+            const patternsTextarea = document.getElementById('patternsInput');
+            const commandTextarea = document.getElementById('commandInput');
+            const patternsLines = document.getElementById('patternsLines');
+            const commandLines = document.getElementById('commandLines');
+            
+            function generateLineNumbers(textarea, lineNumbersDiv) {
+                const lines = textarea.value.split('\n').length;
+                let lineNumbersHtml = '';
+                for (let i = 1; i <= lines; i++) {
+                    lineNumbersHtml += i + '<br>';
+                }
+                lineNumbersDiv.innerHTML = lineNumbersHtml;
+                lineNumbersDiv.scrollTop = textarea.scrollTop;
+            }
+            
+            generateLineNumbers(patternsTextarea, patternsLines);
+            generateLineNumbers(commandTextarea, commandLines);
+        }
+
+        function highlightMatchingPatterns(matchedPatterns) {
+            const patternsTextarea = document.getElementById('patternsInput');
+            const container = patternsTextarea.parentElement;
+            
+            const existingHighlights = container.querySelectorAll('.pattern-highlight-overlay');
+            existingHighlights.forEach(highlight => highlight.remove());
+            
+            if (matchedPatterns.length === 0) return;
+            
+            const lines = patternsTextarea.value.split('\n');
+            const computedStyle = getComputedStyle(patternsTextarea);
+            const lineHeight = parseFloat(computedStyle.lineHeight);
+            const paddingTop = parseFloat(computedStyle.paddingTop);
+            
+            matchedPatterns.forEach(pattern => {
+                lines.forEach((line, index) => {
+                    const trimmedLine = line.trim();
+                    let isMatch = false;
+                    
+                    if (trimmedLine.includes(`"${pattern}"`)) {
+                        isMatch = true;
+                    }
+                    
+                    if (trimmedLine.includes(pattern) && trimmedLine.includes(': true')) {
+                        isMatch = true;
+                    }
+                    
+                    if (pattern.includes('\\') && trimmedLine.includes(': true')) {
+                        const escapedPattern = pattern.replace(/\\/g, '\\\\');
+                        if (trimmedLine.includes(escapedPattern)) {
+                            isMatch = true;
+                        }
+                    }
+                    
+                    if (isMatch) {
+                        const highlight = document.createElement('div');
+                        highlight.className = 'pattern-highlight-overlay';
+                        
+                        const topPosition = paddingTop + (index * lineHeight);
+                        
+                        highlight.style.cssText = `
+                            position: absolute;
+                            left: 55px;
+                            top: ${topPosition}px;
+                            right: 15px;
+                            height: ${lineHeight}px;
+                            background-color: rgba(72, 187, 120, 0.3);
+                            border-left: 4px solid #48bb78;
+                            pointer-events: none;
+                            z-index: 2;
+                            border-radius: 3px;
+                        `;
+                        
+                        container.appendChild(highlight);
+                    }
+                });
+            });
+        }
+
+        function testCommand() {
+            const command = document.getElementById('commandInput').value;
+            const patternsText = document.getElementById('patternsInput').value;
+            const resultsDiv = document.getElementById('results');
+            const summaryDiv = document.getElementById('summary');
+            const patternResultsDiv = document.getElementById('patternResults');
+
+            if (!command.trim()) {
+                return;
+            }
+
+            if (!patternsText.trim()) {
+                return;
+            }
+
+            let patterns;
+            try {
+                patterns = parsePatterns(patternsText);
+            } catch (e) {
+                return;
+            }
+
+            resultsDiv.style.display = 'block';
+            let matches = [];
+            let patternResultsHTML = '';
+
+            Object.entries(patterns).forEach(([patternKey, patternData]) => {
+                if (patternData.type === 'invalid') {
+                    patternResultsHTML += `
+                        <div class="result-item no-match">
+                            <div class="pattern">${patternKey}</div>
+                            <span class="status" style="color: #f56565;">⚠️ Invalid Pattern</span>
+                        </div>
+                    `;
+                    return;
+                }
+
+                const isMatch = testPattern(command, patternKey, patternData);
+                
+                if (isMatch) {
+                    matches.push(patternKey);
+                }
+            });
+
+            highlightMatchingPatterns(matches);
+
+            if (matches.length === 0) {
+                const suggestions = generatePatternSuggestions(command, patterns);
+                
+                patternResultsHTML = '';
+
+                if (suggestions.length > 0) {
+                    patternResultsHTML += `<div style="margin-top: 20px;">`;
+                    suggestions.forEach((suggestion, index) => {
+                        const suggestionId = `suggestion-${index}`;
+                        const suggestionData = JSON.stringify({
+                            pattern: suggestion.pattern,
+                            expandsPattern: suggestion.expandsPattern || null
+                        });
+                        
+                        patternResultsHTML += `
+                            <div class="result-item suggestion-item" 
+                                 style="border-left-color: #f6ad55; background: rgba(246, 173, 85, 0.1);"
+                                 data-suggestion='${suggestionData.replace(/'/g, '&#39;')}'
+                                 data-expands-pattern="${suggestion.expandsPattern || ''}">
+                                <div style="margin-bottom: 10px;">
+                                    <strong>💡 Suggestion: ${suggestion.type}</strong>
+                                </div>
+                                <div class="pattern">${suggestion.pattern}</div>
+                                <button class="suggestion-button" id="${suggestionId}">
+                                    📝 ${suggestion.expandsPattern ? 'Update pattern' : 'Add to patterns'}
+                                </button>
+                            </div>
+                        `;
+                        
+                        // Set up event listeners after a brief delay
+                        setTimeout(() => {
+                            const button = document.getElementById(suggestionId);
+                            const suggestionItem = button?.closest('.suggestion-item');
+                            
+                            if (button) {
+                                button.addEventListener('click', () => {
+                                    applySuggestion(suggestionData);
+                                    
+                                    // Remove the suggestion button after clicking
+                                    button.remove();
+                                });
+                            }
+                            
+                            // Add hover effect to highlight the line that will be replaced
+                            if (suggestionItem && suggestion.expandsPattern) {
+                                suggestionItem.addEventListener('mouseenter', () => {
+                                    const lineIndex = findPatternLineIndex(suggestion.expandsPattern);
+                                    if (lineIndex >= 0) {
+                                        highlightLine(lineIndex, 'pattern-hover-highlight');
+                                    }
+                                });
+                                
+                                suggestionItem.addEventListener('mouseleave', () => {
+                                    const container = document.getElementById('patternsContainer');
+                                    const hoverHighlights = container.querySelectorAll('.pattern-hover-highlight');
+                                    hoverHighlights.forEach(h => h.remove());
+                                });
+                            }
+                        }, 0);
+                    });
+                    patternResultsHTML += `</div>`;
+                }
+            } else {
+                patternResultsHTML = '';
+            }
+
+            patternResultsDiv.innerHTML = patternResultsHTML;
+
+            const isApproved = matches.length > 0;
+            summaryDiv.className = `summary ${isApproved ? 'approved' : 'rejected'}`;
+            
+            if (isApproved) {
+                summaryDiv.innerHTML = `
+                    <h3 style="color: #48bb78;">✅ COMMAND WOULD BE AUTO-APPROVED</h3>
+                    <p>Matched ${matches.length} pattern(s): <strong>${matches.join(', ')}</strong></p>
+                `;
+            } else {
+                summaryDiv.innerHTML = `
+                    <h3 style="color: #f56565;">❌ COMMAND WOULD NOT BE AUTO-APPROVED</h3>
+                    <p>No patterns matched this command. Manual approval would be required.</p>
+                `;
+            }
+
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        document.getElementById('patternsInput').addEventListener('input', updateLineNumbers);
+        document.getElementById('commandInput').addEventListener('input', updateLineNumbers);
+
+        document.getElementById('commandInput').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey && !e.ctrlKey) {
+                e.preventDefault();
+                testCommand();
+            }
+        });
+
+        window.addEventListener('load', function() {
+            const sampleCommand = `uv run python -c "
+import sys
+sys.path.insert(0, '.')
+from pathlib import Path
+print('Hello World')
+"`;
+            document.getElementById('commandInput').value = sampleCommand;
+            document.getElementById('patternsInput').value = defaultPatternsConfig;
+            updateLineNumbers();
+            
+            const patternsTextarea = document.getElementById('patternsInput');
+            const commandTextarea = document.getElementById('commandInput');
+            const patternsLines = document.getElementById('patternsLines');
+            const commandLines = document.getElementById('commandLines');
+            
+            patternsTextarea.addEventListener('scroll', function() {
+                patternsLines.scrollTop = patternsTextarea.scrollTop;
+            });
+            
+            commandTextarea.addEventListener('scroll', function() {
+                commandLines.scrollTop = commandTextarea.scrollTop;
+            });
+        });
+    </script>
+</body>
+</html>

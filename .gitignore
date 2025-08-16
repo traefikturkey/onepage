@@ -1,0 +1,40 @@
+# Ignore node_modules and build output
+node_modules/
+dist/
+build/
+
+# Ignore environment and log files
+.env
+*.log
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore VS Code settings
+.vscode/
+
+# Ignore .specstory directory
+.specstory/
+
+# Ignore common frontend output
+*.cache
+*.tmp
+
+# Ignore coverage and test output
+coverage/
+*.coverage
+
+# Ignore package lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Ignore all files in subdirectory build/dist for each app
+*/dist/
+*/build/
+
+# Ignore temporary files
+*.swp
+*.swo
+~$*
