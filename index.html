@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>OnePage Apps — traefikturkey</title>
+  <style>
+    :root{--bg:#0f1724;--card:#111827;--muted:#94a3b8;--accent1:#667eea;--accent2:#764ba2}
+    html,body{height:100%}
+  body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,'Helvetica Neue',Arial;color:#e6eef8;background:linear-gradient(180deg,var(--bg) 0%,#0b1220 100%);display:flex;align-items:flex-start;justify-content:center;padding:28px}
+    .wrap{max-width:1100px;width:100%}
+    header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:20px}
+    h1{font-size:20px;margin:0;letter-spacing:-0.2px}
+    p.lead{margin:4px 0 0;color:var(--muted);font-size:13px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);border:1px solid rgba(255,255,255,0.04);padding:18px;border-radius:10px;box-shadow:0 6px 18px rgba(2,6,23,0.6)}
+    .card h3{margin:0 0 8px;font-size:16px}
+    .card p{margin:0 0 12px;color:var(--muted);font-size:13px}
+    .card a.cta{display:inline-block;padding:8px 12px;border-radius:8px;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:white;text-decoration:none;font-weight:600}
+    footer{margin-top:22px;color:var(--muted);font-size:13px;text-align:center}
+    @media (max-width:420px){body{padding:14px}.card{padding:14px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>OnePage Apps</h1>
+        <p class="lead">Collection of single-page apps — served from this repository.</p>
+      </div>
+      <div style="text-align:right;color:var(--muted);font-size:13px">onepage.traefikturkey.com</div>
+    </header>
+
+    <main>
+      <div class="grid">
+        <article class="card">
+          <h3>Chat Command Matcher</h3>
+          <p>Test VS Code Chat terminal auto-approve patterns against commands.</p>
+          <a class="cta" href="chat-command-matcher/vscode-chat-command-matcher.html">Open app →</a>
+        </article>
+
+        <article class="card">
+          <h3>HCL Linter (preview)</h3>
+          <p>HCL linter</p>
+          <a class="cta" href="hcl_linter/hcl_linter.html">Open app →</a>
+        </article>
+      </div>
+    </main>
+
+    <footer>
+      Hosted via GitHub Pages — this repository contains multiple one-page apps in subdirectories.
+    </footer>
+  </div>
+</body>
+</html>
