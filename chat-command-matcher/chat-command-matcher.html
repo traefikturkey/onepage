@@ -97,6 +97,29 @@
             overflow: hidden;
         }
 
+        /* Bottom resizer handle for easier dragging on the container border */
+        .textarea-container .resizer {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 10px;
+            cursor: ns-resize;
+            z-index: 6;
+            /* make the area easy to grab but visually subtle */
+            background: linear-gradient(180deg, rgba(0,0,0,0), rgba(255,255,255,0.02));
+        }
+
+        .textarea-container .resizer::before {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 3px;
+            margin: 3px auto 0 auto;
+            background: rgba(255,255,255,0.06);
+            border-radius: 2px;
+        }
+
         .textarea-container:focus-within {
             border-color: #667eea;
             box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
@@ -352,8 +375,8 @@
     <div class="input-section label-row">
             <label for="patternsInput">Auto-approve patterns (JSON format):</label>
             <div style="display:flex; gap:12px; align-items:center;">
+                <div id="copyFeedback" style="color:#cbd5e0; font-size:12px; display:none; margin-right:8px;">copied to clipboard</div>
                 <button id="copyPatternsBtn" class="copy-button" title="Copy patterns">📋 Copy</button>
-                <div id="copyFeedback" style="color:#cbd5e0; font-size:12px; display:none;">Copied</div>
             </div>
         </div>
         <div class="input-section">
@@ -365,6 +388,7 @@
                     placeholder="Paste your VS Code settings JSON here"
                     style="height: 180px;"
                 ></textarea>
+                <div class="resizer" data-target="patternsInput"></div>
             </div>
         </div>
 
@@ -379,6 +403,7 @@
                     class="textarea-with-lines"
                     placeholder="Paste your command here"
                 ></textarea>
+                <div class="resizer" data-target="commandInput"></div>
             </div>
         </div>
 
@@ -1038,6 +1063,27 @@ print('Hello World')
             document.getElementById('commandInput').value = sampleCommand;
             document.getElementById('patternsInput').value = defaultPatternsConfig;
             updateLineNumbers();
+
+            // Ensure textareas are tall enough to show their initial content without scrollbars
+            function fitTextareaToContent(ta, maxHeight = 800) {
+                if (!ta) return;
+                const cs = getComputedStyle(ta);
+                let lineHeight = parseFloat(cs.lineHeight);
+                if (isNaN(lineHeight) || lineHeight === 0) {
+                    const fontSize = parseFloat(cs.fontSize) || 14;
+                    lineHeight = fontSize * 1.4;
+                }
+                const paddingTop = parseFloat(cs.paddingTop) || 0;
+                const paddingBottom = parseFloat(cs.paddingBottom) || 0;
+                const lines = Math.max(1, ta.value.split('\n').length);
+                const targetHeight = Math.min(maxHeight, Math.max(60, Math.ceil(lines * lineHeight + paddingTop + paddingBottom)));
+                ta.style.height = targetHeight + 'px';
+            }
+
+            // Fit both textareas so sample content doesn't create scrollbars on load
+            fitTextareaToContent(document.getElementById('patternsInput'));
+            fitTextareaToContent(document.getElementById('commandInput'));
+            updateLineNumbers();
             
             const patternsTextarea = document.getElementById('patternsInput');
             const commandTextarea = document.getElementById('commandInput');
@@ -1088,6 +1134,35 @@ print('Hello World')
                     console.error('Copy failed', e);
                 }
             }
+
+            // Resizer handles for bottom border dragging
+            const resizers = document.querySelectorAll('.textarea-container .resizer');
+            resizers.forEach(r => {
+                let startY = 0;
+                let startHeight = 0;
+                const targetId = r.getAttribute('data-target');
+                const ta = document.getElementById(targetId);
+
+                const onPointerMove = (e) => {
+                    const dy = e.clientY - startY;
+                    const newH = Math.max(60, startHeight + dy);
+                    ta.style.height = newH + 'px';
+                    updateLineNumbers();
+                };
+
+                const onPointerUp = () => {
+                    window.removeEventListener('pointermove', onPointerMove);
+                    window.removeEventListener('pointerup', onPointerUp);
+                };
+
+                r.addEventListener('pointerdown', (e) => {
+                    e.preventDefault();
+                    startY = e.clientY;
+                    startHeight = parseFloat(getComputedStyle(ta).height);
+                    window.addEventListener('pointermove', onPointerMove);
+                    window.addEventListener('pointerup', onPointerUp);
+                });
+            });
         });
     </script>
 </body>
