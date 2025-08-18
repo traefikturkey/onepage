@@ -13,7 +13,7 @@ Hosted domain (custom CNAME): `onepage.traefikturkey.com`
 
 - chat-command-matcher — /chat-command-matcher/
   - File: `chat-command-matcher/chat-command-matcher.html`
-  - Link (raw file): `chat-command-matcher/vscode-chat-command-matcher.html`
+  - Link (raw file): `chat-command-matcher/chat-command-matcher.html`
 
 - hcl_linter — /hcl_linter/
   - File: `hcl_linter/hcl_linter.html`
