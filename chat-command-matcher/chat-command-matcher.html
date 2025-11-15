@@ -247,6 +247,22 @@
             text-align: center;
         }
 
+        .autofix-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #3182ce, #2c5282);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 6px;
+            letter-spacing: .5px;
+            margin-top: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.35);
+            animation: fadeIn .5s ease;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-4px);} to { opacity:1; transform: translateY(0);} }
+
         .summary.approved {
             border: 2px solid #48bb78;
         }
@@ -1119,13 +1135,15 @@
             
             if (isApproved) {
                 summaryDiv.innerHTML = `
-                    <h3 style="color: #48bb78;">✅ COMMAND WOULD BE AUTO-APPROVED</h3>
+                    <h3 style=\"color: #48bb78;\">✅ COMMAND WOULD BE AUTO-APPROVED</h3>
                     <p>Matched ${matches.length} pattern(s): <strong>${matches.join(', ')}</strong></p>
+                    ${autoFixed ? '<div class=\"autofix-badge\" title=\"Your patterns were auto-normalized for JSON validity\">AUTO-FIX APPLIED</div>' : ''}
                 `;
             } else {
                 summaryDiv.innerHTML = `
-                    <h3 style="color: #f56565;">❌ COMMAND WOULD NOT BE AUTO-APPROVED</h3>
+                    <h3 style=\"color: #f56565;\">❌ COMMAND WOULD NOT BE AUTO-APPROVED</h3>
                     <p>No patterns matched this command. Manual approval would be required.</p>
+                    ${autoFixed ? '<div class=\"autofix-badge\" title=\"Your patterns were auto-normalized for JSON validity\">AUTO-FIX APPLIED</div>' : ''}
                 `;
             }
 
