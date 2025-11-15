@@ -1,0 +1,8 @@
+{
+  "name": "onepage",
+  "private": true,
+  "scripts": {
+    "dev": "bun --watch run server.ts",
+    "serve": "bun run server.ts"
+  }
+}
