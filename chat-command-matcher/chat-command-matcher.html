@@ -329,6 +329,16 @@
             animation: pulse 5s ease-in-out;
         }
 
+        .pattern-error-highlight {
+            position: absolute;
+            background-color: rgba(245, 101, 101, 0.25);
+            border-left: 4px solid #f56565;
+            pointer-events: none;
+            z-index: 4;
+            border-radius: 3px;
+            box-shadow: 0 0 12px rgba(245, 101, 101, 0.35);
+        }
+
         @keyframes pulse {
             0% { opacity: 0; background-color: rgba(72, 187, 120, 0.6); }
             10% { opacity: 1; background-color: rgba(72, 187, 120, 0.5); }
@@ -396,6 +406,7 @@
                 <div id="copyFeedback" style="color:#cbd5e0; font-size:12px; display:none; margin-right:8px;">copied to clipboard</div>
                 <button id="copyPatternsBtn" class="copy-button" title="Copy patterns">📋 Copy</button>
                 <button id="formatPatternsBtn" class="copy-button" title="Format and fix escapes">✨ Format</button>
+                <button id="resetPatternsBtn" class="copy-button" title="Reset to defaults">↺ Reset</button>
             </div>
         </div>
         <div class="input-section">
@@ -449,6 +460,9 @@
     "sleep": true
 },`;
 
+        const PATTERNS_STORAGE_KEY = 'chatCommandMatcher.patterns';
+        let savePatternsTimeout = null;
+
         let undoHistory = [];
         let redoHistory = [];
 
@@ -461,7 +475,6 @@
                 console.error('pushUndo error', e);
             }
         }
-
         function undoMostRecent() {
             const patternsTextarea = document.getElementById('patternsInput');
             if (undoHistory.length === 0) return false;
@@ -470,6 +483,7 @@
             redoHistory.push(entry);
             patternsTextarea.value = entry.before;
             updateLineNumbers();
+            persistPatterns(patternsTextarea.value, true);
             // Remove any updated highlight
             const container = document.getElementById('patternsContainer');
             const updatedHighlight = container.querySelector('.pattern-updated-highlight');
@@ -486,8 +500,47 @@
             undoHistory.push(entry);
             patternsTextarea.value = entry.after;
             updateLineNumbers();
+            persistPatterns(patternsTextarea.value, true);
             testCommand();
             return true;
+        }
+
+        function persistPatterns(_value, immediate = false) {
+            if (typeof localStorage === 'undefined') return;
+            const save = () => {
+                try {
+                    const currentValue = document.getElementById('patternsInput').value;
+                    localStorage.setItem(PATTERNS_STORAGE_KEY, currentValue);
+                } catch (err) {
+                    console.warn('localStorage unavailable', err);
+                }
+            };
+
+            if (immediate) {
+                save();
+            } else {
+                clearTimeout(savePatternsTimeout);
+                savePatternsTimeout = window.setTimeout(save, 400);
+            }
+        }
+
+        function loadStoredPatterns() {
+            if (typeof localStorage === 'undefined') return null;
+            try {
+                return localStorage.getItem(PATTERNS_STORAGE_KEY);
+            } catch (err) {
+                console.warn('localStorage unavailable', err);
+                return null;
+            }
+        }
+
+        function clearStoredPatterns() {
+            if (typeof localStorage === 'undefined') return;
+            try {
+                localStorage.removeItem(PATTERNS_STORAGE_KEY);
+            } catch (err) {
+                console.warn('Unable to clear stored patterns', err);
+            }
         }
 
         // Helpers to make JSON with regex-like keys parseable
@@ -513,9 +566,9 @@
         }
 
         function parsePatterns(jsonText) {
+            let cleanedJson = jsonText.trim();
+            let normalizedJson = '';
             try {
-                let cleanedJson = jsonText.trim();
-                
                 if (cleanedJson.startsWith('"chat.tools.terminal.autoApprove"')) {
                     const startIndex = cleanedJson.indexOf('{');
                     const endIndex = cleanedJson.lastIndexOf('}');
@@ -524,28 +577,8 @@
                     }
                 }
 
-                // Escape unescaped double quotes inside JSON key strings (common inside regex groups)
-                function sanitizeRegexKeyQuotes(jsonStr) {
-                    const lines = jsonStr.split('\n');
-                    return lines.map((line) => {
-                        if (!line.includes(':')) return line;
-                        const colonIdx = line.indexOf(':');
-                        const firstQ = line.indexOf('"');
-                        const lastQ = line.lastIndexOf('"', colonIdx);
-                        if (firstQ === -1 || lastQ === -1 || lastQ <= firstQ) return line;
-                        const before = line.slice(0, firstQ + 1);
-                        const inner = line.slice(firstQ + 1, lastQ);
-                        const after = line.slice(lastQ);
-                        const fixedInner = inner.replace(/(?<!\\)"/g, '\\"');
-                        return before + fixedInner + after;
-                    }).join('\n');
-                }
-
                 const quoteSanitized = sanitizeRegexKeyQuotes(cleanedJson);
-
-                // Double-escape single backslash-letter sequences (e.g., \s, \b) to make valid JSON and preserve regex intent
-                // This avoids JSON.parse errors and keeps keys usable as regex strings later.
-                const normalizedJson = quoteSanitized.replace(/(^|[^\\])\\([A-Za-z])/g, '$1\\\\$2');
+                normalizedJson = normalizeBackslashLetter(quoteSanitized);
                 const patternsObj = JSON.parse(normalizedJson);
                 const patterns = {};
                 
@@ -587,7 +620,10 @@
                 return patterns;
             } catch (e) {
                 console.error('Error parsing patterns:', e);
-                throw new Error('Invalid JSON format. Please check your input.');
+                if (typeof e === 'object' && e !== null) {
+                    e.jsonText = normalizedJson || cleanedJson || jsonText;
+                }
+                throw e;
             }
         }
 
@@ -652,6 +688,27 @@
             
             container.appendChild(highlight);
             return highlight;
+        }
+
+        function clearLineHighlights(className) {
+            const container = document.getElementById('patternsContainer');
+            if (!container) return;
+            const highlights = container.querySelectorAll('.' + className);
+            highlights.forEach(node => node.remove());
+        }
+
+        function getJsonErrorLocation(error, sourceText) {
+            if (!error || !error.message || !sourceText) return null;
+            const positionMatch = error.message.match(/position\s+(\d+)/i);
+            if (!positionMatch) return null;
+            const index = Number(positionMatch[1]);
+            if (!Number.isFinite(index)) return null;
+            const clampedIndex = Math.min(Math.max(index, 0), sourceText.length);
+            const before = sourceText.slice(0, clampedIndex);
+            const lines = before.split('\n');
+            const line = lines.length;
+            const column = lines[lines.length - 1].length + 1;
+            return { line, column };
         }
 
         function addUndoButton(lineIndex, previousContent) {
@@ -848,6 +905,7 @@
                                 pushUndo(previousContent, updatedContent);
                                 patternsTextarea.value = updatedContent;
                                 updateLineNumbers();
+                                persistPatterns(patternsTextarea.value);
 
                                 // Highlight the updated line
                                 highlightLine(actualLineIndex, 'pattern-updated-highlight');
@@ -872,6 +930,7 @@
                             pushUndo(previousContent, updatedContent);
                             patternsTextarea.value = updatedContent;
                             updateLineNumbers();
+                            persistPatterns(patternsTextarea.value);
                             testCommand();
                         }
                     }
@@ -1003,6 +1062,7 @@
                                 pushUndo(original, fixed);
                                 ta.value = fixed;
                                 updateLineNumbers();
+                                persistPatterns(ta.value, true);
                             }
                             patterns = parsePatterns(ta.value); // parse with existing logic for consistency
                             autoFixed = true;
@@ -1016,27 +1076,38 @@
                             pushUndo(original, fixed);
                             ta.value = fixed;
                             updateLineNumbers();
+                            persistPatterns(ta.value, true);
                         }
                         patterns = parsePatterns(ta.value);
                         autoFixed = true;
+                        clearLineHighlights('pattern-error-highlight');
                     }
                 } catch (fixErr) {
                     // Auto-fix failed; show original parse error
                     resultsDiv.style.display = 'block';
                     summaryDiv.className = 'summary rejected';
                     const msg = (e && e.message) ? e.message : 'Invalid patterns format';
+                    const locationInfo = getJsonErrorLocation(e, e.jsonText || patternsText);
+                    const locationHtml = locationInfo
+                        ? `<p style="margin-top:6px;color:#fed7d7;">Likely near line <strong>${locationInfo.line}</strong>, column <strong>${locationInfo.column}</strong>.</p>`
+                        : '';
                     summaryDiv.innerHTML = `
                         <h3 style="color: #f56565;">⚠️ Failed to parse Approved patterns</h3>
                         <p>${msg}</p>
+                        ${locationHtml}
                         <p style="margin-top:8px;color:#cbd5e0;">
                             Tip: Backslashes in JSON must be escaped. For regex keys, write \\\\s not \\s, \\\\b not \\b. Quotes inside regex groups must be escaped (\" ).
                             Auto-fix attempt also failed (${fixErr.message || 'unknown error'}).
                         </p>
                     `;
                     patternResultsDiv.innerHTML = '';
+                    if (locationInfo) {
+                        highlightLine(locationInfo.line - 1, 'pattern-error-highlight');
+                    }
                     return;
                 }
             }
+            clearLineHighlights('pattern-error-highlight');
 
             resultsDiv.style.display = 'block';
             let matches = [];
@@ -1150,7 +1221,10 @@
             resultsDiv.scrollIntoView({ behavior: 'smooth' });
         }
 
-        document.getElementById('patternsInput').addEventListener('input', updateLineNumbers);
+        document.getElementById('patternsInput').addEventListener('input', () => {
+            updateLineNumbers();
+            persistPatterns();
+        });
         document.getElementById('commandInput').addEventListener('input', updateLineNumbers);
 
         document.getElementById('commandInput').addEventListener('keydown', function(e) {
@@ -1184,14 +1258,24 @@
         });
 
         window.addEventListener('load', function() {
+            const patternsTextarea = document.getElementById('patternsInput');
+            const commandTextarea = document.getElementById('commandInput');
+            const savedPatterns = loadStoredPatterns();
+
+            if (savedPatterns && savedPatterns.trim()) {
+                patternsTextarea.value = savedPatterns;
+            } else {
+                patternsTextarea.value = defaultPatternsConfig;
+                persistPatterns(patternsTextarea.value, true);
+            }
+
             const sampleCommand = `uv run python -c "
 import sys
 sys.path.insert(0, '.')
 from pathlib import Path
 print('Hello World')
 "`;
-            document.getElementById('commandInput').value = sampleCommand;
-            document.getElementById('patternsInput').value = defaultPatternsConfig;
+            commandTextarea.value = sampleCommand;
             updateLineNumbers();
 
             // Ensure textareas are tall enough to show their initial content without scrollbars
@@ -1211,12 +1295,10 @@ print('Hello World')
             }
 
             // Fit both textareas so sample content doesn't create scrollbars on load
-            fitTextareaToContent(document.getElementById('patternsInput'));
-            fitTextareaToContent(document.getElementById('commandInput'));
+            fitTextareaToContent(patternsTextarea);
+            fitTextareaToContent(commandTextarea);
             updateLineNumbers();
             
-            const patternsTextarea = document.getElementById('patternsInput');
-            const commandTextarea = document.getElementById('commandInput');
             const patternsLines = document.getElementById('patternsLines');
             const commandLines = document.getElementById('commandLines');
             
@@ -1247,6 +1329,22 @@ print('Hello World')
                     console.error('Format failed', e);
                 }
             });
+
+            const resetBtn = document.getElementById('resetPatternsBtn');
+            if (resetBtn) {
+                resetBtn.addEventListener('click', () => {
+                    const previous = patternsTextarea.value;
+                    const nextValue = defaultPatternsConfig;
+                    if (previous !== nextValue) {
+                        pushUndo(previous, nextValue);
+                    }
+                    patternsTextarea.value = nextValue;
+                    clearStoredPatterns();
+                    persistPatterns(nextValue, true);
+                    updateLineNumbers();
+                    testCommand();
+                });
+            }
 
             function showCopyFeedback() {
                 copyFeedback.style.display = 'block';
@@ -1306,6 +1404,7 @@ print('Hello World')
                     ta.value = JSON.stringify(obj, null, 4);
                 }
                 updateLineNumbers();
+                persistPatterns(ta.value, true);
             }
 
             // Resizer handles for bottom border dragging
@@ -1337,6 +1436,23 @@ print('Hello World')
                 });
             });
         });
+    </script>
+    <script>
+    if (['localhost', '127.0.0.1', '0.0.0.0', '::1'].includes(window.location.hostname)) {
+            try {
+                const source = new EventSource('/__livereload');
+                source.onmessage = (event) => {
+                    if (event.data === 'reload') {
+                        window.location.reload();
+                    }
+                };
+                source.onerror = () => {
+                    source.close();
+                };
+            } catch (err) {
+                console.warn('Live reload unavailable', err);
+            }
+        }
     </script>
     <!-- GitHub Corner -->
         <a href="https://github.com/traefikturkey/onepage" class="github-corner" aria-label="View source on GitHub" target="_blank" rel="noopener">

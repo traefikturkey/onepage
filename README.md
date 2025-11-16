@@ -68,3 +68,8 @@ PORT=8080 make serve
 ```
 
 This serves static files from the repo root with SPA-friendly fallback to `index.html`.
+
+### Developer experience perks
+
+- The Bun dev server now emits server-sent events from `/__livereload`, so any open browser tab auto-refreshes when you edit files locally.
+- The Chat Command Matcher persists your last-used pattern JSON in `localStorage`; use the new **Reset** button beside Format/Copy to restore the default sample quickly.
