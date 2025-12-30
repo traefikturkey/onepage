@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MeshNet Region/Cell Inspector (Web Mercator, 250km Regions)</title>
+
+  <!-- MapLibre GL JS (Web Mercator / EPSG:3857) -->
+  <link href="https://unpkg.com/maplibre-gl@^5.15.0/dist/maplibre-gl.css" rel="stylesheet" />
+  <script src="https://unpkg.com/maplibre-gl@^5.15.0/dist/maplibre-gl.js"></script>
+
+  <style>
+  html, body { height: 100%; margin: 0; }
+  body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+
+  #app {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: row;
+    min-height: 0;
+    min-width: 0;
+  }
+
+  #sidebar {
+    width: 380px;
+    max-width: 45vw;
+    border-right: 1px solid rgba(0,0,0,0.12);
+    background: rgba(255,255,255,0.98);
+    padding: 12px 12px 14px 12px;
+    box-sizing: border-box;
+    overflow: auto;
+  }
+
+  #sidebar h1 {
+    font-size: 14px;
+    margin: 0 0 10px 0;
+    font-weight: 650;
+  }
+
+  #mapWrap {
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+  }
+
+  #map {
+    width: 100%;
+    height: 100%;
+  }
+
+  .mono {
+    white-space: pre;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 12px;
+    line-height: 1.35;
+    margin: 0;
+  }
+  .hint {
+    font-size: 12px;
+    color: #555;
+    margin-top: 10px;
+  }
+  .row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+  button {
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.18);
+    background: white;
+    cursor: pointer;
+  }
+  button:active { transform: translateY(1px); }
+</style>
+</head>
+<body>
+  <div id="app">
+    <div id="sidebar">
+      <h1>MeshNet grid inspector</h1>
+      <pre id="out" class="mono">Move your mouse over the map…</pre>
+      <div class="row">
+        <button id="modeBtn">Mode: Auto</button>
+        <button id="toggle">Toggle highlight</button>
+        <button id="home">Home</button>
+      </div>
+      <div class="hint">
+        Projection: Web Mercator (EPSG:3857). Regions are N×N equal squares (N=229). Cells are 64×64 inside a Region (12-bit Cell ID).
+        Address shown as Octet1.Octet2.Octet3 where Octet1=RegionY+1 (0 reserved), Octet2=RegionX, Octet3=Cell12 (0 reserved).
+      </div>
+      <div class="hint" style="margin-top:10px">
+        Controls: Drag to pan • Mouse wheel to zoom • Hover to compute octets and highlight the Region tile.
+      </div>
+    </div>
+    <div id="mapWrap">
+      <div id="map"></div>
+    </div>
+  </div>
+
+<script>
+(() => {
+  // ====== MeshNet grid constants ======
+  // Schema: <8 bits>.<8 bits>.<12 bits>
+  // - Regions: N×N equal squares over the Web Mercator world square (EPSG:3857 meters)
+  // - Octet1 = RegionY + 1 (0 reserved for IPv4 passthrough namespace)
+  // - Octet2 = RegionX
+  // - Octet3 = Cell12 = (cellY<<6)|cellX (0 reserved by spec)
+  // - Cells: 64×64 per Region (12 bits)
+  const R = 6378137.0;
+  const PI = Math.PI;
+
+  const LAT_CUT = 85.05112878;
+
+  const N = 229;
+  const WORLD_M = 2 * PI * R;
+  const REGION_SIZE_M = WORLD_M / N;
+
+  // Web Mercator bounds
+  const X_MIN = -PI * R;
+  const Y_MIN = -PI * R;
+
+  function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
+
+  // lon/lat -> Web Mercator meters (EPSG:3857 style)
+  function lonLatToMercatorMeters(lon, lat) {
+    const latClamped = clamp(lat, -LAT_CUT, LAT_CUT);
+    const lam = lon * PI / 180.0;
+    const phi = latClamped * PI / 180.0;
+    const x = R * lam;
+    const y = R * Math.log(Math.tan(PI / 4.0 + phi / 2.0));
+    return { x, y };
+  }
+
+  // Web Mercator meters -> lon/lat
+  function mercatorMetersToLonLat(x, y) {
+    const lon = (x / R) * 180.0 / PI;
+    const lat = (2.0 * Math.atan(Math.exp(y / R)) - PI / 2.0) * 180.0 / PI;
+    return { lon, lat: clamp(lat, -LAT_CUT, LAT_CUT) };
+  }
+
+  function computeRegionCell(lon, lat) {
+    const { x, y } = lonLatToMercatorMeters(lon, lat);
+
+    // normalize to 0..WORLD_M
+    const xN = x - X_MIN;
+    const yN = y - Y_MIN;
+
+    // Region indices (0..N-1)
+    let regionX = Math.floor(xN / REGION_SIZE_M);
+    let regionY = Math.floor(yN / REGION_SIZE_M);
+    regionX = clamp(regionX, 0, N - 1);
+    regionY = clamp(regionY, 0, N - 1);
+
+    // within region
+    const xR = xN - regionX * REGION_SIZE_M;
+    const yR = yN - regionY * REGION_SIZE_M;
+
+    // Cells: 64×64 per Region
+    let cellX = Math.floor(xR / (REGION_SIZE_M / 64.0));
+    let cellY = Math.floor(yR / (REGION_SIZE_M / 64.0));
+    cellX = clamp(cellX, 0, 63);
+    cellY = clamp(cellY, 0, 63);
+
+    const cell12 = (cellY << 6) | cellX; // 0..4095 (0 reserved by spec)
+    const cellReserved = (cell12 === 0);
+
+    // Region bounds in meters
+    const x0 = X_MIN + regionX * REGION_SIZE_M;
+    const y0 = Y_MIN + regionY * REGION_SIZE_M;
+    const x1 = x0 + REGION_SIZE_M;
+    const y1 = y0 + REGION_SIZE_M;
+
+    // Address octets
+    const octet1 = regionY + 1; // 0 reserved for IPv4 passthrough namespace
+    const octet2 = regionX;
+    const octet3 = cell12;
+
+    return { regionX, regionY, octet1, octet2, octet3, cellX, cellY, cell12, cellReserved, x0, y0, x1, y1 };
+  }
+
+  // ====== MapLibre map ======
+
+  const map = new maplibregl.Map({
+    container: "map",
+    style: {
+      version: 8,
+      sources: {
+        osm: {
+          type: "raster",
+          tiles: ["https://tile.openstreetmap.org/{z}/{x}/{y}.png"],
+          tileSize: 256,
+          attribution: "© OpenStreetMap contributors"
+        }
+      },
+      layers: [
+        { id: "osm", type: "raster", source: "osm" }
+      ]
+    },
+    center: [-95, 39], // continental US-ish
+    zoom: 3,
+    renderWorldCopies: false
+  });
+
+  map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }));
+
+  const out = document.getElementById("out");
+  const modeBtn = document.getElementById("modeBtn");
+  const toggleBtn = document.getElementById("toggle");
+  const homeBtn = document.getElementById("home");
+
+  // highlightEnabled controls whether we draw any highlight at all.
+  let highlightEnabled = true;
+
+  // highlightMode controls *what* to highlight.
+  // - "auto": region at low zoom, cell at high zoom
+  // - "region": region only
+  // - "cell": cell only
+  // - "both": region + cell
+  const MODES = ["auto", "region", "cell", "both"];
+  let highlightMode = "auto";
+  const CELL_ZOOM_THRESHOLD = 8.0;
+
+  function setOut(text) { out.textContent = text; }
+
+  map.on("load", () => {
+    // GeoJSON source for highlight polygon
+    map.addSource("region-highlight", {
+      type: "geojson",
+      data: {
+        type: "FeatureCollection",
+        features: []
+      }
+    });
+
+    // GeoJSON source for cell highlight (shown at higher zoom or by mode)
+    map.addSource("cell-highlight", {
+      type: "geojson",
+      data: {
+        type: "FeatureCollection",
+        features: []
+      }
+    });
+
+    // Fill (default color)
+    map.addLayer({
+      id: "region-fill",
+      type: "fill",
+      source: "region-highlight",
+      paint: {
+        "fill-opacity": 0.18
+      }
+    });
+
+    // Outline
+    map.addLayer({
+      id: "region-line",
+      type: "line",
+      source: "region-highlight",
+      paint: {
+        "line-width": 2
+      }
+    });
+
+    // Cell fill
+    map.addLayer({
+      id: "cell-fill",
+      type: "fill",
+      source: "cell-highlight",
+      paint: {
+        "fill-opacity": 0.25
+      }
+    });
+
+    // Cell outline
+    map.addLayer({
+      id: "cell-line",
+      type: "line",
+      source: "cell-highlight",
+      paint: {
+        "line-width": 2.5
+      }
+    });
+
+    setOut("Move your mouse over the map…");
+
+    map.on("mousemove", (e) => {
+      const lon = e.lngLat.lng;
+      const lat = e.lngLat.lat;
+
+      const info = computeRegionCell(lon, lat);
+
+      // Convert Region bounds to lon/lat for drawing
+      const p00 = mercatorMetersToLonLat(info.x0, info.y0);
+      const p10 = mercatorMetersToLonLat(info.x1, info.y0);
+      const p11 = mercatorMetersToLonLat(info.x1, info.y1);
+      const p01 = mercatorMetersToLonLat(info.x0, info.y1);
+
+      // Update HUD
+      setOut(
+`lon,lat: ${lon.toFixed(6)}, ${lat.toFixed(6)}
+
+Schema: <8>.<8>.<12>
+  Octet1 (RegionY+1; 0 reserved): ${info.octet1}
+  Octet2 (RegionX):              ${info.octet2}
+  Octet3 (Cell12; 0 reserved):   ${info.octet3}${info.cellReserved ? "  [RESERVED]" : ""}
+
+Mesh address:
+  ${info.octet1}.${info.octet2}.${info.octet3}
+
+Region grid:
+  N=229 squares per axis
+  Region size ≈ 175.000073 km per side (Mercator plane)
+
+Cell grid:
+  64×64 per Region (12 bits)
+  cellX=${info.cellX} (0..63)  cellY=${info.cellY} (0..63)
+  Cell size ≈ 2.734376 km per side (Mercator plane)
+
+Region bounds (approx):
+  SW: ${p00.lon.toFixed(4)}, ${p00.lat.toFixed(4)}
+  NE: ${p11.lon.toFixed(4)}, ${p11.lat.toFixed(4)}`
+      );
+if (!highlightEnabled) {
+        map.getSource("region-highlight").setData({ type: "FeatureCollection", features: [] });
+        return;
+      }
+
+      const poly = {
+        type: "FeatureCollection",
+        features: [{
+          type: "Feature",
+          properties: { regionX: info.regionX, regionY: info.regionY },
+          geometry: {
+            type: "Polygon",
+            coordinates: [[
+              [p00.lon, p00.lat],
+              [p10.lon, p10.lat],
+              [p11.lon, p11.lat],
+              [p01.lon, p01.lat],
+              [p00.lon, p00.lat]
+            ]]
+          }
+        }]
+      };
+
+      // ---- Compute Cell bounds inside Region ----
+      const CELL_SIZE_M = REGION_SIZE_M / 64.0;
+      const cx0 = info.x0 + info.cellX * CELL_SIZE_M;
+      const cy0 = info.y0 + info.cellY * CELL_SIZE_M;
+      const cx1 = cx0 + CELL_SIZE_M;
+      const cy1 = cy0 + CELL_SIZE_M;
+
+      const c00 = mercatorMetersToLonLat(cx0, cy0); // SW
+      const c10 = mercatorMetersToLonLat(cx1, cy0); // SE
+      const c11 = mercatorMetersToLonLat(cx1, cy1); // NE
+      const c01 = mercatorMetersToLonLat(cx0, cy1); // NW
+
+      const cellPoly = {
+        type: "FeatureCollection",
+        features: [{
+          type: "Feature",
+          properties: { cellX: info.cellX, cellY: info.cellY, cell12: info.cell12 },
+          geometry: {
+            type: "Polygon",
+            coordinates: [[
+              [c00.lon, c00.lat],
+              [c10.lon, c10.lat],
+              [c11.lon, c11.lat],
+              [c01.lon, c01.lat],
+              [c00.lon, c00.lat]
+            ]]
+          }
+        }]
+      };
+
+      // ---- Decide what to highlight ----
+      const z = map.getZoom();
+      const mode = highlightMode;
+
+      // clear by default
+      let showRegion = false;
+      let showCell = false;
+
+      if (highlightEnabled) {
+        if (mode === "region") {
+          showRegion = true;
+        } else if (mode === "cell") {
+          showCell = true;
+        } else if (mode === "both") {
+          showRegion = true;
+          showCell = true;
+        } else { // auto
+          if (z >= CELL_ZOOM_THRESHOLD) showCell = true;
+          else showRegion = true;
+        }
+      }
+
+      if (showRegion) map.getSource("region-highlight").setData(poly);
+      else map.getSource("region-highlight").setData({ type: "FeatureCollection", features: [] });
+
+      if (showCell) map.getSource("cell-highlight").setData(cellPoly);
+      else map.getSource("cell-highlight").setData({ type: "FeatureCollection", features: [] });
+    });
+
+    // Mode button: cycles Auto → Region → Cell → Both
+    function renderModeBtn() {
+      const label = (highlightMode === "auto")
+        ? `Mode: Auto (cell @ z≥${CELL_ZOOM_THRESHOLD})`
+        : `Mode: ${highlightMode[0].toUpperCase()}${highlightMode.slice(1)}`;
+      modeBtn.textContent = label;
+    }
+
+    modeBtn.addEventListener("click", () => {
+      const i = MODES.indexOf(highlightMode);
+      highlightMode = MODES[(i + 1) % MODES.length];
+      renderModeBtn();
+
+      // force refresh by clearing sources; next mousemove will redraw
+      map.getSource("region-highlight").setData({ type: "FeatureCollection", features: [] });
+      map.getSource("cell-highlight").setData({ type: "FeatureCollection", features: [] });
+    });
+
+    renderModeBtn();
+
+    toggleBtn.addEventListener("click", () => {
+      highlightEnabled = !highlightEnabled;
+      if (!highlightEnabled) {
+        map.getSource("region-highlight").setData({ type: "FeatureCollection", features: [] });
+        map.getSource("cell-highlight").setData({ type: "FeatureCollection", features: [] });
+      }
+    });
+
+    homeBtn.addEventListener("click", () => {
+      map.easeTo({ center: [-95, 39], zoom: 3, duration: 600 });
+    });
+  });
+})();</script>
+</body>
+</html>

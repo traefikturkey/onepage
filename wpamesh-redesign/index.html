@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WPAMesh - Western Pennsylvania Meshtastic Radio Network. Connect with the mesh networking community in the Pittsburgh area.">
+    <title>WPAMesh - Western Pennsylvania Meshtastic Radio Network</title>
+    <link rel="icon" type="image/png" href="https://wpamesh.net/wp-content/uploads/2024/12/Logo-150x150.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #0a0a0a;
+            --steel: #1a1a1c;
+            --steel-light: #242426;
+            --steel-lighter: #333336;
+            --border: #3a3a3e;
+            --gold: #FFB81C;
+            --gold-dim: #d49a15;
+            --rust: #c45c26;
+            --green: #4ade80;
+            --text: #c8c8cc;
+            --text-dim: #9a9a9e;
+            --white: #f0f0f2;
+        }
+
+        body {
+            font-family: 'Barlow', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--black);
+            min-height: 100vh;
+        }
+
+        a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Layout */
+        .page-wrapper {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: var(--steel);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .sidebar-header {
+            padding: 1rem;
+            border-bottom: 3px solid var(--gold);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-mark {
+            width: 36px;
+            height: 36px;
+            background: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .logo-mark span {
+            filter: brightness(0);
+        }
+
+        .logo-text {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--white);
+            letter-spacing: 0.5px;
+        }
+
+        .logo-text span {
+            color: var(--gold);
+        }
+
+        .sidebar-nav {
+            flex: 1;
+            padding: 1rem;
+        }
+
+        .sidebar-section {
+            margin-bottom: 1.25rem;
+        }
+
+        .sidebar-section h3 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-section ul {
+            list-style: none;
+        }
+
+        .sidebar-section li {
+            margin-bottom: 0.3rem;
+        }
+
+        .sidebar-section a {
+            color: var(--text);
+            font-size: 0.9rem;
+            display: block;
+            padding: 0.2rem 0;
+        }
+
+        .sidebar-section a:hover {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        /* Status Widget - at bottom */
+        .sidebar-footer {
+            padding: 1rem;
+            border-top: 1px solid var(--border);
+            margin-top: auto;
+        }
+
+        .status-widget {
+            background: var(--steel-light);
+            padding: 0.75rem;
+            border-left: 3px solid var(--gold);
+        }
+
+        .status-widget h3 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .status-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            padding: 0.2rem 0;
+        }
+
+        .status-row .label {
+            color: var(--text-dim);
+        }
+
+        .status-row .value {
+            font-weight: 600;
+        }
+
+        .status-row .value.good { color: var(--green); }
+        .status-row .value.good::before { content: '● '; }
+        .status-row .value.warn { color: var(--rust); }
+        .status-row .value.warn::before { content: '▲ '; font-size: 0.7em; }
+
+        /* Main Content */
+        .main-content {
+            background: var(--black);
+        }
+
+        .main-inner {
+            padding: 0 2rem 1.5rem;
+            max-width: 900px;
+        }
+
+        /* Hero Banner */
+        .hero-banner {
+            position: relative;
+            height: 240px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-banner img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(30%);
+            opacity: 0.5;
+        }
+
+        .hero-banner::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 50%, var(--black));
+        }
+
+        .hero-text {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .hero-text h1 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+        }
+
+        .hero-text p {
+            color: var(--text);
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 1rem;
+            padding: 0.5rem 1.25rem;
+            background: rgba(255, 184, 28, 0.15);
+            border: 1px solid rgba(255, 184, 28, 0.4);
+            border-radius: 20px;
+            color: var(--gold);
+            font-size: 0.8rem;
+            text-decoration: none;
+            transition: background 0.15s, border-color 0.15s;
+        }
+
+        .hero-cta:hover {
+            background: rgba(255, 184, 28, 0.25);
+            border-color: rgba(255, 184, 28, 0.6);
+            text-decoration: none;
+        }
+
+        .hero-cta .small {
+            font-size: 0.7rem;
+            opacity: 0.8;
+        }
+
+        /* Content Sections */
+        .content-section {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 1rem;
+        }
+
+        .intro-text {
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .intro-text p {
+            margin-bottom: 0.75rem;
+        }
+
+        /* Map Container */
+        .map-container {
+            display: block;
+            border: 1px solid var(--border);
+            transition: border-color 0.15s;
+        }
+
+        .map-container:hover {
+            border-color: var(--gold);
+        }
+
+        .map-container img {
+            width: 100%;
+            display: block;
+        }
+
+        /* Recent Posts */
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .post-card {
+            background: var(--steel);
+            border: 1px solid var(--border);
+            padding: 1rem;
+        }
+
+        .post-card h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .post-card h4 a {
+            color: var(--white);
+        }
+
+        .post-card h4 a:hover {
+            color: var(--gold);
+        }
+
+        .post-card .meta {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 1rem 2rem;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            max-width: 900px;
+        }
+
+        /* Mobile */
+        .mobile-header {
+            display: none;
+            background: var(--steel);
+            border-bottom: 3px solid var(--gold);
+            padding: 0.75rem 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .mobile-header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .menu-toggle {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text);
+            min-width: 44px;
+            min-height: 44px;
+            padding: 0.5rem;
+            cursor: pointer;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Skip Link */
+        .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 0;
+            background: var(--gold);
+            color: var(--black);
+            padding: 0.75rem 1rem;
+            font-weight: 600;
+            z-index: 9999;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Mobile overlay */
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 150;
+        }
+
+        .sidebar-overlay.active {
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .page-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 260px;
+                z-index: 200;
+            }
+
+            .sidebar.active {
+                display: flex;
+            }
+
+            .mobile-header {
+                display: block;
+            }
+
+            .posts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .main-content {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero-text h1 {
+                font-size: 1.5rem;
+            }
+
+            footer {
+                text-align: center;
+                padding: 1rem;
+            }
+        }
+
+        /* Right Sidebar (wide screens only) */
+        .right-sidebar {
+            display: none;
+            background: var(--steel);
+            border-left: 1px solid var(--border);
+            padding: 1.25rem;
+            width: 280px;
+        }
+
+        .right-widget {
+            margin-bottom: 1.5rem;
+        }
+
+        .right-widget h3 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 0.75rem;
+        }
+
+        .event-item {
+            background: var(--steel-light);
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            border-left: 2px solid var(--rust);
+        }
+
+        .event-item .date {
+            font-size: 0.7rem;
+            color: var(--rust);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .event-item .title {
+            font-size: 0.9rem;
+            color: var(--white);
+            margin: 0.25rem 0;
+        }
+
+        .event-item .location {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+
+        .discord-widget {
+            background: var(--steel-light);
+            padding: 0.75rem;
+            text-align: center;
+        }
+
+        .discord-widget .online {
+            font-size: 0.8rem;
+            color: var(--green);
+            margin-bottom: 0.5rem;
+        }
+
+        .discord-widget .online::before {
+            content: '●';
+            margin-right: 0.4rem;
+        }
+
+        .discord-btn {
+            display: inline-block;
+            background: #5865F2;
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 4px;
+        }
+
+        .discord-btn:hover {
+            background: #4752c4;
+            text-decoration: none;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+        }
+
+        .stat-box {
+            background: var(--steel-light);
+            padding: 0.75rem;
+            text-align: center;
+        }
+
+        .stat-box .number {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .stat-box .label {
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .featured-node {
+            background: var(--steel-light);
+            padding: 0.75rem;
+        }
+
+        .featured-node .node-name {
+            font-weight: 600;
+            color: var(--white);
+            font-size: 0.9rem;
+        }
+
+        .featured-node .node-role {
+            font-size: 0.75rem;
+            color: var(--rust);
+            margin-bottom: 0.5rem;
+        }
+
+        .featured-node .node-desc {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            line-height: 1.5;
+        }
+
+        /* Wide screens */
+        @media (min-width: 1400px) {
+            .page-wrapper {
+                grid-template-columns: 240px 1fr 280px;
+            }
+
+            .right-sidebar {
+                display: block;
+                position: sticky;
+                top: 0;
+                height: 100vh;
+                overflow-y: auto;
+            }
+
+            .hero-banner {
+                height: 300px;
+            }
+
+            .main-inner {
+                max-width: 900px;
+                margin: 0 auto;
+            }
+
+            footer {
+                max-width: 900px;
+                margin: 0 auto;
+            }
+
+            .posts-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Focus */
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 2px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- GitHub Corner -->
+    <a href="https://github.com/ilude/wpamesh-redesign" class="github-corner" aria-label="View source on GitHub">
+        <svg width="70" height="70" viewBox="0 0 250 250" aria-hidden="true">
+            <path class="octo-bg" d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+            <path class="octo-arm" d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"></path>
+            <path class="octo-body" d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 153.0,117.0 148.7,117.4 L134.8,131.3 C131.5,134.6 126.7,135.1 122.8,132.0 L115.0,115.0 Z"></path>
+        </svg>
+    </a>
+    <style>
+        .github-corner {
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: 1000;
+        }
+        .github-corner .octo-bg { fill: var(--gold); }
+        .github-corner .octo-arm, .github-corner .octo-body { fill: var(--black); }
+        .github-corner .octo-arm { transform-origin: 130px 106px; }
+        .github-corner:hover .octo-arm { animation: octocat-wave 560ms ease-in-out; }
+        @keyframes octocat-wave {
+            0%, 100% { transform: rotate(0); }
+            20%, 60% { transform: rotate(-25deg); }
+            40%, 80% { transform: rotate(10deg); }
+        }
+        @media (max-width: 900px) {
+            .github-corner { display: none; }
+        }
+    </style>
+
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+        <div class="mobile-header-inner">
+            <a href="#" class="logo">
+                <div class="logo-mark"><span>📡</span></div>
+                <div class="logo-text">WPA<span>Mesh</span></div>
+            </a>
+            <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+        </div>
+    </div>
+
+    <div class="sidebar-overlay" aria-hidden="true"></div>
+
+    <div class="page-wrapper">
+        <aside class="sidebar" id="sidebar" role="navigation" aria-label="Main navigation">
+            <div class="sidebar-header">
+                <a href="#" class="logo">
+                    <div class="logo-mark"><span>📡</span></div>
+                    <div class="logo-text">WPA<span>Mesh</span></div>
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section">
+                    <h3>Getting Started</h3>
+                    <ul>
+                        <li><a href="https://wpamesh.net/whats-meshtastic/">What's Meshtastic?</a></li>
+                        <li><a href="https://wpamesh.net/posts/getting-on-the-air-with-the-wpamesh/">Joining the WPAMesh</a></li>
+                        <li><a href="https://flasher.meshtastic.org/">Flash Your Device</a></li>
+                        <li><a href="https://www.youtube.com/watch?v=Euw9ppwkbxQ">Video Tutorial</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>View The Mesh</h3>
+                    <ul>
+                        <li><a href="https://map.wpamesh.net/map">Live Map</a></li>
+                        <li><a href="https://wpamesh.net/member-nodes/">Member Nodes</a></li>
+                        <li><a href="https://wpamesh.net/mqtt/">MQTT Server</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>Guides</h3>
+                    <ul>
+                        <li><a href="https://wpamesh.net/posts/roadsend-tower/">RoadsEnd Tower</a></li>
+                        <li><a href="https://wpamesh.net/posts/category/guide/">All Guides</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>Community</h3>
+                    <ul>
+                        <li><a href="https://discord.gg/67xqYqaqXP">Discord</a></li>
+                        <li><a href="https://www.facebook.com/groups/873345134557415">Facebook</a></li>
+                        <li><a href="https://meshtastic.org/">Meshtastic.org</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="status-widget">
+                    <h3>Network Status</h3>
+                    <div class="status-row">
+                        <span class="label">Preset</span>
+                        <span class="value">Long_Fast</span>
+                    </div>
+                    <div class="status-row">
+                        <span class="label">Performance</span>
+                        <span class="value warn">Moderate</span>
+                    </div>
+                    <div class="status-row">
+                        <span class="label">Channel Util</span>
+                        <span class="value warn">Elevated</span>
+                    </div>
+                    <div class="status-row">
+                        <span class="label">Default Ch.</span>
+                        <span class="value good">Active</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <div>
+            <main class="main-content" id="main-content" tabindex="-1">
+                <div class="hero-banner">
+                    <img
+                        src="https://wpamesh.net/wp-content/uploads/2025/06/pittsburgh_109_9953_pano_up-copy-1024x399.jpg"
+                        srcset="https://wpamesh.net/wp-content/uploads/2025/06/pittsburgh_109_9953_pano_up-copy-768x299.jpg 768w,
+                                https://wpamesh.net/wp-content/uploads/2025/06/pittsburgh_109_9953_pano_up-copy-1024x399.jpg 1024w,
+                                https://wpamesh.net/wp-content/uploads/2025/06/pittsburgh_109_9953_pano_up-copy-1536x598.jpg 1536w"
+                        sizes="100vw"
+                        alt="Downtown Pittsburgh skyline"
+                    >
+                    <div class="hero-text">
+                        <h1>Meshtastic For The Yinzers</h1>
+                        <p>Off-grid mesh radio for Western Pennsylvania</p>
+                        <a href="https://wpamesh.net/whats-meshtastic/" class="hero-cta">
+                            <span>New to Mesh?</span>
+                            <span class="small">Start Here</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="main-inner">
+                <section class="content-section">
+                    <h2 class="section-title">Welcome</h2>
+                    <div class="intro-text">
+                        <p>
+                            Welcome to the home of the Western Pennsylvania Meshtastic community. We're a group of radio enthusiasts
+                            building an off-grid mesh network centered around Pittsburgh, with nodes reaching into Allegheny, Westmoreland,
+                            Butler, Armstrong, Indiana, and Beaver counties.
+                        </p>
+                        <p>
+                            Whether you're looking to join the network, check coverage in your area, or connect with other local operators,
+                            you're in the right place.
+                        </p>
+                    </div>
+                </section>
+
+                <section class="content-section">
+                    <h2 class="section-title">Coverage Map</h2>
+                    <a href="https://map.wpamesh.net/map" class="map-container">
+                        <img
+                            src="https://wpamesh.net/wp-content/uploads/2025/09/Screenshot_20250929_085517_Meshtastic-768x577.webp"
+                            alt="WPAMesh node coverage map - click to view live map"
+                            loading="lazy"
+                        >
+                    </a>
+                </section>
+
+                <section class="content-section">
+                    <h2 class="section-title">Recent Posts</h2>
+                    <div class="posts-grid">
+                        <article class="post-card">
+                            <h4><a href="https://wpamesh.net/posts/getting-on-the-air-with-the-wpamesh/">Getting on the Air With the WPAMesh</a></h4>
+                            <p class="meta">Guide · Tips for our challenging terrain</p>
+                        </article>
+                        <article class="post-card">
+                            <h4><a href="https://wpamesh.net/posts/roadsend-tower/">RoadsEnd Tower</a></h4>
+                            <p class="meta">Node Detail · Infrastructure node info</p>
+                        </article>
+                    </div>
+                </section>
+                </div>
+            </main>
+
+            <footer>
+                <span>© 2025 WPAMesh · Not affiliated with Meshtastic LLC</span>
+            </footer>
+        </div>
+
+        <!-- Right Sidebar (wide screens) -->
+        <aside class="right-sidebar">
+            <div class="right-widget">
+                <h3>Network Stats</h3>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="number">47</div>
+                        <div class="label">Nodes</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">12</div>
+                        <div class="label">Online</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">6</div>
+                        <div class="label">Counties</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">3</div>
+                        <div class="label">Repeaters</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-widget">
+                <h3>Upcoming Events</h3>
+                <div class="event-item">
+                    <div class="date">Jan 11, 2025</div>
+                    <div class="title">Monthly Mesh Meetup</div>
+                    <div class="location">TBD · Check Discord</div>
+                </div>
+                <div class="event-item">
+                    <div class="date">Ongoing</div>
+                    <div class="title">Node Building Workshop</div>
+                    <div class="location">Virtual · Discord Voice</div>
+                </div>
+            </div>
+
+            <div class="right-widget">
+                <h3>Join the Community</h3>
+                <div class="discord-widget">
+                    <div class="online">23 members online</div>
+                    <a href="https://discord.gg/67xqYqaqXP" class="discord-btn">Join Discord</a>
+                </div>
+            </div>
+
+            <div class="right-widget">
+                <h3>Featured Node</h3>
+                <div class="featured-node">
+                    <div class="node-name">RoadsEnd Tower</div>
+                    <div class="node-role">Infrastructure · Repeater</div>
+                    <div class="node-desc">
+                        High-elevation relay providing coverage across multiple counties.
+                        One of our core backbone nodes.
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script>
+        // Mobile menu accessibility
+        const menuToggle = document.querySelector('.menu-toggle');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.querySelector('.sidebar-overlay');
+
+        function openMenu() {
+            sidebar.classList.add('active');
+            overlay.classList.add('active');
+            menuToggle.setAttribute('aria-expanded', 'true');
+            menuToggle.setAttribute('aria-label', 'Close menu');
+            sidebar.querySelector('a').focus();
+        }
+
+        function closeMenu() {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            menuToggle.setAttribute('aria-label', 'Open menu');
+            menuToggle.focus();
+        }
+
+        menuToggle.addEventListener('click', () => {
+            if (sidebar.classList.contains('active')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+
+        overlay.addEventListener('click', closeMenu);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && sidebar.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+    </script>
+</body>
+</html>
