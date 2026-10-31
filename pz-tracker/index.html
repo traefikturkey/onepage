@@ -35,6 +35,7 @@
         <button type="button" data-category="Books" aria-pressed="true">Books</button>
         <button type="button" data-category="Videos" aria-pressed="false">Videos</button>
         <button type="button" data-category="Magazines" aria-pressed="false">Magazines</button>
+        <button type="button" data-category="Misc" aria-pressed="false">Misc</button>
       </nav>
       <div class="filters panel">
         <label>Search <input id="search" type="search" placeholder="Title, skill, recipe..." autocomplete="off"></label>
@@ -44,6 +45,7 @@
         </label>
         <span id="summary" class="muted"></span>
       </div>
+      <p id="misc-note" class="muted" hidden>One checkbox per resource type and recipe. A schematic can contain several recipes: check each one your library holds. Community lists are marked Build 42.10–42.11, not verified against 42.22.</p>
       <div class="table-wrap">
         <table>
           <thead><tr><th scope="col">Owned</th><th scope="col">Title</th><th scope="col">Skill / learning</th><th scope="col">Type</th></tr></thead>

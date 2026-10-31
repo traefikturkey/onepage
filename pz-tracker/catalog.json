@@ -1,6 +1,6 @@
 {
   "version": "Build 42.22 Pre-Release",
-  "notes": "Target: latest available Build 42, 42.22 Pre-Release (Stable: 42.21). Community catalog from PZwiki, retrieved 2026-10-30. Books table marked 42.13.2; VHS table marked 42.20.4. Not yet verified against 42.22 game files; coverage and XP may differ. VHS values are base XP before character modifiers.",
+  "notes": "Target: latest available Build 42, 42.22 Pre-Release (Stable: 42.21). Community catalog from PZwiki, retrieved 2026-10-30. Books table marked 42.13.2; VHS table marked 42.20.4. Not yet verified against 42.22 game files; coverage and XP may differ. VHS values are base XP before character modifiers. Misc recipe-resource lists retrieved 2026-10-31, marked 42.10–42.11; each checkbox represents a resource type and recipe, not a randomized sheet combination.",
   "sources": [
     {
       "label": "The Indie Stone: 42.22 Pre-Release announcement",
@@ -17,6 +17,38 @@
     {
       "label": "PZwiki contributors: VHS",
       "url": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "label": "PZwiki contributors: Cooking Recipe Clipping",
+      "url": "https://pzwiki.net/wiki/Recipe"
+    },
+    {
+      "label": "PZwiki contributors: Hand-drawn Armor Schematic",
+      "url": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "label": "PZwiki contributors: Tool Forging Plan",
+      "url": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "label": "PZwiki contributors: Cookware Forging Recipe",
+      "url": "https://pzwiki.net/wiki/Cookware_Schematic"
+    },
+    {
+      "label": "PZwiki contributors: Explosives Diagram",
+      "url": "https://pzwiki.net/wiki/Explosives_Schematic"
+    },
+    {
+      "label": "PZwiki contributors: Melee Weapon Plan",
+      "url": "https://pzwiki.net/wiki/Melee_Weapons_Schematic"
+    },
+    {
+      "label": "PZwiki contributors: Survival Magazine Page",
+      "url": "https://pzwiki.net/wiki/Survival_Schematic"
+    },
+    {
+      "label": "PZwiki contributors: Sewing Pattern",
+      "url": "https://pzwiki.net/wiki/Sewing_Pattern"
     }
   ],
   "items": [
@@ -2171,6 +2203,1750 @@
       "effect": "Mechanics: +12.5 base XP",
       "kind": "Home",
       "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "misc:Base.RecipeClipping:prepare-oatmeal-cookies",
+      "title": "Cooking Recipe Clipping: Prepare Oatmeal Cookies",
+      "category": "Misc",
+      "effect": "Unlocks: Prepare Oatmeal Cookies",
+      "kind": "Cooking Recipe Clipping",
+      "source": "https://pzwiki.net/wiki/Recipe"
+    },
+    {
+      "id": "misc:Base.RecipeClipping:prepare-shortbread-cookies",
+      "title": "Cooking Recipe Clipping: Prepare Shortbread Cookies",
+      "category": "Misc",
+      "effect": "Unlocks: Prepare Shortbread Cookies",
+      "kind": "Cooking Recipe Clipping",
+      "source": "https://pzwiki.net/wiki/Recipe"
+    },
+    {
+      "id": "misc:Base.RecipeClipping:prepare-sugar-cookies",
+      "title": "Cooking Recipe Clipping: Prepare Sugar Cookies",
+      "category": "Misc",
+      "effect": "Unlocks: Prepare Sugar Cookies",
+      "kind": "Cooking Recipe Clipping",
+      "source": "https://pzwiki.net/wiki/Recipe"
+    },
+    {
+      "id": "misc:Base.RecipeClipping:prepare-baguette",
+      "title": "Cooking Recipe Clipping: Prepare Baguette",
+      "category": "Misc",
+      "effect": "Unlocks: Prepare Baguette",
+      "kind": "Cooking Recipe Clipping",
+      "source": "https://pzwiki.net/wiki/Recipe"
+    },
+    {
+      "id": "misc:Base.RecipeClipping:prepare-bread-dough",
+      "title": "Cooking Recipe Clipping: Prepare Bread Dough",
+      "category": "Misc",
+      "effect": "Unlocks: Prepare Bread Dough",
+      "kind": "Cooking Recipe Clipping",
+      "source": "https://pzwiki.net/wiki/Recipe"
+    },
+    {
+      "id": "misc:Base.RecipeClipping:make-4-cabbage-rolls",
+      "title": "Cooking Recipe Clipping: Make 4 Cabbage Rolls",
+      "category": "Misc",
+      "effect": "Unlocks: Make 4 Cabbage Rolls",
+      "kind": "Cooking Recipe Clipping",
+      "source": "https://pzwiki.net/wiki/Recipe"
+    },
+    {
+      "id": "misc:Base.RecipeClipping:make-cake-batter",
+      "title": "Cooking Recipe Clipping: Make Cake Batter",
+      "category": "Misc",
+      "effect": "Unlocks: Make Cake Batter",
+      "kind": "Cooking Recipe Clipping",
+      "source": "https://pzwiki.net/wiki/Recipe"
+    },
+    {
+      "id": "misc:Base.RecipeClipping:prepare-chocolate-chip-cookies",
+      "title": "Cooking Recipe Clipping: Prepare Chocolate Chip Cookies",
+      "category": "Misc",
+      "effect": "Unlocks: Prepare Chocolate Chip Cookies",
+      "kind": "Cooking Recipe Clipping",
+      "source": "https://pzwiki.net/wiki/Recipe"
+    },
+    {
+      "id": "misc:Base.RecipeClipping:prepare-chocolate-cookies",
+      "title": "Cooking Recipe Clipping: Prepare Chocolate Cookies",
+      "category": "Misc",
+      "effect": "Unlocks: Prepare Chocolate Cookies",
+      "kind": "Cooking Recipe Clipping",
+      "source": "https://pzwiki.net/wiki/Recipe"
+    },
+    {
+      "id": "misc:Base.RecipeClipping:prepare-sushi",
+      "title": "Cooking Recipe Clipping: Prepare Sushi",
+      "category": "Misc",
+      "effect": "Unlocks: Prepare Sushi",
+      "kind": "Cooking Recipe Clipping",
+      "source": "https://pzwiki.net/wiki/Recipe"
+    },
+    {
+      "id": "misc:Base.RecipeClipping:prepare-2-breaded-onion-rings",
+      "title": "Cooking Recipe Clipping: Prepare 2 Breaded Onion Rings",
+      "category": "Misc",
+      "effect": "Unlocks: Prepare 2 Breaded Onion Rings",
+      "kind": "Cooking Recipe Clipping",
+      "source": "https://pzwiki.net/wiki/Recipe"
+    },
+    {
+      "id": "misc:Base.RecipeClipping:prepare-breaded-shrimp",
+      "title": "Cooking Recipe Clipping: Prepare Breaded Shrimp",
+      "category": "Misc",
+      "effect": "Unlocks: Prepare Breaded Shrimp",
+      "kind": "Cooking Recipe Clipping",
+      "source": "https://pzwiki.net/wiki/Recipe"
+    },
+    {
+      "id": "misc:Base.RecipeClipping:prepare-maki",
+      "title": "Cooking Recipe Clipping: Prepare Maki",
+      "category": "Misc",
+      "effect": "Unlocks: Prepare Maki",
+      "kind": "Cooking Recipe Clipping",
+      "source": "https://pzwiki.net/wiki/Recipe"
+    },
+    {
+      "id": "misc:Base.RecipeClipping:prepare-biscuits",
+      "title": "Cooking Recipe Clipping: Prepare Biscuits",
+      "category": "Misc",
+      "effect": "Unlocks: Prepare Biscuits",
+      "kind": "Cooking Recipe Clipping",
+      "source": "https://pzwiki.net/wiki/Recipe"
+    },
+    {
+      "id": "misc:Base.RecipeClipping:prepare-muffins",
+      "title": "Cooking Recipe Clipping: Prepare Muffins",
+      "category": "Misc",
+      "effect": "Unlocks: Prepare Muffins",
+      "kind": "Cooking Recipe Clipping",
+      "source": "https://pzwiki.net/wiki/Recipe"
+    },
+    {
+      "id": "misc:Base.RecipeClipping:prepare-onigiri",
+      "title": "Cooking Recipe Clipping: Prepare Onigiri",
+      "category": "Misc",
+      "effect": "Unlocks: Prepare Onigiri",
+      "kind": "Cooking Recipe Clipping",
+      "source": "https://pzwiki.net/wiki/Recipe"
+    },
+    {
+      "id": "misc:Base.RecipeClipping:prepare-pie-dough",
+      "title": "Cooking Recipe Clipping: Prepare Pie Dough",
+      "category": "Misc",
+      "effect": "Unlocks: Prepare Pie Dough",
+      "kind": "Cooking Recipe Clipping",
+      "source": "https://pzwiki.net/wiki/Recipe"
+    },
+    {
+      "id": "misc:Base.RecipeClipping:prepare-pizza",
+      "title": "Cooking Recipe Clipping: Prepare Pizza",
+      "category": "Misc",
+      "effect": "Unlocks: Prepare Pizza",
+      "kind": "Cooking Recipe Clipping",
+      "source": "https://pzwiki.net/wiki/Recipe"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:assemble-forearm-armor",
+      "title": "Hand-drawn Armor Schematic: Assemble Forearm Armor",
+      "category": "Misc",
+      "effect": "Unlocks: Assemble Forearm Armor",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:assemble-full-metal-forearm-armor",
+      "title": "Hand-drawn Armor Schematic: Assemble Full Metal Forearm Armor",
+      "category": "Misc",
+      "effect": "Unlocks: Assemble Full Metal Forearm Armor",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:assemble-shin-armor",
+      "title": "Hand-drawn Armor Schematic: Assemble Shin Armor",
+      "category": "Misc",
+      "effect": "Unlocks: Assemble Shin Armor",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:make-bone-forearm-armor",
+      "title": "Hand-drawn Armor Schematic: Make Bone Forearm Armor",
+      "category": "Misc",
+      "effect": "Unlocks: Make Bone Forearm Armor",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:make-bone-shin-armor",
+      "title": "Hand-drawn Armor Schematic: Make Bone Shin Armor",
+      "category": "Misc",
+      "effect": "Unlocks: Make Bone Shin Armor",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:make-tire-forearm-armor",
+      "title": "Hand-drawn Armor Schematic: Make Tire Forearm Armor",
+      "category": "Misc",
+      "effect": "Unlocks: Make Tire Forearm Armor",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:make-tire-shin-armor",
+      "title": "Hand-drawn Armor Schematic: Make Tire Shin Armor",
+      "category": "Misc",
+      "effect": "Unlocks: Make Tire Shin Armor",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:make-wooden-forearm-armor",
+      "title": "Hand-drawn Armor Schematic: Make Wooden Forearm Armor",
+      "category": "Misc",
+      "effect": "Unlocks: Make Wooden Forearm Armor",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:make-wooden-shin-armor",
+      "title": "Hand-drawn Armor Schematic: Make Wooden Shin Armor",
+      "category": "Misc",
+      "effect": "Unlocks: Make Wooden Shin Armor",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:makebulletprooflimbarmor",
+      "title": "Hand-drawn Armor Schematic: MakeBulletproofLimbArmor",
+      "category": "Misc",
+      "effect": "Unlocks: MakeBulletproofLimbArmor",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:makemagazinearmor",
+      "title": "Hand-drawn Armor Schematic: MakeMagazineArmor",
+      "category": "Misc",
+      "effect": "Unlocks: MakeMagazineArmor",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:spike-soft-armor",
+      "title": "Hand-drawn Armor Schematic: Spike Soft Armor",
+      "category": "Misc",
+      "effect": "Unlocks: Spike Soft Armor",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:weld-spikes-on-metal-armor",
+      "title": "Hand-drawn Armor Schematic: Weld Spikes On Metal Armor",
+      "category": "Misc",
+      "effect": "Unlocks: Weld Spikes On Metal Armor",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:assemble-articulated-metal-shin-armor",
+      "title": "Hand-drawn Armor Schematic: Assemble Articulated Metal Shin Armor",
+      "category": "Misc",
+      "effect": "Unlocks: Assemble Articulated Metal Shin Armor",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:assemble-articulated-metal-thigh-armor",
+      "title": "Hand-drawn Armor Schematic: Assemble Articulated Metal Thigh Armor",
+      "category": "Misc",
+      "effect": "Unlocks: Assemble Articulated Metal Thigh Armor",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:make-bone-body-armor",
+      "title": "Hand-drawn Armor Schematic: Make Bone Body Armor",
+      "category": "Misc",
+      "effect": "Unlocks: Make Bone Body Armor",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:make-bone-choker",
+      "title": "Hand-drawn Armor Schematic: Make Bone Choker",
+      "category": "Misc",
+      "effect": "Unlocks: Make Bone Choker",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:make-bone-shoulder-armor",
+      "title": "Hand-drawn Armor Schematic: Make Bone Shoulder Armor",
+      "category": "Misc",
+      "effect": "Unlocks: Make Bone Shoulder Armor",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:make-bone-thigh-armor",
+      "title": "Hand-drawn Armor Schematic: Make Bone Thigh Armor",
+      "category": "Misc",
+      "effect": "Unlocks: Make Bone Thigh Armor",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:forge-coat-of-plates-body-armor",
+      "title": "Hand-drawn Armor Schematic: Forge Coat of Plates Body Armor",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Coat of Plates Body Armor",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:forge-metal-helmet",
+      "title": "Hand-drawn Armor Schematic: Forge Metal Helmet",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Metal Helmet",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:forge-fingerless-metal-gloves",
+      "title": "Hand-drawn Armor Schematic: Forge Fingerless Metal Gloves",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Fingerless Metal Gloves",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:make-gas-mask-filter",
+      "title": "Hand-drawn Armor Schematic: Make Gas Mask Filter",
+      "category": "Misc",
+      "effect": "Unlocks: Make Gas Mask Filter",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:recharge-filters",
+      "title": "Hand-drawn Armor Schematic: Recharge Filters",
+      "category": "Misc",
+      "effect": "Unlocks: Recharge Filters",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:make-improvised-gas-mask",
+      "title": "Hand-drawn Armor Schematic: Make Improvised Gas Mask",
+      "category": "Misc",
+      "effect": "Unlocks: Make Improvised Gas Mask",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:carve-large-bone-bead",
+      "title": "Hand-drawn Armor Schematic: Carve Large Bone Bead",
+      "category": "Misc",
+      "effect": "Unlocks: Carve Large Bone Bead",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:forge-metal-body-armor",
+      "title": "Hand-drawn Armor Schematic: Forge Metal Body Armor",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Metal Body Armor",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:forge-codpiece",
+      "title": "Hand-drawn Armor Schematic: Forge Codpiece",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Codpiece",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:forge-metal-mask",
+      "title": "Hand-drawn Armor Schematic: Forge Metal Mask",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Metal Mask",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:forge-metal-neck-guard",
+      "title": "Hand-drawn Armor Schematic: Forge Metal Neck Guard",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Metal Neck Guard",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:assemble-metal-shoulder-armor",
+      "title": "Hand-drawn Armor Schematic: Assemble Metal Shoulder Armor",
+      "category": "Misc",
+      "effect": "Unlocks: Assemble Metal Shoulder Armor",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:assemble-metal-thigh-armor",
+      "title": "Hand-drawn Armor Schematic: Assemble Metal Thigh Armor",
+      "category": "Misc",
+      "effect": "Unlocks: Assemble Metal Thigh Armor",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:make-scrap-metal-body-armor",
+      "title": "Hand-drawn Armor Schematic: Make Scrap Metal Body Armor",
+      "category": "Misc",
+      "effect": "Unlocks: Make Scrap Metal Body Armor",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:make-scrap-metal-helmet",
+      "title": "Hand-drawn Armor Schematic: Make Scrap Metal Helmet",
+      "category": "Misc",
+      "effect": "Unlocks: Make Scrap Metal Helmet",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:make-scrap-metal-shoulder-armor",
+      "title": "Hand-drawn Armor Schematic: Make Scrap Metal Shoulder Armor",
+      "category": "Misc",
+      "effect": "Unlocks: Make Scrap Metal Shoulder Armor",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:make-scrap-metal-thigh-armor",
+      "title": "Hand-drawn Armor Schematic: Make Scrap Metal Thigh Armor",
+      "category": "Misc",
+      "effect": "Unlocks: Make Scrap Metal Thigh Armor",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:forge-small-armor-plate",
+      "title": "Hand-drawn Armor Schematic: Forge Small Armor Plate",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Small Armor Plate",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:make-tire-body-armor",
+      "title": "Hand-drawn Armor Schematic: Make Tire Body Armor",
+      "category": "Misc",
+      "effect": "Unlocks: Make Tire Body Armor",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:make-tire-shoulder-armor-left",
+      "title": "Hand-drawn Armor Schematic: Make Tire Shoulder Armor - Left",
+      "category": "Misc",
+      "effect": "Unlocks: Make Tire Shoulder Armor - Left",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:make-tire-shoulder-armor-right",
+      "title": "Hand-drawn Armor Schematic: Make Tire Shoulder Armor - Right",
+      "category": "Misc",
+      "effect": "Unlocks: Make Tire Shoulder Armor - Right",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:make-tire-thigh-armor",
+      "title": "Hand-drawn Armor Schematic: Make Tire Thigh Armor",
+      "category": "Misc",
+      "effect": "Unlocks: Make Tire Thigh Armor",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:make-wooden-body-armor",
+      "title": "Hand-drawn Armor Schematic: Make Wooden Body Armor",
+      "category": "Misc",
+      "effect": "Unlocks: Make Wooden Body Armor",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:make-wooden-shoulder-armor",
+      "title": "Hand-drawn Armor Schematic: Make Wooden Shoulder Armor",
+      "category": "Misc",
+      "effect": "Unlocks: Make Wooden Shoulder Armor",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.ArmorSchematic:make-wooden-thigh-armor",
+      "title": "Hand-drawn Armor Schematic: Make Wooden Thigh Armor",
+      "category": "Misc",
+      "effect": "Unlocks: Make Wooden Thigh Armor",
+      "kind": "Hand-drawn Armor Schematic",
+      "source": "https://pzwiki.net/wiki/Armor_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-drill",
+      "title": "Tool Forging Plan: Forge Drill",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Drill",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-axe-head",
+      "title": "Tool Forging Plan: Forge Axe Head",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Axe Head",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-ball-peen-hammer-head",
+      "title": "Tool Forging Plan: Forge Ball-peen Hammer Head",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Ball-peen Hammer Head",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-bucket",
+      "title": "Tool Forging Plan: Forge Bucket",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Bucket",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-buckle",
+      "title": "Tool Forging Plan: Forge Buckle",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Buckle",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-claw-hammer-head",
+      "title": "Tool Forging Plan: Forge Claw Hammer Head",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Claw Hammer Head",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-club-hammer-head",
+      "title": "Tool Forging Plan: Forge Club Hammer Head",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Club Hammer Head",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-corkscrew",
+      "title": "Tool Forging Plan: Forge Corkscrew",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Corkscrew",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-crowbar",
+      "title": "Tool Forging Plan: Forge Crowbar",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Crowbar",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-scissors",
+      "title": "Tool Forging Plan: Forge Scissors",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Scissors",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:make-improvised-whetstone",
+      "title": "Tool Forging Plan: Make Improvised Whetstone",
+      "category": "Misc",
+      "effect": "Unlocks: Make Improvised Whetstone",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-hinge",
+      "title": "Tool Forging Plan: Forge Hinge",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Hinge",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-doorknob",
+      "title": "Tool Forging Plan: Forge Doorknob",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Doorknob",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-file",
+      "title": "Tool Forging Plan: Forge File",
+      "category": "Misc",
+      "effect": "Unlocks: Forge File",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-fireplace-poker",
+      "title": "Tool Forging Plan: Forge Fireplace Poker",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Fireplace Poker",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-fleshing-tool",
+      "title": "Tool Forging Plan: Forge Fleshing Tool",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Fleshing Tool",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-forceps",
+      "title": "Tool Forging Plan: Forge Forceps",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Forceps",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-4-fishing-hooks",
+      "title": "Tool Forging Plan: Forge 4 Fishing Hooks",
+      "category": "Misc",
+      "effect": "Unlocks: Forge 4 Fishing Hooks",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-garden-hoe-head",
+      "title": "Tool Forging Plan: Forge Garden Hoe Head",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Garden Hoe Head",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-gardening-trowel",
+      "title": "Tool Forging Plan: Forge Gardening Trowel",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Gardening Trowel",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-hand-scythe-head",
+      "title": "Tool Forging Plan: Forge Hand Scythe Head",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Hand Scythe Head",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-hatchet-head",
+      "title": "Tool Forging Plan: Forge Hatchet Head",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Hatchet Head",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-draw-plate",
+      "title": "Tool Forging Plan: Forge Draw Plate",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Draw Plate",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-heading-tool",
+      "title": "Tool Forging Plan: Forge Heading Tool",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Heading Tool",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-jar-lid",
+      "title": "Tool Forging Plan: Forge Jar Lid",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Jar Lid",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-masonry-chisel",
+      "title": "Tool Forging Plan: Forge Masonry Chisel",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Masonry Chisel",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-masonry-trowel",
+      "title": "Tool Forging Plan: Forge Masonry Trowel",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Masonry Trowel",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-metalworking-chisel",
+      "title": "Tool Forging Plan: Forge Metalworking Chisel",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Metalworking Chisel",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-metalworking-pliers",
+      "title": "Tool Forging Plan: Forge Metalworking Pliers",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Metalworking Pliers",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-metalworking-punch",
+      "title": "Tool Forging Plan: Forge Metalworking Punch",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Metalworking Punch",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-5-nails",
+      "title": "Tool Forging Plan: Forge 5 Nails",
+      "category": "Misc",
+      "effect": "Unlocks: Forge 5 Nails",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-needle",
+      "title": "Tool Forging Plan: Forge Needle",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Needle",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-pick-axe-head",
+      "title": "Tool Forging Plan: Forge Pick Axe Head",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Pick Axe Head",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-fine-scissors",
+      "title": "Tool Forging Plan: Forge Fine Scissors",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Fine Scissors",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-scythe-head",
+      "title": "Tool Forging Plan: Forge Scythe Head",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Scythe Head",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-sheep-shears",
+      "title": "Tool Forging Plan: Forge Sheep Shears",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Sheep Shears",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-saw",
+      "title": "Tool Forging Plan: Forge Saw",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Saw",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-sledgehammer-head",
+      "title": "Tool Forging Plan: Forge Sledgehammer Head",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Sledgehammer Head",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-smithing-hammer-head",
+      "title": "Tool Forging Plan: Forge Smithing Hammer Head",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Smithing Hammer Head",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-spade-head",
+      "title": "Tool Forging Plan: Forge Spade Head",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Spade Head",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-straight-razor",
+      "title": "Tool Forging Plan: Forge Straight Razor",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Straight Razor",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-tongs",
+      "title": "Tool Forging Plan: Forge Tongs",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Tongs",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-tweezers",
+      "title": "Tool Forging Plan: Forge Tweezers",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Tweezers",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.BSToolsSchematic:forge-wood-axe-head",
+      "title": "Tool Forging Plan: Forge Wood Axe Head",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Wood Axe Head",
+      "kind": "Tool Forging Plan",
+      "source": "https://pzwiki.net/wiki/Tools_Schematic"
+    },
+    {
+      "id": "misc:Base.CookwareSchematic:forge-baking-pan",
+      "title": "Cookware Forging Recipe: Forge Baking Pan",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Baking Pan",
+      "kind": "Cookware Forging Recipe",
+      "source": "https://pzwiki.net/wiki/Cookware_Schematic"
+    },
+    {
+      "id": "misc:Base.CookwareSchematic:forge-baking-tray",
+      "title": "Cookware Forging Recipe: Forge Baking Tray",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Baking Tray",
+      "kind": "Cookware Forging Recipe",
+      "source": "https://pzwiki.net/wiki/Cookware_Schematic"
+    },
+    {
+      "id": "misc:Base.CookwareSchematic:forge-cooking-pot",
+      "title": "Cookware Forging Recipe: Forge Cooking Pot",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Cooking Pot",
+      "kind": "Cookware Forging Recipe",
+      "source": "https://pzwiki.net/wiki/Cookware_Schematic"
+    },
+    {
+      "id": "misc:Base.CookwareSchematic:forge-frying-pan",
+      "title": "Cookware Forging Recipe: Forge Frying Pan",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Frying Pan",
+      "kind": "Cookware Forging Recipe",
+      "source": "https://pzwiki.net/wiki/Cookware_Schematic"
+    },
+    {
+      "id": "misc:Base.CookwareSchematic:forge-roasting-pan",
+      "title": "Cookware Forging Recipe: Forge Roasting Pan",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Roasting Pan",
+      "kind": "Cookware Forging Recipe",
+      "source": "https://pzwiki.net/wiki/Cookware_Schematic"
+    },
+    {
+      "id": "misc:Base.ExplosiveSchematic:add-long-range-motion-sensor-to-bomb",
+      "title": "Explosives Diagram: Add Long-Range Motion Sensor to Bomb",
+      "category": "Misc",
+      "effect": "Unlocks: Add Long-Range Motion Sensor to Bomb",
+      "kind": "Explosives Diagram",
+      "source": "https://pzwiki.net/wiki/Explosives_Schematic"
+    },
+    {
+      "id": "misc:Base.ExplosiveSchematic:add-medium-range-motion-sensor-to-bomb",
+      "title": "Explosives Diagram: Add Medium-Range Motion Sensor to Bomb",
+      "category": "Misc",
+      "effect": "Unlocks: Add Medium-Range Motion Sensor to Bomb",
+      "kind": "Explosives Diagram",
+      "source": "https://pzwiki.net/wiki/Explosives_Schematic"
+    },
+    {
+      "id": "misc:Base.ExplosiveSchematic:add-remote-trigger-to-bomb",
+      "title": "Explosives Diagram: Add Remote Trigger to Bomb",
+      "category": "Misc",
+      "effect": "Unlocks: Add Remote Trigger to Bomb",
+      "kind": "Explosives Diagram",
+      "source": "https://pzwiki.net/wiki/Explosives_Schematic"
+    },
+    {
+      "id": "misc:Base.ExplosiveSchematic:add-short-range-motion-sensor-to-bomb",
+      "title": "Explosives Diagram: Add Short-Range Motion Sensor to Bomb",
+      "category": "Misc",
+      "effect": "Unlocks: Add Short-Range Motion Sensor to Bomb",
+      "kind": "Explosives Diagram",
+      "source": "https://pzwiki.net/wiki/Explosives_Schematic"
+    },
+    {
+      "id": "misc:Base.ExplosiveSchematic:add-timer-to-bomb",
+      "title": "Explosives Diagram: Add Timer to Bomb",
+      "category": "Misc",
+      "effect": "Unlocks: Add Timer to Bomb",
+      "kind": "Explosives Diagram",
+      "source": "https://pzwiki.net/wiki/Explosives_Schematic"
+    },
+    {
+      "id": "misc:Base.ExplosiveSchematic:make-aerosol-bomb",
+      "title": "Explosives Diagram: Make Aerosol Bomb",
+      "category": "Misc",
+      "effect": "Unlocks: Make Aerosol Bomb",
+      "kind": "Explosives Diagram",
+      "source": "https://pzwiki.net/wiki/Explosives_Schematic"
+    },
+    {
+      "id": "misc:Base.ExplosiveSchematic:make-remote-trigger",
+      "title": "Explosives Diagram: Make Remote Trigger",
+      "category": "Misc",
+      "effect": "Unlocks: Make Remote Trigger",
+      "kind": "Explosives Diagram",
+      "source": "https://pzwiki.net/wiki/Explosives_Schematic"
+    },
+    {
+      "id": "misc:Base.ExplosiveSchematic:make-fire-bomb",
+      "title": "Explosives Diagram: Make Fire Bomb",
+      "category": "Misc",
+      "effect": "Unlocks: Make Fire Bomb",
+      "kind": "Explosives Diagram",
+      "source": "https://pzwiki.net/wiki/Explosives_Schematic"
+    },
+    {
+      "id": "misc:Base.ExplosiveSchematic:make-noise-maker",
+      "title": "Explosives Diagram: Make Noise Maker",
+      "category": "Misc",
+      "effect": "Unlocks: Make Noise Maker",
+      "kind": "Explosives Diagram",
+      "source": "https://pzwiki.net/wiki/Explosives_Schematic"
+    },
+    {
+      "id": "misc:Base.ExplosiveSchematic:make-pipe-bomb",
+      "title": "Explosives Diagram: Make Pipe Bomb",
+      "category": "Misc",
+      "effect": "Unlocks: Make Pipe Bomb",
+      "kind": "Explosives Diagram",
+      "source": "https://pzwiki.net/wiki/Explosives_Schematic"
+    },
+    {
+      "id": "misc:Base.ExplosiveSchematic:make-remote-controller-long-range",
+      "title": "Explosives Diagram: Make Remote Controller (Long-Range)",
+      "category": "Misc",
+      "effect": "Unlocks: Make Remote Controller (Long-Range)",
+      "kind": "Explosives Diagram",
+      "source": "https://pzwiki.net/wiki/Explosives_Schematic"
+    },
+    {
+      "id": "misc:Base.ExplosiveSchematic:make-remote-controller-medium-range",
+      "title": "Explosives Diagram: Make Remote Controller (Medium-Range)",
+      "category": "Misc",
+      "effect": "Unlocks: Make Remote Controller (Medium-Range)",
+      "kind": "Explosives Diagram",
+      "source": "https://pzwiki.net/wiki/Explosives_Schematic"
+    },
+    {
+      "id": "misc:Base.ExplosiveSchematic:make-smoke-bomb",
+      "title": "Explosives Diagram: Make Smoke Bomb",
+      "category": "Misc",
+      "effect": "Unlocks: Make Smoke Bomb",
+      "kind": "Explosives Diagram",
+      "source": "https://pzwiki.net/wiki/Explosives_Schematic"
+    },
+    {
+      "id": "misc:Base.ExplosiveSchematic:make-timer",
+      "title": "Explosives Diagram: Make Timer",
+      "category": "Misc",
+      "effect": "Unlocks: Make Timer",
+      "kind": "Explosives Diagram",
+      "source": "https://pzwiki.net/wiki/Explosives_Schematic"
+    },
+    {
+      "id": "misc:Base.ExplosiveSchematic:make-remote-controller-short-range",
+      "title": "Explosives Diagram: Make Remote Controller (Short-Range)",
+      "category": "Misc",
+      "effect": "Unlocks: Make Remote Controller (Short-Range)",
+      "kind": "Explosives Diagram",
+      "source": "https://pzwiki.net/wiki/Explosives_Schematic"
+    },
+    {
+      "id": "misc:Base.MeleeWeaponSchematic:carve-bat",
+      "title": "Melee Weapon Plan: Carve Bat",
+      "category": "Misc",
+      "effect": "Unlocks: Carve Bat",
+      "kind": "Melee Weapon Plan",
+      "source": "https://pzwiki.net/wiki/Melee_Weapons_Schematic"
+    },
+    {
+      "id": "misc:Base.MeleeWeaponSchematic:sheet-metal-reinforce-weapon",
+      "title": "Melee Weapon Plan: Sheet Metal-Reinforce Weapon",
+      "category": "Misc",
+      "effect": "Unlocks: Sheet Metal-Reinforce Weapon",
+      "kind": "Melee Weapon Plan",
+      "source": "https://pzwiki.net/wiki/Melee_Weapons_Schematic"
+    },
+    {
+      "id": "misc:Base.MeleeWeaponSchematic:make-garden-fork-head-weapon",
+      "title": "Melee Weapon Plan: Make Garden Fork Head Weapon",
+      "category": "Misc",
+      "effect": "Unlocks: Make Garden Fork Head Weapon",
+      "kind": "Melee Weapon Plan",
+      "source": "https://pzwiki.net/wiki/Melee_Weapons_Schematic"
+    },
+    {
+      "id": "misc:Base.MeleeWeaponSchematic:make-rake-head-spiked-weapon",
+      "title": "Melee Weapon Plan: Make Rake-Head-Spiked Weapon",
+      "category": "Misc",
+      "effect": "Unlocks: Make Rake-Head-Spiked Weapon",
+      "kind": "Melee Weapon Plan",
+      "source": "https://pzwiki.net/wiki/Melee_Weapons_Schematic"
+    },
+    {
+      "id": "misc:Base.MeleeWeaponSchematic:make-sawblade-wooden-bat",
+      "title": "Melee Weapon Plan: Make Sawblade Wooden Bat",
+      "category": "Misc",
+      "effect": "Unlocks: Make Sawblade Wooden Bat",
+      "kind": "Melee Weapon Plan",
+      "source": "https://pzwiki.net/wiki/Melee_Weapons_Schematic"
+    },
+    {
+      "id": "misc:Base.MeleeWeaponSchematic:carve-bone-war-hatchet-head",
+      "title": "Melee Weapon Plan: Carve Bone War Hatchet Head",
+      "category": "Misc",
+      "effect": "Unlocks: Carve Bone War Hatchet Head",
+      "kind": "Melee Weapon Plan",
+      "source": "https://pzwiki.net/wiki/Melee_Weapons_Schematic"
+    },
+    {
+      "id": "misc:Base.MeleeWeaponSchematic:barbed-wire-wrap-weapon",
+      "title": "Melee Weapon Plan: Barbed-Wire Wrap Weapon",
+      "category": "Misc",
+      "effect": "Unlocks: Barbed-Wire Wrap Weapon",
+      "kind": "Melee Weapon Plan",
+      "source": "https://pzwiki.net/wiki/Melee_Weapons_Schematic"
+    },
+    {
+      "id": "misc:Base.MeleeWeaponSchematic:make-bucket-maul",
+      "title": "Melee Weapon Plan: Make Bucket Maul",
+      "category": "Misc",
+      "effect": "Unlocks: Make Bucket Maul",
+      "kind": "Melee Weapon Plan",
+      "source": "https://pzwiki.net/wiki/Melee_Weapons_Schematic"
+    },
+    {
+      "id": "misc:Base.MeleeWeaponSchematic:forge-simple-shortsword-blade",
+      "title": "Melee Weapon Plan: Forge Simple Shortsword Blade",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Simple Shortsword Blade",
+      "kind": "Melee Weapon Plan",
+      "source": "https://pzwiki.net/wiki/Melee_Weapons_Schematic"
+    },
+    {
+      "id": "misc:Base.MeleeWeaponSchematic:forge-crude-sword-blade",
+      "title": "Melee Weapon Plan: Forge Crude Sword Blade",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Crude Sword Blade",
+      "kind": "Melee Weapon Plan",
+      "source": "https://pzwiki.net/wiki/Melee_Weapons_Schematic"
+    },
+    {
+      "id": "misc:Base.MeleeWeaponSchematic:make-spade-head-cudgel",
+      "title": "Melee Weapon Plan: Make Spade Head Cudgel",
+      "category": "Misc",
+      "effect": "Unlocks: Make Spade Head Cudgel",
+      "kind": "Melee Weapon Plan",
+      "source": "https://pzwiki.net/wiki/Melee_Weapons_Schematic"
+    },
+    {
+      "id": "misc:Base.MeleeWeaponSchematic:make-glass-shiv",
+      "title": "Melee Weapon Plan: Make Glass Shiv",
+      "category": "Misc",
+      "effect": "Unlocks: Make Glass Shiv",
+      "kind": "Melee Weapon Plan",
+      "source": "https://pzwiki.net/wiki/Melee_Weapons_Schematic"
+    },
+    {
+      "id": "misc:Base.MeleeWeaponSchematic:forge-hunting-knife-blade",
+      "title": "Melee Weapon Plan: Forge Hunting Knife Blade",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Hunting Knife Blade",
+      "kind": "Melee Weapon Plan",
+      "source": "https://pzwiki.net/wiki/Melee_Weapons_Schematic"
+    },
+    {
+      "id": "misc:Base.MeleeWeaponSchematic:make-jawbone-club",
+      "title": "Melee Weapon Plan: Make Jawbone Club",
+      "category": "Misc",
+      "effect": "Unlocks: Make Jawbone Club",
+      "kind": "Melee Weapon Plan",
+      "source": "https://pzwiki.net/wiki/Melee_Weapons_Schematic"
+    },
+    {
+      "id": "misc:Base.MeleeWeaponSchematic:make-jawbone-morningstar",
+      "title": "Melee Weapon Plan: Make Jawbone Morningstar",
+      "category": "Misc",
+      "effect": "Unlocks: Make Jawbone Morningstar",
+      "kind": "Melee Weapon Plan",
+      "source": "https://pzwiki.net/wiki/Melee_Weapons_Schematic"
+    },
+    {
+      "id": "misc:Base.MeleeWeaponSchematic:make-jawbone-axe",
+      "title": "Melee Weapon Plan: Make Jawbone Axe",
+      "category": "Misc",
+      "effect": "Unlocks: Make Jawbone Axe",
+      "kind": "Melee Weapon Plan",
+      "source": "https://pzwiki.net/wiki/Melee_Weapons_Schematic"
+    },
+    {
+      "id": "misc:Base.MeleeWeaponSchematic:make-kettle-maul",
+      "title": "Melee Weapon Plan: Make Kettle Maul",
+      "category": "Misc",
+      "effect": "Unlocks: Make Kettle Maul",
+      "kind": "Melee Weapon Plan",
+      "source": "https://pzwiki.net/wiki/Melee_Weapons_Schematic"
+    },
+    {
+      "id": "misc:Base.MeleeWeaponSchematic:forge-large-knife-blade",
+      "title": "Melee Weapon Plan: Forge Large Knife Blade",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Large Knife Blade",
+      "kind": "Melee Weapon Plan",
+      "source": "https://pzwiki.net/wiki/Melee_Weapons_Schematic"
+    },
+    {
+      "id": "misc:Base.MeleeWeaponSchematic:knap-large-stone-axe-head",
+      "title": "Melee Weapon Plan: Knap Large Stone Axe Head",
+      "category": "Misc",
+      "effect": "Unlocks: Knap Large Stone Axe Head",
+      "kind": "Melee Weapon Plan",
+      "source": "https://pzwiki.net/wiki/Melee_Weapons_Schematic"
+    },
+    {
+      "id": "misc:Base.MeleeWeaponSchematic:forge-long-simple-blade",
+      "title": "Melee Weapon Plan: Forge Long Simple Blade",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Long Simple Blade",
+      "kind": "Melee Weapon Plan",
+      "source": "https://pzwiki.net/wiki/Melee_Weapons_Schematic"
+    },
+    {
+      "id": "misc:Base.MeleeWeaponSchematic:forge-mace-head",
+      "title": "Melee Weapon Plan: Forge Mace Head",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Mace Head",
+      "kind": "Melee Weapon Plan",
+      "source": "https://pzwiki.net/wiki/Melee_Weapons_Schematic"
+    },
+    {
+      "id": "misc:Base.MeleeWeaponSchematic:forge-machete-blade",
+      "title": "Melee Weapon Plan: Forge Machete Blade",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Machete Blade",
+      "kind": "Melee Weapon Plan",
+      "source": "https://pzwiki.net/wiki/Melee_Weapons_Schematic"
+    },
+    {
+      "id": "misc:Base.MeleeWeaponSchematic:make-brake-disc-weapon",
+      "title": "Melee Weapon Plan: Make Brake Disc Weapon",
+      "category": "Misc",
+      "effect": "Unlocks: Make Brake Disc Weapon",
+      "kind": "Melee Weapon Plan",
+      "source": "https://pzwiki.net/wiki/Melee_Weapons_Schematic"
+    },
+    {
+      "id": "misc:Base.MeleeWeaponSchematic:make-plank-with-saw",
+      "title": "Melee Weapon Plan: Make Plank with Saw",
+      "category": "Misc",
+      "effect": "Unlocks: Make Plank with Saw",
+      "kind": "Melee Weapon Plan",
+      "source": "https://pzwiki.net/wiki/Melee_Weapons_Schematic"
+    },
+    {
+      "id": "misc:Base.MeleeWeaponSchematic:forge-scrap-metal-shortsword",
+      "title": "Melee Weapon Plan: Forge Scrap Metal Shortsword",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Scrap Metal Shortsword",
+      "kind": "Melee Weapon Plan",
+      "source": "https://pzwiki.net/wiki/Melee_Weapons_Schematic"
+    },
+    {
+      "id": "misc:Base.MeleeWeaponSchematic:sharpen-bone",
+      "title": "Melee Weapon Plan: Sharpen Bone",
+      "category": "Misc",
+      "effect": "Unlocks: Sharpen Bone",
+      "kind": "Melee Weapon Plan",
+      "source": "https://pzwiki.net/wiki/Melee_Weapons_Schematic"
+    },
+    {
+      "id": "misc:Base.MeleeWeaponSchematic:make-shiv",
+      "title": "Melee Weapon Plan: Make Shiv",
+      "category": "Misc",
+      "effect": "Unlocks: Make Shiv",
+      "kind": "Melee Weapon Plan",
+      "source": "https://pzwiki.net/wiki/Melee_Weapons_Schematic"
+    },
+    {
+      "id": "misc:Base.MeleeWeaponSchematic:can-reinforce-weapon",
+      "title": "Melee Weapon Plan: Can-Reinforce Weapon",
+      "category": "Misc",
+      "effect": "Unlocks: Can-Reinforce Weapon",
+      "kind": "Melee Weapon Plan",
+      "source": "https://pzwiki.net/wiki/Melee_Weapons_Schematic"
+    },
+    {
+      "id": "misc:Base.MeleeWeaponSchematic:make-spiked-club",
+      "title": "Melee Weapon Plan: Make Spiked Club",
+      "category": "Misc",
+      "effect": "Unlocks: Make Spiked Club",
+      "kind": "Melee Weapon Plan",
+      "source": "https://pzwiki.net/wiki/Melee_Weapons_Schematic"
+    },
+    {
+      "id": "misc:Base.MeleeWeaponSchematic:carve-short-bat",
+      "title": "Melee Weapon Plan: Carve Short Bat",
+      "category": "Misc",
+      "effect": "Unlocks: Carve Short Bat",
+      "kind": "Melee Weapon Plan",
+      "source": "https://pzwiki.net/wiki/Melee_Weapons_Schematic"
+    },
+    {
+      "id": "misc:Base.MeleeWeaponSchematic:forge-shortsword-blade",
+      "title": "Melee Weapon Plan: Forge Shortsword Blade",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Shortsword Blade",
+      "kind": "Melee Weapon Plan",
+      "source": "https://pzwiki.net/wiki/Melee_Weapons_Schematic"
+    },
+    {
+      "id": "misc:Base.MeleeWeaponSchematic:forge-simple-blade",
+      "title": "Melee Weapon Plan: Forge Simple Blade",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Simple Blade",
+      "kind": "Melee Weapon Plan",
+      "source": "https://pzwiki.net/wiki/Melee_Weapons_Schematic"
+    },
+    {
+      "id": "misc:Base.MeleeWeaponSchematic:forge-small-knife",
+      "title": "Melee Weapon Plan: Forge Small Knife",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Small Knife",
+      "kind": "Melee Weapon Plan",
+      "source": "https://pzwiki.net/wiki/Melee_Weapons_Schematic"
+    },
+    {
+      "id": "misc:Base.MeleeWeaponSchematic:bind-spear-head",
+      "title": "Melee Weapon Plan: Bind Spear Head",
+      "category": "Misc",
+      "effect": "Unlocks: Bind Spear Head",
+      "kind": "Melee Weapon Plan",
+      "source": "https://pzwiki.net/wiki/Melee_Weapons_Schematic"
+    },
+    {
+      "id": "misc:Base.MeleeWeaponSchematic:knap-stone-blade",
+      "title": "Melee Weapon Plan: Knap Stone Blade",
+      "category": "Misc",
+      "effect": "Unlocks: Knap Stone Blade",
+      "kind": "Melee Weapon Plan",
+      "source": "https://pzwiki.net/wiki/Melee_Weapons_Schematic"
+    },
+    {
+      "id": "misc:Base.MeleeWeaponSchematic:knap-stone-maul-head",
+      "title": "Melee Weapon Plan: Knap Stone Maul Head",
+      "category": "Misc",
+      "effect": "Unlocks: Knap Stone Maul Head",
+      "kind": "Melee Weapon Plan",
+      "source": "https://pzwiki.net/wiki/Melee_Weapons_Schematic"
+    },
+    {
+      "id": "misc:Base.MeleeWeaponSchematic:make-bone-club",
+      "title": "Melee Weapon Plan: Make Bone Club",
+      "category": "Misc",
+      "effect": "Unlocks: Make Bone Club",
+      "kind": "Melee Weapon Plan",
+      "source": "https://pzwiki.net/wiki/Melee_Weapons_Schematic"
+    },
+    {
+      "id": "misc:Base.MeleeWeaponSchematic:forge-sword-blade",
+      "title": "Melee Weapon Plan: Forge Sword Blade",
+      "category": "Misc",
+      "effect": "Unlocks: Forge Sword Blade",
+      "kind": "Melee Weapon Plan",
+      "source": "https://pzwiki.net/wiki/Melee_Weapons_Schematic"
+    },
+    {
+      "id": "misc:Base.MeleeWeaponSchematic:make-toothbrush-shiv",
+      "title": "Melee Weapon Plan: Make Toothbrush Shiv",
+      "category": "Misc",
+      "effect": "Unlocks: Make Toothbrush Shiv",
+      "kind": "Melee Weapon Plan",
+      "source": "https://pzwiki.net/wiki/Melee_Weapons_Schematic"
+    },
+    {
+      "id": "misc:Base.MeleeWeaponSchematic:bone-spike-weapon",
+      "title": "Melee Weapon Plan: Bone Spike Weapon",
+      "category": "Misc",
+      "effect": "Unlocks: Bone Spike Weapon",
+      "kind": "Melee Weapon Plan",
+      "source": "https://pzwiki.net/wiki/Melee_Weapons_Schematic"
+    },
+    {
+      "id": "misc:Base.MeleeWeaponSchematic:fire-harden-spear",
+      "title": "Melee Weapon Plan: Fire Harden Spear",
+      "category": "Misc",
+      "effect": "Unlocks: Fire Harden Spear",
+      "kind": "Melee Weapon Plan",
+      "source": "https://pzwiki.net/wiki/Melee_Weapons_Schematic"
+    },
+    {
+      "id": "misc:Base.SurvivalSchematic:carve-knitting-needles",
+      "title": "Survival Magazine Page: Carve Knitting Needles",
+      "category": "Misc",
+      "effect": "Unlocks: Carve Knitting Needles",
+      "kind": "Survival Magazine Page",
+      "source": "https://pzwiki.net/wiki/Survival_Schematic"
+    },
+    {
+      "id": "misc:Base.SurvivalSchematic:knapp-flint-saw",
+      "title": "Survival Magazine Page: Knapp Flint Saw",
+      "category": "Misc",
+      "effect": "Unlocks: Knapp Flint Saw",
+      "kind": "Survival Magazine Page",
+      "source": "https://pzwiki.net/wiki/Survival_Schematic"
+    },
+    {
+      "id": "misc:Base.SurvivalSchematic:make-box-trap",
+      "title": "Survival Magazine Page: Make Box Trap",
+      "category": "Misc",
+      "effect": "Unlocks: Make Box Trap",
+      "kind": "Survival Magazine Page",
+      "source": "https://pzwiki.net/wiki/Survival_Schematic"
+    },
+    {
+      "id": "misc:Base.SurvivalSchematic:make-cage-trap",
+      "title": "Survival Magazine Page: Make Cage Trap",
+      "category": "Misc",
+      "effect": "Unlocks: Make Cage Trap",
+      "kind": "Survival Magazine Page",
+      "source": "https://pzwiki.net/wiki/Survival_Schematic"
+    },
+    {
+      "id": "misc:Base.SurvivalSchematic:make-crate-trap",
+      "title": "Survival Magazine Page: Make Crate Trap",
+      "category": "Misc",
+      "effect": "Unlocks: Make Crate Trap",
+      "kind": "Survival Magazine Page",
+      "source": "https://pzwiki.net/wiki/Survival_Schematic"
+    },
+    {
+      "id": "misc:Base.SurvivalSchematic:make-improvised-screwdriver",
+      "title": "Survival Magazine Page: Make Improvised Screwdriver",
+      "category": "Misc",
+      "effect": "Unlocks: Make Improvised Screwdriver",
+      "kind": "Survival Magazine Page",
+      "source": "https://pzwiki.net/wiki/Survival_Schematic"
+    },
+    {
+      "id": "misc:Base.SurvivalSchematic:make-snare-trap",
+      "title": "Survival Magazine Page: Make Snare Trap",
+      "category": "Misc",
+      "effect": "Unlocks: Make Snare Trap",
+      "kind": "Survival Magazine Page",
+      "source": "https://pzwiki.net/wiki/Survival_Schematic"
+    },
+    {
+      "id": "misc:Base.SurvivalSchematic:make-stick-trap",
+      "title": "Survival Magazine Page: Make Stick Trap",
+      "category": "Misc",
+      "effect": "Unlocks: Make Stick Trap",
+      "kind": "Survival Magazine Page",
+      "source": "https://pzwiki.net/wiki/Survival_Schematic"
+    },
+    {
+      "id": "misc:Base.SurvivalSchematic:carve-bone-awl",
+      "title": "Survival Magazine Page: Carve Bone Awl",
+      "category": "Misc",
+      "effect": "Unlocks: Carve Bone Awl",
+      "kind": "Survival Magazine Page",
+      "source": "https://pzwiki.net/wiki/Survival_Schematic"
+    },
+    {
+      "id": "misc:Base.SurvivalSchematic:knap-stone-awl",
+      "title": "Survival Magazine Page: Knap Stone Awl",
+      "category": "Misc",
+      "effect": "Unlocks: Knap Stone Awl",
+      "kind": "Survival Magazine Page",
+      "source": "https://pzwiki.net/wiki/Survival_Schematic"
+    },
+    {
+      "id": "misc:Base.SurvivalSchematic:carve-bone-fishing-hook",
+      "title": "Survival Magazine Page: Carve Bone Fishing Hook",
+      "category": "Misc",
+      "effect": "Unlocks: Carve Bone Fishing Hook",
+      "kind": "Survival Magazine Page",
+      "source": "https://pzwiki.net/wiki/Survival_Schematic"
+    },
+    {
+      "id": "misc:Base.SurvivalSchematic:carve-fleshing-tool",
+      "title": "Survival Magazine Page: Carve Fleshing Tool",
+      "category": "Misc",
+      "effect": "Unlocks: Carve Fleshing Tool",
+      "kind": "Survival Magazine Page",
+      "source": "https://pzwiki.net/wiki/Survival_Schematic"
+    },
+    {
+      "id": "misc:Base.SurvivalSchematic:carve-bone-sewing-needle",
+      "title": "Survival Magazine Page: Carve Bone Sewing Needle",
+      "category": "Misc",
+      "effect": "Unlocks: Carve Bone Sewing Needle",
+      "kind": "Survival Magazine Page",
+      "source": "https://pzwiki.net/wiki/Survival_Schematic"
+    },
+    {
+      "id": "misc:Base.SurvivalSchematic:carve-bucket",
+      "title": "Survival Magazine Page: Carve Bucket",
+      "category": "Misc",
+      "effect": "Unlocks: Carve Bucket",
+      "kind": "Survival Magazine Page",
+      "source": "https://pzwiki.net/wiki/Survival_Schematic"
+    },
+    {
+      "id": "misc:Base.SurvivalSchematic:grind-up-comfrey",
+      "title": "Survival Magazine Page: Grind Up Comfrey",
+      "category": "Misc",
+      "effect": "Unlocks: Grind Up Comfrey",
+      "kind": "Survival Magazine Page",
+      "source": "https://pzwiki.net/wiki/Survival_Schematic"
+    },
+    {
+      "id": "misc:Base.SurvivalSchematic:make-improvised-whetstone",
+      "title": "Survival Magazine Page: Make Improvised Whetstone",
+      "category": "Misc",
+      "effect": "Unlocks: Make Improvised Whetstone",
+      "kind": "Survival Magazine Page",
+      "source": "https://pzwiki.net/wiki/Survival_Schematic"
+    },
+    {
+      "id": "misc:Base.SurvivalSchematic:make-improvised-flashlight",
+      "title": "Survival Magazine Page: Make Improvised Flashlight",
+      "category": "Misc",
+      "effect": "Unlocks: Make Improvised Flashlight",
+      "kind": "Survival Magazine Page",
+      "source": "https://pzwiki.net/wiki/Survival_Schematic"
+    },
+    {
+      "id": "misc:Base.SurvivalSchematic:make-gas-mask-filter",
+      "title": "Survival Magazine Page: Make Gas Mask Filter",
+      "category": "Misc",
+      "effect": "Unlocks: Make Gas Mask Filter",
+      "kind": "Survival Magazine Page",
+      "source": "https://pzwiki.net/wiki/Survival_Schematic"
+    },
+    {
+      "id": "misc:Base.SurvivalSchematic:recharge-filters",
+      "title": "Survival Magazine Page: Recharge Filters",
+      "category": "Misc",
+      "effect": "Unlocks: Recharge Filters",
+      "kind": "Survival Magazine Page",
+      "source": "https://pzwiki.net/wiki/Survival_Schematic"
+    },
+    {
+      "id": "misc:Base.SurvivalSchematic:make-improvised-lantern",
+      "title": "Survival Magazine Page: Make Improvised Lantern",
+      "category": "Misc",
+      "effect": "Unlocks: Make Improvised Lantern",
+      "kind": "Survival Magazine Page",
+      "source": "https://pzwiki.net/wiki/Survival_Schematic"
+    },
+    {
+      "id": "misc:Base.SurvivalSchematic:make-improvised-gas-mask",
+      "title": "Survival Magazine Page: Make Improvised Gas Mask",
+      "category": "Misc",
+      "effect": "Unlocks: Make Improvised Gas Mask",
+      "kind": "Survival Magazine Page",
+      "source": "https://pzwiki.net/wiki/Survival_Schematic"
+    },
+    {
+      "id": "misc:Base.SurvivalSchematic:knap-large-stone-axe-head",
+      "title": "Survival Magazine Page: Knap Large Stone Axe Head",
+      "category": "Misc",
+      "effect": "Unlocks: Knap Large Stone Axe Head",
+      "kind": "Survival Magazine Page",
+      "source": "https://pzwiki.net/wiki/Survival_Schematic"
+    },
+    {
+      "id": "misc:Base.SurvivalSchematic:make-fishing-rod",
+      "title": "Survival Magazine Page: Make Fishing Rod",
+      "category": "Misc",
+      "effect": "Unlocks: Make Fishing Rod",
+      "kind": "Survival Magazine Page",
+      "source": "https://pzwiki.net/wiki/Survival_Schematic"
+    },
+    {
+      "id": "misc:Base.SurvivalSchematic:grind-up-plantain",
+      "title": "Survival Magazine Page: Grind Up Plantain",
+      "category": "Misc",
+      "effect": "Unlocks: Grind Up Plantain",
+      "kind": "Survival Magazine Page",
+      "source": "https://pzwiki.net/wiki/Survival_Schematic"
+    },
+    {
+      "id": "misc:Base.SurvivalSchematic:sharpen-bone",
+      "title": "Survival Magazine Page: Sharpen Bone",
+      "category": "Misc",
+      "effect": "Unlocks: Sharpen Bone",
+      "kind": "Survival Magazine Page",
+      "source": "https://pzwiki.net/wiki/Survival_Schematic"
+    },
+    {
+      "id": "misc:Base.SurvivalSchematic:bind-spear-head",
+      "title": "Survival Magazine Page: Bind Spear Head",
+      "category": "Misc",
+      "effect": "Unlocks: Bind Spear Head",
+      "kind": "Survival Magazine Page",
+      "source": "https://pzwiki.net/wiki/Survival_Schematic"
+    },
+    {
+      "id": "misc:Base.SurvivalSchematic:knap-stone-blade",
+      "title": "Survival Magazine Page: Knap Stone Blade",
+      "category": "Misc",
+      "effect": "Unlocks: Knap Stone Blade",
+      "kind": "Survival Magazine Page",
+      "source": "https://pzwiki.net/wiki/Survival_Schematic"
+    },
+    {
+      "id": "misc:Base.SurvivalSchematic:knap-stone-chisel",
+      "title": "Survival Magazine Page: Knap Stone Chisel",
+      "category": "Misc",
+      "effect": "Unlocks: Knap Stone Chisel",
+      "kind": "Survival Magazine Page",
+      "source": "https://pzwiki.net/wiki/Survival_Schematic"
+    },
+    {
+      "id": "misc:Base.SurvivalSchematic:knap-stone-drill",
+      "title": "Survival Magazine Page: Knap Stone Drill",
+      "category": "Misc",
+      "effect": "Unlocks: Knap Stone Drill",
+      "kind": "Survival Magazine Page",
+      "source": "https://pzwiki.net/wiki/Survival_Schematic"
+    },
+    {
+      "id": "misc:Base.SurvivalSchematic:knap-stone-maul-head",
+      "title": "Survival Magazine Page: Knap Stone Maul Head",
+      "category": "Misc",
+      "effect": "Unlocks: Knap Stone Maul Head",
+      "kind": "Survival Magazine Page",
+      "source": "https://pzwiki.net/wiki/Survival_Schematic"
+    },
+    {
+      "id": "misc:Base.SurvivalSchematic:knap-stone-blade-scythe",
+      "title": "Survival Magazine Page: Knap Stone Blade Scythe",
+      "category": "Misc",
+      "effect": "Unlocks: Knap Stone Blade Scythe",
+      "kind": "Survival Magazine Page",
+      "source": "https://pzwiki.net/wiki/Survival_Schematic"
+    },
+    {
+      "id": "misc:Base.SurvivalSchematic:grind-up-wild-garlic",
+      "title": "Survival Magazine Page: Grind Up Wild Garlic",
+      "category": "Misc",
+      "effect": "Unlocks: Grind Up Wild Garlic",
+      "kind": "Survival Magazine Page",
+      "source": "https://pzwiki.net/wiki/Survival_Schematic"
+    },
+    {
+      "id": "misc:Base.SurvivalSchematic:carvewoodenspade",
+      "title": "Survival Magazine Page: CarveWoodenSpade",
+      "category": "Misc",
+      "effect": "Unlocks: CarveWoodenSpade",
+      "kind": "Survival Magazine Page",
+      "source": "https://pzwiki.net/wiki/Survival_Schematic"
+    },
+    {
+      "id": "misc:Base.SurvivalSchematic:fire-harden-spear",
+      "title": "Survival Magazine Page: Fire Harden Spear",
+      "category": "Misc",
+      "effect": "Unlocks: Fire Harden Spear",
+      "kind": "Survival Magazine Page",
+      "source": "https://pzwiki.net/wiki/Survival_Schematic"
+    },
+    {
+      "id": "misc:Base.SewingPattern:knit-open-face-balaclava",
+      "title": "Sewing Pattern: Knit Open-Face Balaclava",
+      "category": "Misc",
+      "effect": "Unlocks: Knit Open-Face Balaclava",
+      "kind": "Sewing Pattern",
+      "source": "https://pzwiki.net/wiki/Sewing_Pattern"
+    },
+    {
+      "id": "misc:Base.SewingPattern:knit-full-balaclava",
+      "title": "Sewing Pattern: Knit Full Balaclava",
+      "category": "Misc",
+      "effect": "Unlocks: Knit Full Balaclava",
+      "kind": "Sewing Pattern",
+      "source": "https://pzwiki.net/wiki/Sewing_Pattern"
+    },
+    {
+      "id": "misc:Base.SewingPattern:sew-knee-length-dress",
+      "title": "Sewing Pattern: Sew Knee-Length Dress",
+      "category": "Misc",
+      "effect": "Unlocks: Sew Knee-Length Dress",
+      "kind": "Sewing Pattern",
+      "source": "https://pzwiki.net/wiki/Sewing_Pattern"
+    },
+    {
+      "id": "misc:Base.SewingPattern:sew-knee-length-skirt",
+      "title": "Sewing Pattern: Sew Knee-Length Skirt",
+      "category": "Misc",
+      "effect": "Unlocks: Sew Knee-Length Skirt",
+      "kind": "Sewing Pattern",
+      "source": "https://pzwiki.net/wiki/Sewing_Pattern"
+    },
+    {
+      "id": "misc:Base.SewingPattern:sew-long-dress",
+      "title": "Sewing Pattern: Sew Long Dress",
+      "category": "Misc",
+      "effect": "Unlocks: Sew Long Dress",
+      "kind": "Sewing Pattern",
+      "source": "https://pzwiki.net/wiki/Sewing_Pattern"
+    },
+    {
+      "id": "misc:Base.SewingPattern:sew-long-johns-bottom",
+      "title": "Sewing Pattern: Sew Long Johns Bottom",
+      "category": "Misc",
+      "effect": "Unlocks: Sew Long Johns Bottom",
+      "kind": "Sewing Pattern",
+      "source": "https://pzwiki.net/wiki/Sewing_Pattern"
+    },
+    {
+      "id": "misc:Base.SewingPattern:sew-long-johns",
+      "title": "Sewing Pattern: Sew Long Johns",
+      "category": "Misc",
+      "effect": "Unlocks: Sew Long Johns",
+      "kind": "Sewing Pattern",
+      "source": "https://pzwiki.net/wiki/Sewing_Pattern"
+    },
+    {
+      "id": "misc:Base.SewingPattern:sew-long-skirt",
+      "title": "Sewing Pattern: Sew Long Skirt",
+      "category": "Misc",
+      "effect": "Unlocks: Sew Long Skirt",
+      "kind": "Sewing Pattern",
+      "source": "https://pzwiki.net/wiki/Sewing_Pattern"
+    },
+    {
+      "id": "misc:Base.SewingPattern:sew-pants",
+      "title": "Sewing Pattern: Sew Pants",
+      "category": "Misc",
+      "effect": "Unlocks: Sew Pants",
+      "kind": "Sewing Pattern",
+      "source": "https://pzwiki.net/wiki/Sewing_Pattern"
+    },
+    {
+      "id": "misc:Base.SewingPattern:sew-shirt",
+      "title": "Sewing Pattern: Sew Shirt",
+      "category": "Misc",
+      "effect": "Unlocks: Sew Shirt",
+      "kind": "Sewing Pattern",
+      "source": "https://pzwiki.net/wiki/Sewing_Pattern"
+    },
+    {
+      "id": "misc:Base.SewingPattern:sew-sleeveless-shirt",
+      "title": "Sewing Pattern: Sew Sleeveless Shirt",
+      "category": "Misc",
+      "effect": "Unlocks: Sew Sleeveless Shirt",
+      "kind": "Sewing Pattern",
+      "source": "https://pzwiki.net/wiki/Sewing_Pattern"
+    },
+    {
+      "id": "misc:Base.SewingPattern:knit-beanie",
+      "title": "Sewing Pattern: Knit Beanie",
+      "category": "Misc",
+      "effect": "Unlocks: Knit Beanie",
+      "kind": "Sewing Pattern",
+      "source": "https://pzwiki.net/wiki/Sewing_Pattern"
+    },
+    {
+      "id": "misc:Base.SewingPattern:knit-wool-hat",
+      "title": "Sewing Pattern: Knit Wool Hat",
+      "category": "Misc",
+      "effect": "Unlocks: Knit Wool Hat",
+      "kind": "Sewing Pattern",
+      "source": "https://pzwiki.net/wiki/Sewing_Pattern"
+    },
+    {
+      "id": "misc:Base.SewingPattern:knit-legwarmers",
+      "title": "Sewing Pattern: Knit Legwarmers",
+      "category": "Misc",
+      "effect": "Unlocks: Knit Legwarmers",
+      "kind": "Sewing Pattern",
+      "source": "https://pzwiki.net/wiki/Sewing_Pattern"
+    },
+    {
+      "id": "misc:Base.SewingPattern:knit-scarf",
+      "title": "Sewing Pattern: Knit Scarf",
+      "category": "Misc",
+      "effect": "Unlocks: Knit Scarf",
+      "kind": "Sewing Pattern",
+      "source": "https://pzwiki.net/wiki/Sewing_Pattern"
+    },
+    {
+      "id": "misc:Base.SewingPattern:knit-socks",
+      "title": "Sewing Pattern: Knit Socks",
+      "category": "Misc",
+      "effect": "Unlocks: Knit Socks",
+      "kind": "Sewing Pattern",
+      "source": "https://pzwiki.net/wiki/Sewing_Pattern"
+    },
+    {
+      "id": "misc:Base.SewingPattern:knit-sweater-vest",
+      "title": "Sewing Pattern: Knit Sweater Vest",
+      "category": "Misc",
+      "effect": "Unlocks: Knit Sweater Vest",
+      "kind": "Sewing Pattern",
+      "source": "https://pzwiki.net/wiki/Sewing_Pattern"
     }
   ]
 }

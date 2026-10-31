@@ -5,9 +5,9 @@ Standalone static frontend for GitHub Pages, with shared collection state in Con
 ## Current state
 
 - Target: Build **42.22 Pre-Release**, the latest publicly available Build 42 identified in the [official October 27 announcement](https://projectzomboid.com/blog/news/2026/10/moving-on-up-42-22-pre-release/). Stable is 42.21.
-- Community-sourced catalog: **120 skill books, 87 recipe magazines, 62 XP/recipe-bearing VHS tapes**. These are extracted PZwiki table totals, not verified 42.22 game-file totals.
+- Community-sourced catalog: **120 skill books, 87 recipe magazines, 62 XP/recipe-bearing VHS tapes, and 218 miscellaneous type/recipe combinations**. These are extracted PZwiki table totals, not verified 42.22 game-file totals.
 - The book table is marked 42.13.2 and the VHS table 42.20.4. The catalog includes newer Build 42 retail instructional tapes, but has not been reconciled with a 42.22 installation. Do not describe it as a complete verified latest-build export.
-- Tabs cover Books, Videos, and Magazines. No additional qualifying learning items were verified.
+- Tabs cover Books, Videos, Magazines, and Misc. Misc uses one checkbox per resource type and recipe, not per randomized physical sheet. Several recipes can appear on one schematic; check each recipe present in the team library. Different resource types remain separate even when they teach the same recipe.
 - “Skill videos” includes any tape documented to grant skill XP or recipes, including films or home recordings with learning effects. Boredom-only entertainment tapes, CDs, and modded items are excluded.
 - Production shared state is configured at `https://dependable-buzzard-736.convex.cloud` in the `pz-collection` Convex project. Development remains separate at `https://elegant-seahorse-1.convex.cloud`. The existing team's 77 collected items were copied to production with its team ID preserved.
 
@@ -63,6 +63,25 @@ In a team library's Books tab, use **Import books JSON (add checked only)** to s
 The file has `version: 1` and a `books` object mapping skill slugs (for example `animal-care` or `carpentry`) to five booleans in volume I–V order. Checked (`true`) entries are added to the team's collection in one transaction. Unchecked (`false`) entries do not clear existing selections. Videos and magazines are untouched. Reimporting the same file does not create duplicates.
 
 Unknown skills, unsupported format versions, and anything other than five booleans per skill are rejected before saving. The file is read locally; only the selected catalog book IDs and team ID are sent to Convex.
+
+## Misc research
+
+PZwiki documents eight vanilla recipe-resource types. Lists retrieved October 31, 2026:
+
+| Resource | Unique recipe entries | Source |
+| --- | ---: | --- |
+| Cooking Recipe Clipping | 18 | [Recipe](https://pzwiki.net/wiki/Recipe) |
+| Hand-drawn Armor Schematic | 44 | [Armor Schematic](https://pzwiki.net/wiki/Armor_Schematic) |
+| Tool Forging Plan | 44 | [Tools Schematic](https://pzwiki.net/wiki/Tools_Schematic) |
+| Cookware Forging Recipe | 5 | [Cookware Schematic](https://pzwiki.net/wiki/Cookware_Schematic) |
+| Explosives Diagram | 15 | [Explosives Schematic](https://pzwiki.net/wiki/Explosives_Schematic) |
+| Melee Weapon Plan | 41 | [Melee Weapons Schematic](https://pzwiki.net/wiki/Melee_Weapons_Schematic) |
+| Survival Magazine Page | 34 | [Survival Schematic](https://pzwiki.net/wiki/Survival_Schematic) |
+| Sewing Pattern | 17 | [Sewing Pattern](https://pzwiki.net/wiki/Sewing_Pattern) |
+
+The [newspaperread item-tag table](https://pzwiki.net/wiki/Newspaperread_(tag)) identifies their generic item IDs and current display names. Each item page lists its possible learned recipes. Recipe lists are marked 42.10.0 (sewing: 42.11.0), though item-code sections reference 42.20.0. These are documented Build 42 possibilities, not a complete verified 42.22 export. Duplicate recipe labels within a resource type are collapsed; source labels that look like internal identifiers are retained rather than inventing game names.
+
+Cooking clippings and sewing patterns teach one recipe each. The six schematic types can hold up to five recipes. Misc keys combine the generic item ID and a recipe slug, since the generic ID alone cannot distinguish randomized contents. The listed totals count type/recipe combinations, not every possible physical item variant. Entries are alphabetized by their displayed titles. No existing collection IDs were changed, and no Misc entries are automatically checked for any team.
 
 ## Catalog maintenance
 

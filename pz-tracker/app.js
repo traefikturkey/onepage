@@ -2,7 +2,7 @@ import { CONVEX_URL } from "./config.js";
 import { bookImportIds } from "./book-import.js";
 
 const $ = (id) => document.getElementById(id);
-const categories = ["Books", "Videos", "Magazines"];
+const categories = ["Books", "Videos", "Magazines", "Misc"];
 let catalog;
 let client;
 let unsubscribe;
@@ -24,7 +24,8 @@ function render() {
   const items = catalog.items.filter((item) => item.category === category
     && `${item.title} ${item.effect} ${item.kind}`.toLowerCase().includes(search)
     && (filter === "all" || collected.has(item.id) === (filter === "collected")));
-  if (category === "Videos") {
+  $("misc-note").hidden = category !== "Misc";
+  if (category === "Videos" || category === "Misc") {
     items.sort((a, b) => a.title.localeCompare(b.title, "en", { numeric: true, sensitivity: "base" }));
   }
   const focusedItem = document.activeElement?.dataset.itemId;
