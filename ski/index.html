@@ -8,7 +8,7 @@
     :root{--bg:#0f1724;--card:#111827;--muted:#94a3b8;--accent1:#667eea;--accent2:#764ba2;--green:#4ade80;--check:#22c55e}
     *{box-sizing:border-box}
     html,body{height:100%;margin:0}
-    body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,'Helvetica Neue',Arial;color:#e6eef8;background:linear-gradient(180deg,var(--bg) 0%,#0b1220 100%);display:flex;justify-content:center;padding:28px}
+    body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,'Helvetica Neue',Arial;color:#e6eef8;background:linear-gradient(180deg,var(--bg) 0%,#0b1220 100%);background-attachment:fixed;display:flex;justify-content:center;padding:28px}
     .wrap{max-width:720px;width:100%}
     header{margin-bottom:24px}
     h1{font-size:22px;margin:0 0 4px;letter-spacing:-0.3px}
@@ -40,6 +40,8 @@
     .progress-bar{flex:1;height:6px;background:rgba(255,255,255,0.06);border-radius:3px;overflow:hidden}
     .progress-fill{height:100%;background:linear-gradient(90deg,var(--accent1),var(--check));border-radius:3px;transition:width 0.3s ease}
     .progress-text{color:var(--muted);font-size:12px;white-space:nowrap}
+    .complete-all{padding:4px 12px;border-radius:4px;font-size:12px;font-weight:600;cursor:pointer;border:1px solid rgba(255,255,255,0.1);background:linear-gradient(90deg,var(--accent1),var(--accent2));color:white;transition:all 0.15s;white-space:nowrap}
+    .complete-all:hover{opacity:0.9}
 
     .view{display:none}
     .view.active{display:block}
@@ -65,6 +67,7 @@
       <div class="progress">
         <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
         <span class="progress-text" id="progress-text">0 / 0</span>
+        <button class="complete-all" id="complete-all">Complete All</button>
       </div>
       <ul class="chore-list" id="chore-list"></ul>
     </div>
@@ -128,6 +131,16 @@
       progressFill.style.width = pct + '%';
       progressText.textContent = checked.size + ' / ' + chores.length;
     }
+
+    document.getElementById('complete-all').addEventListener('click', () => {
+      chores.forEach((_, i) => {
+        if (!checked.has(i)) {
+          checked.add(i);
+          list.children[i].classList.add('done');
+        }
+      });
+      updateProgress();
+    });
 
     chores.forEach((text, i) => {
       const li = document.createElement('li');
