@@ -7,7 +7,7 @@ Standalone static frontend for GitHub Pages, with shared collection state in Con
 - Target: Build **42.22 Pre-Release**, the latest publicly available Build 42 identified in the [official October 27 announcement](https://projectzomboid.com/blog/news/2026/10/moving-on-up-42-22-pre-release/). Stable is 42.21.
 - Community-sourced catalog: **120 skill books, 87 recipe magazines, 62 XP/recipe-bearing VHS tapes**. These are extracted PZwiki table totals, not verified 42.22 game-file totals.
 - The book table is marked 42.13.2 and the VHS table 42.20.4. The catalog includes newer Build 42 retail instructional tapes, but has not been reconciled with a 42.22 installation. Do not describe it as a complete verified latest-build export.
-- Misc is intentionally empty: no qualifying additional learning items were verified. It is not filled with speculative items.
+- Tabs cover Books, Videos, and Magazines. No additional qualifying learning items were verified.
 - “Skill videos” includes any tape documented to grant skill XP or recipes, including films or home recordings with learning effects. Boredom-only entertainment tapes, CDs, and modded items are excluded.
 - Production shared state is configured at `https://dependable-buzzard-736.convex.cloud` in the `pz-collection` Convex project. Development remains separate at `https://elegant-seahorse-1.convex.cloud`. The existing team's 77 collected items were copied to production with its team ID preserved.
 

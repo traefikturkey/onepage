@@ -2,7 +2,7 @@ import { CONVEX_URL } from "./config.js";
 import { bookImportIds } from "./book-import.js";
 
 const $ = (id) => document.getElementById(id);
-const categories = ["Books", "Videos", "Magazines", "Misc"];
+const categories = ["Books", "Videos", "Magazines"];
 let catalog;
 let client;
 let unsubscribe;
@@ -92,9 +92,7 @@ function render() {
   }
   $("summary").textContent = `${category === "Books" ? rows.length + " skills" : items.length + " items"} shown`;
   $("empty").hidden = rows.length > 0;
-  $("empty").textContent = category === "Misc" && !catalog.items.some((item) => item.category === "Misc")
-    ? "No additional vanilla learning items verified outside books, videos, and magazines."
-    : "No matching items.";
+  $("empty").textContent = "No matching items.";
 }
 
 async function save(itemId, value) {
