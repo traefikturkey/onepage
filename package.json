@@ -3,6 +3,16 @@
   "private": true,
   "scripts": {
     "dev": "bun --watch run server.ts",
-    "serve": "bun run server.ts"
+    "serve": "bun run server.ts",
+    "check:pz": "tsc -p convex/tsconfig.json && node --check pz-tracker/app.js && node --check pz-tracker/book-import.js",
+    "convex:dev": "convex dev",
+    "convex:deploy": "convex deploy"
+  },
+  "dependencies": {
+    "convex": "^1.49.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "typescript": "^7.0.2"
   }
 }

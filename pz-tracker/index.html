@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <title>PZ Team Library | Build 42</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./app.js" type="module"></script>
+</head>
+<body>
+  <main>
+    <header>
+      <div><a class="home" href="#/">PZ / TEAM LIBRARY</a><h1>Keep the knowledge. Share the shelf.</h1></div>
+      <span class="badge" id="version">Build 42</span>
+    </header>
+    <p class="intro">Your team's books, skill tapes, and recipe magazines. Ownership only, not who has read or watched them.</p>
+    <section id="welcome" class="panel">
+      <h2>One library. One team link.</h2>
+      <p>Create a private, unlisted link. Anyone with it can view and edit the collection. No player accounts.</p>
+      <button id="create" type="button" disabled>Create team library</button>
+      <p class="muted">Save the link somewhere safe. There is no account-based recovery.</p>
+    </section>
+    <section id="team" hidden>
+      <div class="team-bar panel">
+        <label class="link-field">Team link <input id="team-link" readonly aria-label="Team link"></label>
+        <button id="copy" type="button">Copy link</button>
+        <span id="sync" role="status" aria-live="polite">Connecting...</span>
+      </div>
+      <p class="muted">This link grants edit access. Share it only with your team.</p>
+    </section>
+    <p id="message" role="status" aria-live="polite"></p>
+    <section aria-label="Library catalog">
+      <nav id="tabs" aria-label="Media category">
+        <button type="button" data-category="Books" aria-pressed="true">Books</button>
+        <button type="button" data-category="Videos" aria-pressed="false">Videos</button>
+        <button type="button" data-category="Magazines" aria-pressed="false">Magazines</button>
+        <button type="button" data-category="Misc" aria-pressed="false">Misc</button>
+      </nav>
+      <div class="filters panel">
+        <label>Search <input id="search" type="search" placeholder="Title, skill, recipe..." autocomplete="off"></label>
+        <label>Show <select id="filter"><option value="all">All items</option><option value="missing">Missing</option><option value="collected">Collected</option></select></label>
+        <label id="import-control">Import books JSON (add checked only)
+          <input id="import-books" type="file" accept=".json,application/json" disabled>
+        </label>
+        <span id="summary" class="muted"></span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Owned</th><th scope="col">Title</th><th scope="col">Skill / learning</th><th scope="col">Type</th></tr></thead>
+          <tbody id="items"></tbody>
+        </table>
+      </div>
+      <p id="empty" class="panel" hidden>No matching items.</p>
+    </section>
+    <footer>
+      <p id="catalog-note"></p>
+      <details><summary>Catalog sources</summary><ul id="sources"></ul></details>
+      <p>Vanilla learning items only. No entertainment tapes, CDs, or mods. Not affiliated with The Indie Stone.</p>
+    </footer>
+  </main>
+</body>
+</html>

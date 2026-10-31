@@ -5,6 +5,7 @@ build/
 
 # Ignore environment and log files
 .env
+.env.local
 *.log
 
 # Ignore OS-specific files

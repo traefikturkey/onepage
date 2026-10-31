@@ -1,0 +1,2176 @@
+{
+  "version": "Build 42.22 Pre-Release",
+  "notes": "Target: latest available Build 42, 42.22 Pre-Release (Stable: 42.21). Community catalog from PZwiki, retrieved 2026-10-30. Books table marked 42.13.2; VHS table marked 42.20.4. Not yet verified against 42.22 game files; coverage and XP may differ. VHS values are base XP before character modifiers.",
+  "sources": [
+    {
+      "label": "The Indie Stone: 42.22 Pre-Release announcement",
+      "url": "https://projectzomboid.com/blog/news/2026/10/moving-on-up-42-22-pre-release/"
+    },
+    {
+      "label": "PZwiki contributors: Skill book",
+      "url": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "label": "PZwiki contributors: Recipe magazine",
+      "url": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "label": "PZwiki contributors: VHS",
+      "url": "https://pzwiki.net/wiki/VHS"
+    }
+  ],
+  "items": [
+    {
+      "id": "Base.BookFarming1",
+      "title": "Agriculture I: \"Better Gardening\"",
+      "category": "Books",
+      "effect": "Agriculture, levels 1–2; ×3 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookFarming2",
+      "title": "Agriculture II: \"Growing Food at Home\"",
+      "category": "Books",
+      "effect": "Agriculture, levels 3–4; ×5 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookFarming3",
+      "title": "Agriculture III: \"Liam Keating's Subsistence Farming\"",
+      "category": "Books",
+      "effect": "Agriculture, levels 5–6; ×8 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookFarming4",
+      "title": "Agriculture IV: \"The Science of Crop Genetics and Yields\"",
+      "category": "Books",
+      "effect": "Agriculture, levels 7–8; ×12 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookFarming5",
+      "title": "Agriculture V: \"USDA Guide to Agricultural Output Maximization\"",
+      "category": "Books",
+      "effect": "Agriculture, levels 9–10; ×16 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookAiming1",
+      "title": "Aiming I: \"Better Aiming\"",
+      "category": "Books",
+      "effect": "Aiming, levels 1–2; ×1.5 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookAiming2",
+      "title": "Aiming II: \"Drawing and Shooting\"",
+      "category": "Books",
+      "effect": "Aiming, levels 3–4; ×2.5 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookAiming3",
+      "title": "Aiming III: \"Leading Moving Targets\"",
+      "category": "Books",
+      "effect": "Aiming, levels 5–6; ×4 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookAiming4",
+      "title": "Aiming IV: \"Long Range Sniping Tactics\"",
+      "category": "Books",
+      "effect": "Aiming, levels 7–8; ×6 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookAiming5",
+      "title": "Aiming V: \"Secrets From the World's Best Snipers\"",
+      "category": "Books",
+      "effect": "Aiming, levels 9–10; ×8 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookHusbandry1",
+      "title": "Animal Care I: \"A Tale of St. Francis\"",
+      "category": "Books",
+      "effect": "Animal Care, levels 1–2; ×3 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookHusbandry2",
+      "title": "Animal Care II: \"Animal Welfare Basics\"",
+      "category": "Books",
+      "effect": "Animal Care, levels 3–4; ×5 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookHusbandry3",
+      "title": "Animal Care III: \"How Animals Think: A Helpful Guide\"",
+      "category": "Books",
+      "effect": "Animal Care, levels 5–6; ×8 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookHusbandry4",
+      "title": "Animal Care IV: \"The Wants and Needs of Diverse Fauna\"",
+      "category": "Books",
+      "effect": "Animal Care, levels 7–8; ×12 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookHusbandry5",
+      "title": "Animal Care V: \"Wilds Tamed: An In-Depth Comparative\"",
+      "category": "Books",
+      "effect": "Animal Care, levels 9–10; ×16 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookBlacksmith1",
+      "title": "Blacksmithing I: \"Elementary Forge Practice\"",
+      "category": "Books",
+      "effect": "Blacksmithing, levels 1–2; ×3 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookBlacksmith2",
+      "title": "Blacksmithing II: \"General Purpose Blacksmithing\"",
+      "category": "Books",
+      "effect": "Blacksmithing, levels 3–4; ×5 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookBlacksmith3",
+      "title": "Blacksmithing III: \"Old West Smiths and Their Secrets\"",
+      "category": "Books",
+      "effect": "Blacksmithing, levels 5–6; ×8 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookBlacksmith4",
+      "title": "Blacksmithing IV: \"Really Hard Steel Co. Workers Handbook\"",
+      "category": "Books",
+      "effect": "Blacksmithing, levels 7–8; ×12 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookBlacksmith5",
+      "title": "Blacksmithing V: \"The Complete Encyclopedia of Metallurgy\"",
+      "category": "Books",
+      "effect": "Blacksmithing, levels 9–10; ×16 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookButchering1",
+      "title": "Butchering I: \"Butchering Basics\"",
+      "category": "Books",
+      "effect": "Butchering, levels 1–2; ×3 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookButchering2",
+      "title": "Butchering II: \"From Chuck to Shank\"",
+      "category": "Books",
+      "effect": "Butchering, levels 3–4; ×5 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookButchering3",
+      "title": "Butchering III: \"Hunter's Guide to Butchering\"",
+      "category": "Books",
+      "effect": "Butchering, levels 5–6; ×8 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookButchering4",
+      "title": "Butchering IV: \"Master Butcher's Complete Guide\"",
+      "category": "Books",
+      "effect": "Butchering, levels 7–8; ×12 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookButchering5",
+      "title": "Butchering V: \"The Ergonomics of Tools in Meat Cutting Operations\"",
+      "category": "Books",
+      "effect": "Butchering, levels 9–10; ×16 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookCarpentry1",
+      "title": "Carpentry I: \"A Guide to Nailing\"",
+      "category": "Books",
+      "effect": "Carpentry, levels 1–2; ×3 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookCarpentry2",
+      "title": "Carpentry II: \"Carpentry, Woodcraft Style\"",
+      "category": "Books",
+      "effect": "Carpentry, levels 3–4; ×5 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookCarpentry3",
+      "title": "Carpentry III: \"Hand Crafted Shelving and Storage\"",
+      "category": "Books",
+      "effect": "Carpentry, levels 5–6; ×8 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookCarpentry4",
+      "title": "Carpentry IV: \"Making Your Own Cabin From Scratch\"",
+      "category": "Books",
+      "effect": "Carpentry, levels 7–8; ×12 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookCarpentry5",
+      "title": "Carpentry V: \"Site Joinery and Architectural Carpentry\"",
+      "category": "Books",
+      "effect": "Carpentry, levels 9–10; ×16 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookCarving1",
+      "title": "Carving I: \"Beginners Carving\"",
+      "category": "Books",
+      "effect": "Carving, levels 1–2; ×3 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookCarving2",
+      "title": "Carving II: \"Cool Woodshaping Projects!\"",
+      "category": "Books",
+      "effect": "Carving, levels 3–4; ×5 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookCarving3",
+      "title": "Carving III: \"Grinling Gibbons: His Life and Works\"",
+      "category": "Books",
+      "effect": "Carving, levels 5–6; ×8 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookCarving4",
+      "title": "Carving IV: \"Medieval Wood and Bone Carving Techniques\"",
+      "category": "Books",
+      "effect": "Carving, levels 7–8; ×12 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookCarving5",
+      "title": "Carving V: \"The Art and Process of Natural Material Carving\"",
+      "category": "Books",
+      "effect": "Carving, levels 9–10; ×16 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookCooking1",
+      "title": "Cooking I: \"Better Burger Flipping\"",
+      "category": "Books",
+      "effect": "Cooking, levels 1–2; ×3 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookCooking2",
+      "title": "Cooking II: \"Essential Home Cooking Guide\"",
+      "category": "Books",
+      "effect": "Cooking, levels 3–4; ×5 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookCooking3",
+      "title": "Cooking III: \"Flavorful Cuisine - 1993 Edition\"",
+      "category": "Books",
+      "effect": "Cooking, levels 5–6; ×8 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookCooking4",
+      "title": "Cooking IV: \"Professional Tips from a Master Chef\"",
+      "category": "Books",
+      "effect": "Cooking, levels 7–8; ×12 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookCooking5",
+      "title": "Cooking V: \"Ruban Vert Gourmet - Complete Cooking Techniques\"",
+      "category": "Books",
+      "effect": "Cooking, levels 9–10; ×16 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookElectrician1",
+      "title": "Electrical I: \"Basic Electronics\"",
+      "category": "Books",
+      "effect": "Electrical, levels 1–2; ×3 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookElectrician2",
+      "title": "Electrical II: \"Kentucky AV Guide '93\"",
+      "category": "Books",
+      "effect": "Electrical, levels 3–4; ×5 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookElectrician3",
+      "title": "Electrical III: \"Practical Wiring Guide\"",
+      "category": "Books",
+      "effect": "Electrical, levels 5–6; ×8 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookElectrician4",
+      "title": "Electrical IV: \"Telecommunications in the 20th Century\"",
+      "category": "Books",
+      "effect": "Electrical, levels 7–8; ×12 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookElectrician5",
+      "title": "Electrical V: \"Understanding Integrated Controls for Electronic Systems\"",
+      "category": "Books",
+      "effect": "Electrical, levels 9–10; ×16 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookFirstAid1",
+      "title": "First Aid I: \"A Scouts Injury Guide\"",
+      "category": "Books",
+      "effect": "First Aid, levels 1–2; ×3 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookFirstAid2",
+      "title": "First Aid II: \"Bandaging and Suturing\"",
+      "category": "Books",
+      "effect": "First Aid, levels 3–4; ×5 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookFirstAid3",
+      "title": "First Aid III: \"Emergency Paramedics Manual\"",
+      "category": "Books",
+      "effect": "First Aid, levels 5–6; ×8 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookFirstAid4",
+      "title": "First Aid IV: \"Gray's Anatomy of the Human Body\"",
+      "category": "Books",
+      "effect": "First Aid, levels 7–8; ×12 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookFirstAid5",
+      "title": "First Aid V: \"Surgical Techniques of the Operating Room\"",
+      "category": "Books",
+      "effect": "First Aid, levels 9–10; ×16 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookFishing1",
+      "title": "Fishing I: \"Dean's Good Fishing Guide\"",
+      "category": "Books",
+      "effect": "Fishing, levels 1–2; ×3 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookFishing2",
+      "title": "Fishing II: \"Fly Fishing, with JR Hartley\"",
+      "category": "Books",
+      "effect": "Fishing, levels 3–4; ×5 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookFishing3",
+      "title": "Fishing III: \"Fresh and Saltwater Fishing\"",
+      "category": "Books",
+      "effect": "Fishing, levels 5–6; ×8 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookFishing4",
+      "title": "Fishing IV: \"Latest Rod and Net Techniques\"",
+      "category": "Books",
+      "effect": "Fishing, levels 7–8; ×12 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookFishing5",
+      "title": "Fishing V: \"The Authoritative Kentucky Fishing Guide\"",
+      "category": "Books",
+      "effect": "Fishing, levels 9–10; ×16 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookForaging1",
+      "title": "Foraging I: \"A Feast in the Forest\"",
+      "category": "Books",
+      "effect": "Foraging, levels 1–2; ×3 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookForaging2",
+      "title": "Foraging II: \"Dean's Guide to Sticks & Stones\"",
+      "category": "Books",
+      "effect": "Foraging, levels 3–4; ×5 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookForaging3",
+      "title": "Foraging III: \"Finding The Treasure in the Trash\"",
+      "category": "Books",
+      "effect": "Foraging, levels 5–6; ×8 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookForaging4",
+      "title": "Foraging IV: \"Survival Foraging: How Nature Can Save Your Life\"",
+      "category": "Books",
+      "effect": "Foraging, levels 7–8; ×12 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookForaging5",
+      "title": "Foraging V: \"US Park Service Complete Nature Census - Kentucky\"",
+      "category": "Books",
+      "effect": "Foraging, levels 9–10; ×16 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookGlassmaking1",
+      "title": "Glassmaking I: \"Glass: A History\"",
+      "category": "Books",
+      "effect": "Glassmaking, levels 1–2; ×3 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookGlassmaking2",
+      "title": "Glassmaking II: \"From Sand to Glass: A Journey\"",
+      "category": "Books",
+      "effect": "Glassmaking, levels 3–4; ×5 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookGlassmaking3",
+      "title": "Glassmaking III: \"Laboratory Manual of Glassblowing\"",
+      "category": "Books",
+      "effect": "Glassmaking, levels 5–6; ×8 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookGlassmaking4",
+      "title": "Glassmaking IV: \"Secrets of the Carlow Crystal Makers\"",
+      "category": "Books",
+      "effect": "Glassmaking, levels 7–8; ×12 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookGlassmaking5",
+      "title": "Glassmaking V: \"Venetian Glass: An Electron Microprobe Analysis\"",
+      "category": "Books",
+      "effect": "Glassmaking, levels 9–10; ×16 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookFlintKnapping1",
+      "title": "Knapping I: \"Flint Knapping 101\"",
+      "category": "Books",
+      "effect": "Knapping, levels 1–2; ×3 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookFlintKnapping2",
+      "title": "Knapping II: \"Guide to Kentucky Geology\"",
+      "category": "Books",
+      "effect": "Knapping, levels 3–4; ×5 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookFlintKnapping3",
+      "title": "Knapping III: \"Lithic Technology Manual 1993\"",
+      "category": "Books",
+      "effect": "Knapping, levels 5–6; ×8 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookFlintKnapping4",
+      "title": "Knapping IV: \"Schmidt Rock Hardness Testing Techniques\"",
+      "category": "Books",
+      "effect": "Knapping, levels 7–8; ×12 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookFlintKnapping5",
+      "title": "Knapping V: \"Technological Morphometrics of Clovis Artifacts\"",
+      "category": "Books",
+      "effect": "Knapping, levels 9–10; ×16 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookLongBlade1",
+      "title": "Long Blade I: \"Cool Swords!\"",
+      "category": "Books",
+      "effect": "Long Blade, levels 1–2; ×1.5 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookLongBlade2",
+      "title": "Long Blade II: \"Fencing: A History\"",
+      "category": "Books",
+      "effect": "Long Blade, levels 3–4; ×2.5 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookLongBlade3",
+      "title": "Long Blade III: \"Old Sword-Play\" by Alfred Hutton",
+      "category": "Books",
+      "effect": "Long Blade, levels 5–6; ×4 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookLongBlade4",
+      "title": "Long Blade IV: \"The Zettels of Johannes Liechtenauer\"",
+      "category": "Books",
+      "effect": "Long Blade, levels 7–8; ×6 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookLongBlade5",
+      "title": "Long Blade V: \"Wear Analysis of Selected Medieval Swords\"",
+      "category": "Books",
+      "effect": "Long Blade, levels 9–10; ×8 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookMaintenance1",
+      "title": "Maintenance I: \"Basic Repairs\"",
+      "category": "Books",
+      "effect": "Maintenance, levels 1–2; ×3 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookMaintenance2",
+      "title": "Maintenance II: \"Better Tools, Made Easy\"",
+      "category": "Books",
+      "effect": "Maintenance, levels 3–4; ×5 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookMaintenance3",
+      "title": "Maintenance III: \"Home Guide to Tool Repairs\"",
+      "category": "Books",
+      "effect": "Maintenance, levels 5–6; ×8 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookMaintenance4",
+      "title": "Maintenance IV: \"Maintaining High Grade Tools\"",
+      "category": "Books",
+      "effect": "Maintenance, levels 7–8; ×12 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookMaintenance5",
+      "title": "Maintenance V: \"Understanding Biomechanics of Tool Use\"",
+      "category": "Books",
+      "effect": "Maintenance, levels 9–10; ×16 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookMasonry1",
+      "title": "Masonry I: \"A Bricklayer's Life\"",
+      "category": "Books",
+      "effect": "Masonry, levels 1–2; ×3 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookMasonry2",
+      "title": "Masonry II: \"Flooring: Do It Yourself\"",
+      "category": "Books",
+      "effect": "Masonry, levels 3–4; ×5 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookMasonry3",
+      "title": "Masonry III: \"Dibnah's Guide to Bricks\"",
+      "category": "Books",
+      "effect": "Masonry, levels 5–6; ×8 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookMasonry4",
+      "title": "Masonry IV: \"Secrets of a Professional Mason\"",
+      "category": "Books",
+      "effect": "Masonry, levels 7–8; ×12 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookMasonry5",
+      "title": "Masonry V: \"Statistical Analysis of Historic Masonry Constructions\"",
+      "category": "Books",
+      "effect": "Masonry, levels 9–10; ×16 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookMechanic1",
+      "title": "Mechanics I: \"Carzone's Repair Guide\"",
+      "category": "Books",
+      "effect": "Mechanics, levels 1–2; ×3 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookMechanic2",
+      "title": "Mechanics II: \"How Vehicle Engines Work\"",
+      "category": "Books",
+      "effect": "Mechanics, levels 3–4; ×5 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookMechanic3",
+      "title": "Mechanics III: \"Laine's Repair Manual '93\"",
+      "category": "Books",
+      "effect": "Mechanics, levels 5–6; ×8 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookMechanic4",
+      "title": "Mechanics IV: \"Long Term Vehicle Maintenance\"",
+      "category": "Books",
+      "effect": "Mechanics, levels 7–8; ×12 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookMechanic5",
+      "title": "Mechanics V: \"Mastering Automotive Fault Diagnosis Techniques\"",
+      "category": "Books",
+      "effect": "Mechanics, levels 9–10; ×16 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookPottery1",
+      "title": "Pottery I: \"Ancient Pottery\"",
+      "category": "Books",
+      "effect": "Pottery, levels 1–2; ×3 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookPottery2",
+      "title": "Pottery II: \"Build Your Own Kiln\"",
+      "category": "Books",
+      "effect": "Pottery, levels 3–4; ×5 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookPottery3",
+      "title": "Pottery III: \"Glazing Ceramics at Home\"",
+      "category": "Books",
+      "effect": "Pottery, levels 5–6; ×8 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookPottery4",
+      "title": "Pottery IV: \"Ming Chinese Masterworks: A Guide\"",
+      "category": "Books",
+      "effect": "Pottery, levels 7–8; ×12 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookPottery5",
+      "title": "Pottery V: \"Pyrometamorphic Process of Ceramic Materials\"",
+      "category": "Books",
+      "effect": "Pottery, levels 9–10; ×16 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookReloading1",
+      "title": "Reloading I: \"Basic Reloading\"",
+      "category": "Books",
+      "effect": "Reloading, levels 1–2; ×1.5 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookReloading2",
+      "title": "Reloading II: \"Dead Man's Click\"",
+      "category": "Books",
+      "effect": "Reloading, levels 3–4; ×2.5 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookReloading3",
+      "title": "Reloading III: \"Jungle Style Reloading\"",
+      "category": "Books",
+      "effect": "Reloading, levels 5–6; ×4 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookReloading4",
+      "title": "Reloading IV: \"Strippers, Speedloaders, and Bolt Action\"",
+      "category": "Books",
+      "effect": "Reloading, levels 7–8; ×6 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookReloading5",
+      "title": "Reloading V: \"The Ultimate Encyclopedia of Reloading Techniques\"",
+      "category": "Books",
+      "effect": "Reloading, levels 9–10; ×8 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookTailoring1",
+      "title": "Tailoring I: \"Basic Clothing Repair\"",
+      "category": "Books",
+      "effect": "Tailoring, levels 1–2; ×3 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookTailoring2",
+      "title": "Tailoring II: \"From Rags to Royalty: A Sewing Guide\"",
+      "category": "Books",
+      "effect": "Tailoring, levels 3–4; ×5 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookTailoring3",
+      "title": "Tailoring III: \"Haute Couture Tailoring Methods\"",
+      "category": "Books",
+      "effect": "Tailoring, levels 5–6; ×8 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookTailoring4",
+      "title": "Tailoring IV: \"Modern Patterns from the Catwalks of Paris\"",
+      "category": "Books",
+      "effect": "Tailoring, levels 7–8; ×12 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookTailoring5",
+      "title": "Tailoring V: \"Textile Production and Manufacturing Techniques\"",
+      "category": "Books",
+      "effect": "Tailoring, levels 9–10; ×16 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookTracking1",
+      "title": "Tracking I: \"Animal Pawprints\"",
+      "category": "Books",
+      "effect": "Tracking, levels 1–2; ×3 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookTracking2",
+      "title": "Tracking II: \"Hunting with Hemingway\"",
+      "category": "Books",
+      "effect": "Tracking, levels 3–4; ×5 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookTracking3",
+      "title": "Tracking III: \"Long Range Animal Tracking\"",
+      "category": "Books",
+      "effect": "Tracking, levels 5–6; ×8 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookTracking4",
+      "title": "Tracking IV: \"The Smell of Ivory: An African Adventure\"",
+      "category": "Books",
+      "effect": "Tracking, levels 7–8; ×12 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookTracking5",
+      "title": "Tracking V: \"Understanding Animal Behavior Through Spoor Placement\"",
+      "category": "Books",
+      "effect": "Tracking, levels 9–10; ×16 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookTrapping1",
+      "title": "Trapping I: \"Basic Pest Control\"",
+      "category": "Books",
+      "effect": "Trapping, levels 1–2; ×3 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookTrapping2",
+      "title": "Trapping II: \"Better Trapping, with Dean\"",
+      "category": "Books",
+      "effect": "Trapping, levels 3–4; ×5 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookTrapping3",
+      "title": "Trapping III: \"Park Rangers Wildlife Handbook '93\"",
+      "category": "Books",
+      "effect": "Trapping, levels 5–6; ×8 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookTrapping4",
+      "title": "Trapping IV: \"Research on Rodents and Mammals of Kentucky\"",
+      "category": "Books",
+      "effect": "Trapping, levels 7–8; ×12 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookTrapping5",
+      "title": "Trapping V: \"The Encyclopedia of Applied Animal Psychology\"",
+      "category": "Books",
+      "effect": "Trapping, levels 9–10; ×16 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookMetalWelding1",
+      "title": "Welding I: \"Basics of Welding\"",
+      "category": "Books",
+      "effect": "Welding, levels 1–2; ×3 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookMetalWelding2",
+      "title": "Welding II: \"Building with Metal\"",
+      "category": "Books",
+      "effect": "Welding, levels 3–4; ×5 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookMetalWelding3",
+      "title": "Welding III: \"Machining Metal: The Mass Genfac Guide\"",
+      "category": "Books",
+      "effect": "Welding, levels 5–6; ×8 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookMetalWelding4",
+      "title": "Welding IV: \"Ore to Sheets: A Complete Metalworking Manual\"",
+      "category": "Books",
+      "effect": "Welding, levels 7–8; ×12 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.BookMetalWelding5",
+      "title": "Welding V: \"Technological Fundamentals of Metal Fabrication\"",
+      "category": "Books",
+      "effect": "Welding, levels 9–10; ×16 XP multiplier",
+      "kind": "Skill book",
+      "source": "https://pzwiki.net/wiki/Skill_book"
+    },
+    {
+      "id": "Base.TailoringMag9",
+      "title": "Alpine Explorers",
+      "category": "Magazines",
+      "effect": "Make Advanced Framepack Frame; Make Advanced Large Framepack Frame; Assemble Framepack; Assemble Large Framepack; Sew Sheepskin Pants",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.SmithingMag8",
+      "title": "American Bladecraft",
+      "category": "Magazines",
+      "effect": "Welding: Forge Meat Cleaver Blade; Forge Hunting Knife Blade; Forge Machete Blade; Forge Hatchet Head; Forge Wood Axe Head; Forge Axe Head; Forge Small Knife; Forge Large Knife Blade; Forge Fleshing Tool",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.FarmingMag5",
+      "title": "American Homesteading",
+      "category": "Magazines",
+      "effect": "Agriculture: Make Jar of Produce",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.TailoringMag1",
+      "title": "Ancient Tailoring",
+      "category": "Magazines",
+      "effect": "Carve Bone Awl; Carve Bone Sewing Needle; Sew Hide Hooded Jacket; Sew Hide Robe; Sew Hide Pants; Weave Twine Shoes",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.FishingMag1",
+      "title": "Angler USA - June 1993",
+      "category": "Magazines",
+      "effect": "Fishing: Make Fishing Rod; Fix Fishing Rod; Make Chum Base",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.FishingMag2",
+      "title": "Angler USA - May 1993",
+      "category": "Magazines",
+      "effect": "Fishing: Make Fishing Net; Dismantle Fishing Net",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.ArmorMag5",
+      "title": "Armor in the Iron Age",
+      "category": "Magazines",
+      "effect": "Assemble Forearm Armor; Forge Metal Body Armor; Assemble Metal Shoulder Armor; Assemble Metal Thigh Armor; Assemble Shin Armor; Forge Metal Mask; Forge_Buckle",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.WeaponMag4",
+      "title": "Bloody Japanese Wrestling Deathmatch!",
+      "category": "Magazines",
+      "effect": "Barbed-Wire Wrap Weapon",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.FarmingMag3",
+      "title": "Blooms and Blossoms",
+      "category": "Magazines",
+      "effect": "Agriculture: Chamomile Growing Season; Marigold Growing Season; Sunflower Growing Season; Rose Growing Season; Poppy Growing Season; Lavender Growing Season",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.SmithingMag5",
+      "title": "Blunt Forge",
+      "category": "Magazines",
+      "effect": "Welding: Forge Claw Hammer Head; Forge Crowbar; Forge Sledgehammer Head; Forge Ball-peen Hammer Head; Forge Club Hammer Head; Forge Pick Axe Head",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.GlassmakingMag3",
+      "title": "Bottle Making at Home",
+      "category": "Magazines",
+      "effect": "Glassmaking: Make Glass Bottle; Make Glass Jar",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.GlassmakingMag2",
+      "title": "Carlow Crystal Guide",
+      "category": "Magazines",
+      "effect": "Glassmaking: Make Drinking Glass; Make Glass Pane",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.TailoringMag5",
+      "title": "Cowboy Living",
+      "category": "Magazines",
+      "effect": "Sew Holster; Sew Double Holster; Make Western Boots; Sew Furred Hide Coat; Sew Furred Hide Jacket; Sew Leather Pants; Sew Sheepskin Vest",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.FarmingMag6",
+      "title": "Cropping for Cash",
+      "category": "Magazines",
+      "effect": "Agriculture: Barley Growing Season; Corn Growing Season; Flax Growing Season; Rye Growing Season; Soybean Growing Season; Sugar Beet Growing Season; Tobacco Growing Season; Wheat Growing Season",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.PrimitiveToolMag2",
+      "title": "Cultures of Prehistory",
+      "category": "Magazines",
+      "effect": "Carve Bone Fishing Hook; Knap Stone Awl; Knap Stone Chisel; Knap Stone Drill; Make Improvised Whetstone; Knapp Flint Saw; Carve Whistle",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.CookingMag6",
+      "title": "Delicious Meals - June 1993",
+      "category": "Magazines",
+      "effect": "Cooking: Prepare Breaded Shrimp; Prepare 2 Breaded Onion Rings; Make 4 Cabbage Rolls; Make Guacamole",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.ArmorMag2",
+      "title": "Early Indigenous Armor - An In-Depth Study",
+      "category": "Magazines",
+      "effect": "Make Bone Body Armor; Make Bone Choker; Make Bone Forearm Armor; Make Bone Shin Armor; Make Bone Shoulder Armor; Make Bone Thigh Armor; Make Wooden Body Armor; Make Wooden Forearm Armor; Make Wooden Shin Armor; Make Wooden Shoulder Armor; Make Wooden Thigh Armor",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.ArmorMag4",
+      "title": "European Armor in the Late Medieval Era",
+      "category": "Magazines",
+      "effect": "Assemble Shoulder Armor; Assemble Articulated Metal Thigh Armor; Forge Codpiece; Forge Metal Neck Guard; Assemble Full Metal Forearm Armor; Assemble Articulated Metal Shin Armor; Forge Fingerless Metal Gloves; Forge Metal Helmet; Forge Coat of Plates Body Armor; Forge_Buckle",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.SmithingMag3",
+      "title": "Everyday Smithing - April 1993",
+      "category": "Magazines",
+      "effect": "Welding: Forge Steel Sheet; Forge Small Steel Sheet; Forge Saw; Forge Spade Head; Forge Gardening Trowel; Forge Gardening Hoe Head; Forge Hand Scythe Head; Forge Sheep Shears; Forge Scythe Head; Forge Lantern",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.SmithingMag1",
+      "title": "Everyday Smithing - June 1993",
+      "category": "Magazines",
+      "effect": "Welding: Forge Tongs; Forge Heading Tool; Forge Draw Plate; Forge 10 Nails; Forge Smithing Hammer Head; Forge Masonry Chisel; Forge Masonry Trowel; Forge Metalworking Chisel; Forge Metalworking Punch; Forge Metalworking Pliers; Forge Fireplace Poker; Make Improvised Whetstone; Forge File; Forge Drill; Drill Draw Plate; Drill Heading Tool; Forge Wrench",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.SmithingMag2",
+      "title": "Everyday Smithing - May 1993",
+      "category": "Magazines",
+      "effect": "Welding: Forge Kitchen Tools; Forge Cooking Pot; Forge Roasting Pan; Forge Saucepan; Forge Baking Tray; Forge Baking Pan; Forge Frying Pan; Forge Bucket; Forge Corkscrew; Forge Kettle; Forge Goblet; Forge Cup",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.ArmorMag7",
+      "title": "FBI Incident Report: San Fernando Bank Robbery",
+      "category": "Magazines",
+      "effect": "Make Bulletproof Limb Armor",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.TailoringMag7",
+      "title": "Fun in the Woods!",
+      "category": "Magazines",
+      "effect": "Assemble Small Simple Framepack; Assemble Simple Framepack; Sew Cloth Satchel; Sew Small Leather Backpack",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.HuntingMag4",
+      "title": "Get Stuffed",
+      "category": "Magazines",
+      "effect": "Trapping: Make Stag Head Trophy",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.CookingMag1",
+      "title": "Good Cooking - June 1993",
+      "category": "Magazines",
+      "effect": "Cooking: Make Cake Batter; Prepare Pie Dough",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.CookingMag2",
+      "title": "Good Cooking - May 1993",
+      "category": "Magazines",
+      "effect": "Cooking: Prepare Bread Dough; Prepare Baguette; Prepare Biscuits",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.CookingMag4",
+      "title": "Grandma's Kitchen",
+      "category": "Magazines",
+      "effect": "Cooking: Prepare Chocolate Cookies; Prepare Chocolate Chip Cookies; Prepare Oatmeal Cookies; Prepare Sugar Cookies; Prepare Shortbread Cookies",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.FarmingMag7",
+      "title": "Growing Your Own",
+      "category": "Magazines",
+      "effect": "Agriculture: Bell Pepper Growing Season; Broccoli Growing Season; Cabbage Growing Season; Carrot Growing Season; Cauliflower Growing Season; Cucumber Growing Season; Garlic Growing Season; Green Pea Growing Season; Habanero Growing Season; Jalapeno Growing Season; Kale Growing Season; Leek Growing Season; Lettuce Growing Season; Onion Growing Season; Potato Growing Season; Pumpkin Growing Season; Radish Growing Season; Spinach Growing Season; Strawberry Growing Season; Sweet Potato Growing Season; Tomato Growing Season; Turnip Growing Season; Watermelon Growing Season; Zucchini Growing Season",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.RadioMag1",
+      "title": "Guerilla Radio - June 1993",
+      "category": "Magazines",
+      "effect": "Electrical: Make Makeshift Radio",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.RadioMag3",
+      "title": "Guerilla Radio - May 1993",
+      "category": "Magazines",
+      "effect": "Electrical: Make Makeshift Ham Radio",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.FarmingMag9",
+      "title": "Herbal Remedy Growing",
+      "category": "Magazines",
+      "effect": "Agriculture: Black Sage Growing Season; Broadleaf Plantain Growing Season; Comfrey Growing Season; Common Mallow Growing Season; Wild Garlic Growing Season",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.ElectronicsMag3",
+      "title": "Home Security Monthly",
+      "category": "Magazines",
+      "effect": "Electrical: Add Short-Range Motion Sensor to Bomb; Add Medium-Range Motion Sensor to Bomb; Add Long-Range Motion Sensor to Bomb",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.TailoringMag10",
+      "title": "Homespun",
+      "category": "Magazines",
+      "effect": "Sew Knee-Length Dress; Sew Long Dress; Sew Shirt; Sew Knee-Length Skirt; Sew Long Skirt; Sew Long Johns; Sew Long Johns Bottom; Sew Sleeveless Shirt; Sew Pants",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.ElectronicsMag4",
+      "title": "How to Use Generators",
+      "category": "Magazines",
+      "effect": "Electrical: Generator Maintenance",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.SmithingMag9",
+      "title": "Iron Age Blacksmithing",
+      "category": "Magazines",
+      "effect": "Welding: Construct Charcoal Pit; Construct Primitive Forge; Construct Primitive Furnace",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.CookingMag3",
+      "title": "Italian Delights",
+      "category": "Magazines",
+      "effect": "Cooking: Prepare Pizza",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.FarmingMag1",
+      "title": "Kentucky Farmer - June 1993",
+      "category": "Magazines",
+      "effect": "Agriculture: Make Mildew Cure",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.FarmingMag2",
+      "title": "Kentucky Farmer - May 1993",
+      "category": "Magazines",
+      "effect": "Agriculture: Make Flies Cure from Cigarettes; Make Flies Cure from Loose Tobacco; Make Flies Cure from Chewing Tobacco; Make Aphids Cure",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.MechanicMag2",
+      "title": "Laines Commercial Auto Manual",
+      "category": "Magazines",
+      "effect": "Mechanics: Intermediate Mechanics",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.MechanicMag3",
+      "title": "Laines Performance Auto Manual",
+      "category": "Magazines",
+      "effect": "Mechanics: Advanced Mechanics",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.MechanicMag1",
+      "title": "Laines Standard Auto Manual",
+      "category": "Magazines",
+      "effect": "Mechanics: Basic Mechanics",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.TailoringMag4",
+      "title": "Leather Crafts",
+      "category": "Magazines",
+      "effect": "Sew Hide Wallet; Sew Belt; Sew Leather Tool Roll; Sew Sandals; Sew Leather Gloves",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.HempMag1",
+      "title": "Legalize It!",
+      "category": "Magazines",
+      "effect": "Agriculture: Hemp Growing Season",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.ElectronicsMag2",
+      "title": "Like Clockwork",
+      "category": "Magazines",
+      "effect": "Electrical: Make Timer; Add Timer to Bomb",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.SmithingMag7",
+      "title": "Medieval Armory - June 1993",
+      "category": "Magazines",
+      "effect": "Welding: Forge Crude Sword Blade; Forge Simple Shortsword Blade; Forge Sword Blade; Forge Shortsword Blade; Forge Spear Head; Forge Long Spear Head; Forge Handguard Dagger",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.SmithingMag11",
+      "title": "Medieval Armory - May 1993",
+      "category": "Magazines",
+      "effect": "Welding: Forge Mace Head; Make Spiked Club; Make Spiked Baseball Bat; Make Spiked Cudgel; Forge Axe Head; Carve Short Bat",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.SmithingMag10",
+      "title": "Medieval Blacksmithing",
+      "category": "Magazines",
+      "effect": "Welding: Construct Smelting Furnace; Construct Blast Furnace",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.TailoringMag3",
+      "title": "Medieval Peasant Clothing",
+      "category": "Magazines",
+      "effect": "Sew Hide Boots; Sew Hide Coat; Sew Hide Hat; Sew Hide Jacket",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.SmithingMag6",
+      "title": "Modern Blacksmithing at Home",
+      "category": "Magazines",
+      "effect": "Welding: Construct Forge; Construct Advanced Forge",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.GlassmakingMag1",
+      "title": "Murano Glass Manual",
+      "category": "Magazines",
+      "effect": "Glassmaking: Make Wine Glass; Make Lantern Glass",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.WeaponMag2",
+      "title": "No Man's Land",
+      "category": "Magazines",
+      "effect": "Can-Reinforce Weapon; Make Gas Mask Filter; Recharge Filters",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.TailoringMag8",
+      "title": "Outdoor Gear, Done Right",
+      "category": "Magazines",
+      "effect": "Sew Leather Gaiter; Sew Leather Water Bag; Sew Hide Sleeping Bag; Sew Bandolier; Sew Hide Fanny Pack",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.ArmorMag1",
+      "title": "Outfit Apocalypse",
+      "category": "Magazines",
+      "effect": "Make Tire Body Armor; Make Tire Forearm Armor; Make Tire Shin Armor; Make Tire Shoulder Armor - Left; Make Tire Shoulder Armor - Right; Spike Soft Armor; Sew Leather Codpiece; Sew Leather Neck Guard",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.PrimitiveToolMag3",
+      "title": "Pioneering Carvers",
+      "category": "Magazines",
+      "effect": "Carve Knitting Needles; Carve Wooden Fork; Carve Bone Fork; Carve Wooden Spade; Carve Goblets; Carve Bucket",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.TailoringMag2",
+      "title": "Punk Fashion - From Trash to Thrash",
+      "category": "Magazines",
+      "effect": "Make Garbage Bag Tank Top; Make Garbage Bag Dress",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.TailoringMag6",
+      "title": "Real Gladiators",
+      "category": "Magazines",
+      "effect": "Sew Leather Vambrace; Sew Leather Codpiece; Sew Leather Neck Guard; Sew Elbow Pads; Sew Knee Pads",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.EngineerMagazine1",
+      "title": "Real Spy Secrets - June 1993",
+      "category": "Magazines",
+      "effect": "Electrical: Make Noise Maker; Make Firecracker",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.TrickMag1",
+      "title": "Real Spy Secrets - May 1993",
+      "category": "Magazines",
+      "effect": "Hollow Out Book",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.WeaponMag6",
+      "title": "Revolting Peasants",
+      "category": "Magazines",
+      "effect": "Make Garden Fork Head Weapon; Make Spade Head Cudgel; Make Railspike Weapon; Make Plank with Saw",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.ArmorMag3",
+      "title": "Secrets of the Outback Outlaws",
+      "category": "Magazines",
+      "effect": "Make Scrap Metal Helmet; Make Scrap Metal Body Armor; Make Scrap Metal Shoulder Armor; Make Scrap Metal Thigh Armor",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.HuntingMag1",
+      "title": "Small Game Hunting",
+      "category": "Magazines",
+      "effect": "Trapping: Make Snare Trap",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.SmithingMag4",
+      "title": "Small-Scale Smithing",
+      "category": "Magazines",
+      "effect": "Welding: Forge Tweezers; Forge Forceps; Forge Scissors; Forge Doorknob; Forge Hinge; Forge Straight Razor; Forge 4 Fishing Hooks; Forge Needle; Forge_Buckle",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.ElectronicsMag5",
+      "title": "Sparky's Lighting Guide",
+      "category": "Magazines",
+      "effect": "Electrical: Make Improvised Flashlight; Make Improvised Lantern",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.RadioMag2",
+      "title": "Sparky's Radio Guide",
+      "category": "Magazines",
+      "effect": "Electrical: Make Makeshift Walkie Talkie",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.ArmorMag6",
+      "title": "Strange Histories - Siberian Bear Hunting",
+      "category": "Magazines",
+      "effect": "Spike Soft Armor; Weld Spikes On Metal Armor; Forge Spear Head; Forge Long Spear Head",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.EngineerMagazine2",
+      "title": "The Cheapskate's John Spiral - Chemical Warfare",
+      "category": "Magazines",
+      "effect": "Electrical: Make Smoke Bomb; Make Gas Mask Filter; Make Improvised Gas Mask; Recharge Filters",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.KeyMag1",
+      "title": "The Cheapskate's John Spiral - Escaping Captivity",
+      "category": "Magazines",
+      "effect": "Copy Building Key; Make Improvised Screwdriver",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.TrickMag2",
+      "title": "The Cheapskate's John Spiral - Forging New Identities",
+      "category": "Magazines",
+      "effect": "Make Blank ID",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.EngineerMagazine3",
+      "title": "The Cheapskate's John Spiral - Homemade Explosives",
+      "category": "Magazines",
+      "effect": "Electrical: Make Aerosol Bomb; Make Fire Bomb; Make Pipe Bomb",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.WeaponMag3",
+      "title": "The Cheapskate's John Spiral - Prison Defense",
+      "category": "Magazines",
+      "effect": "Make Shiv; Make Glass Shiv; Make Toothbrush Shiv; MakeMagazineArmor; Make Improvised Lighter",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.WeaponMag5",
+      "title": "The Cheapskate's John Spiral - Street Violence",
+      "category": "Magazines",
+      "effect": "Make Rake-Head-Spiked Weapon; Make Sawblade Wooden Bat; Sheet Metal-Reinforce Weapon; Make Plank with Saw; Make Bucket Maul; Make Kettle Maul; Make Brake Disc Weapon",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.FarmingMag4",
+      "title": "The Farmers Guide",
+      "category": "Magazines",
+      "effect": "Agriculture: Make Scarecrow; Make Barbed Wire from Wire",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.WeaponMag1",
+      "title": "The First Weapons",
+      "category": "Magazines",
+      "effect": "Carve Bone War Hatchet Head; Make Jawbone Axe; Make Jawbone Club; Make Bone Club; Sharpen Bone; Sharpen Long Bone; Sharpen Jawbone; Bone Spike Weapon",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.HuntingMag2",
+      "title": "The Hunter",
+      "category": "Magazines",
+      "effect": "Trapping: Make Crate Trap; Make Stick Trap",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.WeaponMag7",
+      "title": "The Louisville Bruiser",
+      "category": "Magazines",
+      "effect": "Carve Bat",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.FarmingMag8",
+      "title": "Thyme Time",
+      "category": "Magazines",
+      "effect": "Agriculture: Basil Growing Season; Chives Growing Season; Cilantro Growing Season; Lemongrass Growing Season; Mint Growing Season; Oregano Growing Season; Parsley Growing Season; Sage Growing Season; Rosemary Growing Season; Thyme Growing Season; Hops Growing Season",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.PrimitiveToolMag1",
+      "title": "Tool Use of Early Man",
+      "category": "Magazines",
+      "effect": "Knap Large Stone Axe Head; Knap Stone Blade; Knap Stone Maul Head; Bind Spear Head; Knap Stone Blade Scythe; Sharpen Bone; Carve Fleshing Tool; Remake Long Stone Blade",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.MetalworkMag3",
+      "title": "Welder Monthly - April 1993",
+      "category": "Magazines",
+      "effect": "Welding: Metal Big Pole Fence Gate; Big Wire Fence Gate; Metal Wire Fence Gate; Big Double Pole Gate; Big Double Wire Gate; Metal Big Wire Fence; Metal Big Pole Fence; Metal Pole Fence Gate; Metal Pole Fence; Metal Fence; Metal Wire Fence",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.MetalworkMag1",
+      "title": "Welder Monthly - June 1993",
+      "category": "Magazines",
+      "effect": "Welding: Metal Wall (Basic); Metal Wall (Advanced); Metal Floor; Metal Window Frame; Metal Window Frame; Metal Wall Frame; Metal Door Frame; Metal Door Frame; Metal Stairs",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.MetalworkMag4",
+      "title": "Welder Monthly - March 1993",
+      "category": "Magazines",
+      "effect": "Welding: Make Metal Sheet; Cut 4 Small Metal Sheets",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.MetalworkMag2",
+      "title": "Welder Monthly - May 1993",
+      "category": "Magazines",
+      "effect": "Welding: Metal Counter; Metal Counter; Metal Counter Corner; Metal Counter Corner; Metal Crate; Metal Crate; Metal Big Locker; Metal Big Locker; Metal Small Locker; Metal Small Locker; Metal Shelves; Metal Shelves",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.HerbalistMag",
+      "title": "Wilderness Survival",
+      "category": "Magazines",
+      "effect": "Foraging: Herbal Remedies; Knap Stone Blade; Fire Harden Spear; Make Improvised Whetstone; Grind Up Plantain; Grind Up Comfrey; Grind Up Wild Garlic; Bind Spear Head",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.HuntingMag3",
+      "title": "Wildlife Preserve",
+      "category": "Magazines",
+      "effect": "Trapping: Make Box Trap; Make Cage Trap",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.KnittingMag1",
+      "title": "Woolly Yarns - June 1993",
+      "category": "Magazines",
+      "effect": "Tailoring: Knit Scarf; Knit Legwarmers; Knit Sweater Vest; Knit Socks; Knit Doily",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.KnittingMag2",
+      "title": "Woolly Yarns - May 1993",
+      "category": "Magazines",
+      "effect": "Tailoring: Knit Wool Hat; Knit Open-Face Balaclava; Knit Full Balaclava; Knit Beanie",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.CookingMag5",
+      "title": "World Cooking",
+      "category": "Magazines",
+      "effect": "Cooking: Prepare Sushi; Prepare Maki; Prepare Onigiri",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "Base.ElectronicsMag1",
+      "title": "Zapper!",
+      "category": "Magazines",
+      "effect": "Electrical: Make Remote Controller (Short-Range); Make Remote Controller (Medium-Range); Make Remote Controller (Long-Range); Make Remote Trigger; Add Remote Trigger to Bomb",
+      "kind": "Recipe magazine",
+      "source": "https://pzwiki.net/wiki/Recipe_magazine"
+    },
+    {
+      "id": "vhs:retail:a-day-on-the-farm",
+      "title": "A Day on the Farm",
+      "category": "Videos",
+      "effect": "Animal Care: +75 base XP",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:a-stitch-in-time",
+      "title": "A Stitch in Time",
+      "category": "Videos",
+      "effect": "Tailoring: +75 base XP",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:adefope-fencing-special",
+      "title": "Adefope Fencing Special",
+      "category": "Videos",
+      "effect": "Welding: +112.5 base XP; Unlocks: Metal Fence; Metal Pole Fence; Metal Pole Fence Gate; Metal Big Pole Fence; Metal Big Pole Fence Gate; Metal Wire Fence Gate; Metal Wire Fence; Big Wire Fence Gate; Metal Big Wire Fence; Big Double Wire Gate",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:better-fishing-with-jason-master",
+      "title": "Better Fishing With Jason Master",
+      "category": "Videos",
+      "effect": "Fishing: +75 base XP; Unlocks: Make Fishing Rod; Fix Fishing Rod",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:combat-wound-management",
+      "title": "Combat Wound Management",
+      "category": "Videos",
+      "effect": "First Aid: +87.5 base XP",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:controlling-nasty-crop-pests-and-diseases",
+      "title": "Controlling Nasty Crop Pests and Diseases",
+      "category": "Videos",
+      "effect": "Agriculture: +37.5 base XP; Unlocks: Make Mildew Cure; Make Flies Cure; Make Aphids Cure",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:dead-wrong",
+      "title": "Dead Wrong",
+      "category": "Videos",
+      "effect": "Reloading: +12.5; Aiming: +12.5 base XP",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:emergency-first-aid",
+      "title": "Emergency First Aid",
+      "category": "Videos",
+      "effect": "First Aid: +75 base XP",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:from-ore-to-store",
+      "title": "From Ore to Store",
+      "category": "Videos",
+      "effect": "Blacksmithing: +87.5 base XP",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:growing-fruit-and-veg-at-home-1",
+      "title": "Growing Fruit and Veg at Home 1",
+      "category": "Videos",
+      "effect": "Agriculture: +75 base XP; Unlocks: Cabbage Growing Season; Potato Growing Season; Radish Growing Season; Carrot Growing Season; Onion Growing Season; Broccoli Growing Season; Strawberry Growing Season; Tomato Growing Season",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:growing-fruit-and-veg-at-home-2",
+      "title": "Growing Fruit and Veg at Home 2",
+      "category": "Videos",
+      "effect": "Agriculture: +75 base XP; Unlocks: Green Pea Growing Season; Soybean Growing Season; Kale Growing Season; Garlic Growing Season; Sweet Potato Growing Season; Corn Growing Season",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:growing-herbs-at-home",
+      "title": "Growing Herbs at Home",
+      "category": "Videos",
+      "effect": "Agriculture: +75 base XP; Unlocks: Basil Growing Season; Chives Growing Season; Cilantro Growing Season; Oregano Growing Season; Parsley Growing Season; Sage Growing Season; Rosemary Growing Season; Thyme Growing Season",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:home-welding-guide",
+      "title": "Home Welding Guide",
+      "category": "Videos",
+      "effect": "Welding: +75 base XP",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:how-electricity-works",
+      "title": "How Electricity Works",
+      "category": "Videos",
+      "effect": "Electrical: +75 base XP",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:knapping-the-ancient-art",
+      "title": "Knapping: The Ancient Art",
+      "category": "Videos",
+      "effect": "Knapping: +75 base XP",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:knox-gun-owners-club-s-guide-to-guns",
+      "title": "Knox Gun Owners Club's Guide to Guns",
+      "category": "Videos",
+      "effect": "Reloading: +25; Aiming: +37.5 base XP",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:making-sushi-at-home",
+      "title": "Making Sushi at Home",
+      "category": "Videos",
+      "effect": "Cooking: +62.5 base XP; Unlocks: Prepare Sushi; Prepare Maki; Prepare Onigiri; Prepare Breaded Shrimp; Make 4 Cabbage Rolls",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:mother-s-boy",
+      "title": "Mother's Boy",
+      "category": "Videos",
+      "effect": "Short Blade: +12.5 base XP",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:pottery-for-anyone",
+      "title": "Pottery for Anyone",
+      "category": "Videos",
+      "effect": "Pottery: +62.5 base XP",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:rosewood-medical-first-aid",
+      "title": "Rosewood Medical First Aid",
+      "category": "Videos",
+      "effect": "First Aid: +75 base XP",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:the-petting-zoo",
+      "title": "The Petting Zoo",
+      "category": "Videos",
+      "effect": "Animal Care: +75 base XP",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:working-clay-at-home",
+      "title": "Working Clay at Home",
+      "category": "Videos",
+      "effect": "Pottery: +75 base XP",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:carzone-episode-1-tire-maintenance",
+      "title": "Carzone Episode 1: Tire Maintenance",
+      "category": "Videos",
+      "effect": "Mechanics: +75 base XP",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:carzone-episode-2-engines",
+      "title": "Carzone Episode 2: Engines",
+      "category": "Videos",
+      "effect": "Mechanics: +75 base XP",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:carzone-episode-3-windows",
+      "title": "Carzone Episode 3: Windows",
+      "category": "Videos",
+      "effect": "Mechanics: +75 base XP",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:exposure-survival-episode-1-fishing",
+      "title": "Exposure Survival Episode 1: Fishing",
+      "category": "Videos",
+      "effect": "Fishing: +50 base XP; Unlocks: Make Fishing Rod",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:exposure-survival-episode-2-bait",
+      "title": "Exposure Survival Episode 2: Bait",
+      "category": "Videos",
+      "effect": "Fishing: +75 base XP",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:exposure-survival-episode-3-farming",
+      "title": "Exposure Survival Episode 3: Farming",
+      "category": "Videos",
+      "effect": "Agriculture: +87.5 base XP",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:exposure-survival-episode-4-fire",
+      "title": "Exposure Survival Episode 4: Fire",
+      "category": "Videos",
+      "effect": "Carpentry: +75 base XP",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:exposure-survival-episode-5-camping",
+      "title": "Exposure Survival Episode 5: Camping",
+      "category": "Videos",
+      "effect": "Carpentry: +50; Foraging: +12.5 base XP",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:exposure-survival-episode-6-trapping",
+      "title": "Exposure Survival Episode 6: Trapping",
+      "category": "Videos",
+      "effect": "Trapping: +125 base XP; Unlocks: Make Crate Trap",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:exposure-survival-episode-7-foraging",
+      "title": "Exposure Survival Episode 7: Foraging",
+      "category": "Videos",
+      "effect": "Foraging: +87.5 base XP",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:exposure-survival-episode-8-water-collection",
+      "title": "Exposure Survival Episode 8: Water Collection",
+      "category": "Videos",
+      "effect": "Carpentry: +87.5 base XP",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:the-cook-show-episode-1-cake",
+      "title": "The Cook Show Episode 1: Cake",
+      "category": "Videos",
+      "effect": "Cooking: +87.5 base XP; Unlocks: Make Cake Batter",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:the-cook-show-episode-2-soup",
+      "title": "The Cook Show Episode 2: Soup",
+      "category": "Videos",
+      "effect": "Cooking: +100 base XP",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:the-cook-show-episode-3-stew",
+      "title": "The Cook Show Episode 3: Stew",
+      "category": "Videos",
+      "effect": "Cooking: +62.5 base XP",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:the-cook-show-episode-4-salads",
+      "title": "The Cook Show Episode 4: Salads",
+      "category": "Videos",
+      "effect": "Cooking: +50 base XP",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:the-cook-show-episode-5-stir-fry",
+      "title": "The Cook Show Episode 5: Stir-Fry",
+      "category": "Videos",
+      "effect": "Cooking: +50 base XP",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:the-cook-show-episode-6-sandwiches",
+      "title": "The Cook Show Episode 6: Sandwiches",
+      "category": "Videos",
+      "effect": "Cooking: +62.5 base XP",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:the-cook-show-episode-7-pie",
+      "title": "The Cook Show Episode 7: Pie",
+      "category": "Videos",
+      "effect": "Cooking: +75 base XP; Unlocks: Prepare Pie Dough",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:woodcraft-episode-1-bookcases",
+      "title": "Woodcraft Episode 1: Bookcases",
+      "category": "Videos",
+      "effect": "Carpentry: +62.5 base XP",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:woodcraft-episode-2-flooring-and-signs",
+      "title": "Woodcraft Episode 2: Flooring and Signs",
+      "category": "Videos",
+      "effect": "Carpentry: +50 base XP",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:woodcraft-episode-3-frames-and-walls",
+      "title": "Woodcraft Episode 3: Frames and Walls",
+      "category": "Videos",
+      "effect": "Carpentry: +62.5 base XP",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:woodcraft-episode-4-shelves-and-fencing",
+      "title": "Woodcraft Episode 4: Shelves and Fencing",
+      "category": "Videos",
+      "effect": "Carpentry: +75 base XP",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:woodcraft-episode-5-doors",
+      "title": "Woodcraft Episode 5: Doors",
+      "category": "Videos",
+      "effect": "Carpentry: +37.5 base XP",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:woodcraft-episode-6-beds-and-tables",
+      "title": "Woodcraft Episode 6: Beds and Tables",
+      "category": "Videos",
+      "effect": "Carpentry: +62.5 base XP",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:woodcraft-episode-7-stairs",
+      "title": "Woodcraft Episode 7: Stairs",
+      "category": "Videos",
+      "effect": "Carpentry: +62.5 base XP",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:retail:z-squad-s2-03",
+      "title": "Z-Squad S2.03",
+      "category": "Videos",
+      "effect": "Welding: +12.5; Mechanics: +12.5 base XP",
+      "kind": "Retail",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:home:basic-gun-handling-officer-use-only",
+      "title": "Basic Gun Handling (Officer Use Only)",
+      "category": "Videos",
+      "effect": "Aiming: +75; Reloading: +75 base XP",
+      "kind": "Home",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:home:combat-wound-management-home-vhs",
+      "title": "Combat Wound Management (Home VHS)",
+      "category": "Videos",
+      "effect": "First Aid: +87.5 base XP",
+      "kind": "Home",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:home:grady-v-king",
+      "title": "Grady v King",
+      "category": "Videos",
+      "effect": "Lightfooted: +12.5 base XP",
+      "kind": "Home",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:home:granny-nani",
+      "title": "Granny Nani",
+      "category": "Videos",
+      "effect": "Tailoring: +75 base XP",
+      "kind": "Home",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:home:mathematical-quadratics-and-algebraic-configurations",
+      "title": "Mathematical Quadratics and Algebraic Configurations",
+      "category": "Videos",
+      "effect": "Long Blunt: +12.5 base XP",
+      "kind": "Home",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:home:muldraugh-av-club",
+      "title": "Muldraugh AV Club",
+      "category": "Videos",
+      "effect": "Electrical: +75 base XP; Unlocks: Make Makeshift Radio",
+      "kind": "Home",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:home:oscc-92",
+      "title": "OSCC '92",
+      "category": "Videos",
+      "effect": "Mechanics: +12.5 base XP",
+      "kind": "Home",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:home:rmfa",
+      "title": "RMFA",
+      "category": "Videos",
+      "effect": "First Aid: +75 base XP",
+      "kind": "Home",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:home:tv-repair",
+      "title": "TV repair",
+      "category": "Videos",
+      "effect": "Electrical: +75 base XP",
+      "kind": "Home",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:home:tailoring-101",
+      "title": "Tailoring 101",
+      "category": "Videos",
+      "effect": "Tailoring: +75 base XP",
+      "kind": "Home",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:home:tree-planting-guide",
+      "title": "Tree Planting Guide",
+      "category": "Videos",
+      "effect": "Agriculture: +75 base XP",
+      "kind": "Home",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:home:no-9",
+      "title": "no 9",
+      "category": "Videos",
+      "effect": "Welding: +112.5 base XP; Unlocks: Metal Fence; Metal Pole Fence; Metal Pole Fence Gate; Metal Big Pole Fence; Metal Big Pole Fence Gate; Metal Wire Fence; Metal Wire Fence Gate; Big Wire Fence Gate; Metal Big Wire Fence; Big Double Wire Gate",
+      "kind": "Home",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:home:nof-vid",
+      "title": "nof vid",
+      "category": "Videos",
+      "effect": "Welding: +100 base XP; Unlocks: Metal Floor; Metal Wall (Basic)",
+      "kind": "Home",
+      "source": "https://pzwiki.net/wiki/VHS"
+    },
+    {
+      "id": "vhs:home:stock-cars",
+      "title": "stock cars",
+      "category": "Videos",
+      "effect": "Mechanics: +12.5 base XP",
+      "kind": "Home",
+      "source": "https://pzwiki.net/wiki/VHS"
+    }
+  ]
+}
