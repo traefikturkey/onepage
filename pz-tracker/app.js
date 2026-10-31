@@ -31,17 +31,26 @@ function render() {
   const focusedItem = document.activeElement?.dataset.itemId;
   const table = $("items").closest("table");
   table.classList.toggle("books", category === "Books");
-  const headings = category === "Books" ? ["Skill", "I", "II", "III", "IV", "V"] : ["Owned", "Title", "Skill / learning", "Type"];
+  table.classList.toggle("misc", category === "Misc");
+  table.classList.toggle("list", category === "Videos" || category === "Magazines");
+  const headings = category === "Books" ? ["Skill", "I", "II", "III", "IV", "V"]
+    : category === "Misc" ? ["Owned", "Recipe"]
+    : category === "Magazines" ? ["Owned", "Title", "Skill / learning"]
+    : ["Owned", "Title", "Skill / learning", "Type"];
   const headingRow = document.createElement("tr");
   for (const text of headings) {
     const th = document.createElement("th");
     th.scope = "col";
     th.textContent = text;
+    if (text === "Owned") th.className = "owned-heading";
     headingRow.append(th);
   }
   table.querySelector("thead").replaceChildren(headingRow);
   function checkboxCell(item) {
     const cell = document.createElement("td");
+    cell.className = "check-cell";
+    const label = document.createElement("label");
+    label.className = "hit";
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.dataset.itemId = item.id;
@@ -50,7 +59,8 @@ function render() {
     checkbox.setAttribute("aria-label", `Collected: ${item.title}`);
     checkbox.title = item.title;
     checkbox.addEventListener("change", () => save(item.id, checkbox.checked));
-    cell.append(checkbox);
+    label.append(checkbox);
+    cell.append(label);
     return cell;
   }
   let rows;
@@ -67,6 +77,7 @@ function render() {
       const row = document.createElement("tr");
       const label = document.createElement("th");
       label.scope = "row";
+      label.className = "skill";
       label.textContent = skill;
       row.append(label);
       books.sort((a, b) => Number(a.id.slice(-1)) - Number(b.id.slice(-1)));
@@ -74,17 +85,55 @@ function render() {
       return row;
     });
   } else {
-    rows = items.map((item) => {
-    const row = document.createElement("tr");
-    row.classList.toggle("owned", collected.has(item.id));
-    row.append(checkboxCell(item));
-    for (const text of [item.title, item.effect, item.kind]) {
-      const td = document.createElement("td");
-      td.textContent = text;
-      row.append(td);
+    rows = [];
+    let previousKind;
+    for (const item of items) {
+      if (category === "Misc" && item.kind !== previousKind) {
+        const group = document.createElement("tr");
+        group.className = "group";
+        const heading = document.createElement("th");
+        heading.colSpan = 2;
+        heading.textContent = item.kind;
+        group.append(heading);
+        rows.push(group);
+        previousKind = item.kind;
+      }
+      const row = document.createElement("tr");
+      row.classList.toggle("owned", collected.has(item.id));
+      row.append(checkboxCell(item));
+      const title = document.createElement("td");
+      title.className = "item-title";
+      title.textContent = category === "Misc" ? item.title.slice(item.kind.length + 2) : item.title;
+      row.append(title);
+      if (category !== "Misc") {
+        const effect = document.createElement("td");
+        effect.className = "effect";
+        const prefix = /^([^:;]+): /.exec(item.effect);
+        if (prefix) {
+          const strong = document.createElement("strong");
+          strong.textContent = prefix[0];
+          const detail = document.createElement("span");
+          detail.textContent = item.effect.slice(prefix[0].length);
+          effect.append(strong, detail);
+        } else {
+          effect.textContent = item.effect;
+        }
+        row.append(effect);
+      }
+      if (category === "Videos") {
+        const kind = document.createElement("td");
+        kind.className = "item-kind";
+        kind.textContent = item.kind;
+        row.append(kind);
+      }
+      rows.push(row);
     }
-    return row;
-    });
+  }
+  let stripe = false;
+  for (const row of rows) {
+    if (row.classList.contains("group")) { stripe = false; continue; }
+    row.classList.toggle("stripe", stripe);
+    stripe = !stripe;
   }
   $("items").replaceChildren(...rows);
   if (focusedItem) {

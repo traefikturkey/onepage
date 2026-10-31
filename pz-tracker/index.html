@@ -26,8 +26,8 @@
         <label class="link-field">Team link <input id="team-link" readonly aria-label="Team link"></label>
         <button id="copy" type="button">Copy link</button>
         <span id="sync" role="status" aria-live="polite">Connecting...</span>
+        <p class="muted team-warning">This link grants edit access. Share it only with your team.</p>
       </div>
-      <p class="muted">This link grants edit access. Share it only with your team.</p>
     </section>
     <p id="message" role="status" aria-live="polite"></p>
     <section aria-label="Library catalog">
@@ -40,7 +40,7 @@
       <div class="filters panel">
         <label>Search <input id="search" type="search" placeholder="Title, skill, recipe..." autocomplete="off"></label>
         <label>Show <select id="filter"><option value="all">All items</option><option value="missing">Missing</option><option value="collected">Collected</option></select></label>
-        <label id="import-control">Import books JSON (add checked only)
+        <label id="import-control"><span>Import books JSON <span class="muted">(add checked only)</span></span>
           <input id="import-books" type="file" accept=".json,application/json" disabled>
         </label>
         <span id="summary" class="muted"></span>
