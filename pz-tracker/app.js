@@ -24,6 +24,9 @@ function render() {
   const items = catalog.items.filter((item) => item.category === category
     && `${item.title} ${item.effect} ${item.kind}`.toLowerCase().includes(search)
     && (filter === "all" || collected.has(item.id) === (filter === "collected")));
+  if (category === "Videos") {
+    items.sort((a, b) => a.title.localeCompare(b.title, "en", { numeric: true, sensitivity: "base" }));
+  }
   const focusedItem = document.activeElement?.dataset.itemId;
   const table = $("items").closest("table");
   table.classList.toggle("books", category === "Books");
