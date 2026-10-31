@@ -64,6 +64,12 @@ The file has `version: 1` and a `books` object mapping skill slugs (for example 
 
 Unknown skills, unsupported format versions, and anything other than five booleans per skill are rejected before saving. The file is read locally; only the selected catalog book IDs and team ID are sent to Convex.
 
+## Collection filters
+
+Each tab has **All / Have / Don't have** filter buttons. Each tab remembers its own choice for the current page session; switching tabs does not change another tab's filter. Filters update with the shared collection in real time.
+
+Books keeps the I-V grid aligned: matching volumes show their checkboxes, nonmatching volumes show a dot, and skills with no matching volumes are omitted. These filters change only the view, never the saved collection.
+
 ## Misc navigation
 
 Misc sections start collapsed on each page load or team change. Use a section header to open it, or the **Expand all / Collapse all** button for all matching sections. The section menu stays alongside the list on desktop and becomes a sticky horizontal menu on smaller screens. Selecting a section opens it and scrolls to its header without changing the team link.

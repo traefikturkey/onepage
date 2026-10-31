@@ -42,7 +42,14 @@
       </nav>
       <div class="filters panel">
         <label>Search <input id="search" type="search" placeholder="Title, skill, recipe..." autocomplete="off"></label>
-        <label>Show <select id="filter"><option value="all">All items</option><option value="missing">Missing</option><option value="collected">Collected</option></select></label>
+        <div class="ownership-filter">
+          <span class="filter-label">Show</span>
+          <div id="filter" role="group" aria-label="Collection filter">
+            <button type="button" data-filter="all" aria-pressed="true">All</button>
+            <button type="button" data-filter="collected" aria-pressed="false">Have</button>
+            <button type="button" data-filter="missing" aria-pressed="false">Don't have</button>
+          </div>
+        </div>
         <label id="import-control"><span>Import books JSON <span class="muted">(add checked only)</span></span>
           <input id="import-books" type="file" accept=".json,application/json" disabled>
         </label>

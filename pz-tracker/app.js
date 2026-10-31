@@ -3,6 +3,7 @@ import { bookImportIds } from "./book-import.js";
 
 const $ = (id) => document.getElementById(id);
 const categories = ["Books", "Videos", "Magazines", "Misc"];
+const ownershipFilters = new Map(categories.map((name) => [name, "all"]));
 let catalog;
 let client;
 let unsubscribe;
@@ -38,10 +39,14 @@ function render() {
   $("import-control").hidden = category !== "Books";
   $("import-books").disabled = !ready || importing;
   const search = $("search").value.trim().toLowerCase();
-  const filter = $("filter").value;
+  const filter = ownershipFilters.get(category);
+  for (const button of $("filter").querySelectorAll("button")) {
+    button.setAttribute("aria-pressed", String(button.dataset.filter === filter));
+  }
+  const matchesOwnership = (item) => filter === "all" || collected.has(item.id) === (filter === "collected");
   const items = catalog.items.filter((item) => item.category === category
     && `${item.title} ${item.effect} ${item.kind}`.toLowerCase().includes(search)
-    && (filter === "all" || collected.has(item.id) === (filter === "collected")));
+    && matchesOwnership(item));
   $("misc-note").hidden = category !== "Misc";
   if (category === "Videos" || category === "Misc") {
     items.sort((a, b) => a.title.localeCompare(b.title, "en", { numeric: true, sensitivity: "base" }));
@@ -107,7 +112,17 @@ function render() {
       label.textContent = skill;
       row.append(label);
       books.sort((a, b) => Number(a.id.slice(-1)) - Number(b.id.slice(-1)));
-      for (const book of books) row.append(checkboxCell(book));
+      for (const book of books) {
+        if (matchesOwnership(book)) {
+          row.append(checkboxCell(book));
+        } else {
+          const cell = document.createElement("td");
+          cell.className = "check-cell filtered-volume";
+          cell.textContent = "·";
+          cell.setAttribute("aria-label", `${book.title}: not in current filter`);
+          row.append(cell);
+        }
+      }
       return row;
     });
   } else {
@@ -341,7 +356,12 @@ $("search").addEventListener("input", () => {
   miscSearchClosed.clear();
   render();
 });
-$("filter").addEventListener("change", render);
+$("filter").addEventListener("click", (event) => {
+  const button = event.target.closest("button[data-filter]");
+  if (!button || !["all", "collected", "missing"].includes(button.dataset.filter)) return;
+  ownershipFilters.set(category, button.dataset.filter);
+  render();
+});
 window.addEventListener("hashchange", route);
 window.addEventListener("pagehide", (event) => {
   if (!event.persisted) { unsubscribe?.(); void client?.close(); }
