@@ -46,11 +46,20 @@
         <span id="summary" class="muted"></span>
       </div>
       <p id="misc-note" class="muted" hidden>One checkbox per resource type and recipe. A schematic can contain several recipes: check each one your library holds. Community lists are marked Build 42.10–42.11, not verified against 42.22.</p>
-      <div class="table-wrap">
+      <div id="catalog-layout">
+        <aside id="misc-nav" class="panel" hidden aria-label="Misc section navigation">
+          <div class="misc-nav-heading">
+            <h2>Jump to section</h2>
+            <button id="misc-toggle" type="button">Expand all</button>
+          </div>
+          <nav id="misc-links" aria-label="Misc sections"></nav>
+        </aside>
+        <div class="table-wrap">
         <table>
           <thead><tr><th scope="col">Owned</th><th scope="col">Title</th><th scope="col">Skill / learning</th><th scope="col">Type</th></tr></thead>
           <tbody id="items"></tbody>
         </table>
+        </div>
       </div>
       <p id="empty" class="panel" hidden>No matching items.</p>
     </section>

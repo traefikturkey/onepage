@@ -13,6 +13,24 @@ let ready = false;
 let generation = 0;
 let importing = false;
 const pending = new Set();
+const miscOpenKinds = new Set();
+const miscSearchClosed = new Set();
+let visibleMiscKinds = [];
+
+function miscIsOpen(kind) {
+  return $("search").value.trim() ? !miscSearchClosed.has(kind) : miscOpenKinds.has(kind);
+}
+
+function miscSectionId(kind) {
+  return `misc-${kind.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
+}
+
+function setMiscOpen(kind, open) {
+  if (open) miscOpenKinds.add(kind);
+  else miscOpenKinds.delete(kind);
+  if (open) miscSearchClosed.delete(kind);
+  else miscSearchClosed.add(kind);
+}
 
 function message(text) { $("message").textContent = text; }
 function render() {
@@ -28,7 +46,15 @@ function render() {
   if (category === "Videos" || category === "Misc") {
     items.sort((a, b) => a.title.localeCompare(b.title, "en", { numeric: true, sensitivity: "base" }));
   }
+  visibleMiscKinds = category === "Misc" ? [...new Set(items.map((item) => item.kind))] : [];
+  $("misc-nav").hidden = category !== "Misc";
+  $("catalog-layout").classList.toggle("misc-layout", category === "Misc");
+  $("search").placeholder = category === "Misc" ? "Filter recipes or resource types..." : "Title, skill, recipe...";
+  $("misc-toggle").disabled = visibleMiscKinds.length === 0;
+  $("misc-toggle").textContent = visibleMiscKinds.length && visibleMiscKinds.every(miscIsOpen) ? "Collapse all" : "Expand all";
   const focusedItem = document.activeElement?.dataset.itemId;
+  const focusedGroup = document.activeElement?.dataset.miscKind;
+  const focusedJump = document.activeElement?.dataset.miscJump;
   const table = $("items").closest("table");
   table.classList.toggle("books", category === "Books");
   table.classList.toggle("misc", category === "Misc");
@@ -93,13 +119,24 @@ function render() {
         group.className = "group";
         const heading = document.createElement("th");
         heading.colSpan = 2;
-        heading.textContent = item.kind;
+        const toggle = document.createElement("button");
+        toggle.type = "button";
+        toggle.className = "group-toggle";
+        toggle.id = miscSectionId(item.kind);
+        toggle.dataset.miscKind = item.kind;
+        toggle.setAttribute("aria-expanded", String(miscIsOpen(item.kind)));
+        const indicator = document.createElement("span");
+        indicator.setAttribute("aria-hidden", "true");
+        indicator.textContent = miscIsOpen(item.kind) ? "▾" : "▸";
+        toggle.append(indicator, document.createTextNode(item.kind));
+        heading.append(toggle);
         group.append(heading);
         rows.push(group);
         previousKind = item.kind;
       }
       const row = document.createElement("tr");
       row.classList.toggle("owned", collected.has(item.id));
+      if (category === "Misc") row.hidden = !miscIsOpen(item.kind);
       row.append(checkboxCell(item));
       const title = document.createElement("td");
       title.className = "item-title";
@@ -136,9 +173,22 @@ function render() {
     stripe = !stripe;
   }
   $("items").replaceChildren(...rows);
-  if (focusedItem) {
+  const jumps = visibleMiscKinds.map((kind) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.dataset.miscJump = kind;
+    button.textContent = kind;
+    button.setAttribute("aria-label", `Open and jump to ${kind}`);
+    return button;
+  });
+  $("misc-links").replaceChildren(...jumps);
+  if (focusedGroup) {
+    document.getElementById(miscSectionId(focusedGroup))?.focus({ preventScroll: true });
+  } else if (focusedJump) {
+    jumps.find((button) => button.dataset.miscJump === focusedJump)?.focus({ preventScroll: true });
+  } else if (focusedItem) {
     const target = Array.from($("items").querySelectorAll("input")).find((input) => input.dataset.itemId === focusedItem);
-    target?.focus();
+    target?.focus({ preventScroll: true });
   }
   $("summary").textContent = `${category === "Books" ? rows.length + " skills" : items.length + " items"} shown`;
   $("empty").hidden = rows.length > 0;
@@ -171,6 +221,8 @@ function route() {
   unsubscribe = undefined;
   collected = new Set();
   pending.clear();
+  miscOpenKinds.clear();
+  miscSearchClosed.clear();
   importing = false;
   ready = false;
   teamId = null;
@@ -263,7 +315,32 @@ $("import-books").addEventListener("change", async (event) => {
     }
   }
 });
-$("search").addEventListener("input", render);
+$("items").addEventListener("click", (event) => {
+  const button = event.target.closest("button[data-misc-kind]");
+  if (!button) return;
+  const kind = button.dataset.miscKind;
+  setMiscOpen(kind, !miscIsOpen(kind));
+  render();
+});
+$("misc-toggle").addEventListener("click", () => {
+  const open = !visibleMiscKinds.every(miscIsOpen);
+  for (const kind of visibleMiscKinds) setMiscOpen(kind, open);
+  render();
+});
+$("misc-links").addEventListener("click", (event) => {
+  const button = event.target.closest("button[data-misc-jump]");
+  if (!button) return;
+  const kind = button.dataset.miscJump;
+  setMiscOpen(kind, true);
+  render();
+  const heading = document.getElementById(miscSectionId(kind));
+  heading?.scrollIntoView({ block: "start" });
+  heading?.focus({ preventScroll: true });
+});
+$("search").addEventListener("input", () => {
+  miscSearchClosed.clear();
+  render();
+});
 $("filter").addEventListener("change", render);
 window.addEventListener("hashchange", route);
 window.addEventListener("pagehide", (event) => {

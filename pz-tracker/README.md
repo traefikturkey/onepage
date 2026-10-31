@@ -64,6 +64,12 @@ The file has `version: 1` and a `books` object mapping skill slugs (for example 
 
 Unknown skills, unsupported format versions, and anything other than five booleans per skill are rejected before saving. The file is read locally; only the selected catalog book IDs and team ID are sent to Convex.
 
+## Misc navigation
+
+Misc sections start collapsed on each page load or team change. Use a section header to open it, or the **Expand all / Collapse all** button for all matching sections. The section menu stays alongside the list on desktop and becomes a sticky horizontal menu on smaller screens. Selecting a section opens it and scrolls to its header without changing the team link.
+
+The existing top search and ownership filter also apply to Misc. Searching opens matching sections so recipes are visible; headers and the bulk toggle can still close them. Section visibility is local to the browser and does not change shared collection state.
+
 ## Misc research
 
 PZwiki documents eight vanilla recipe-resource types. Lists retrieved October 31, 2026:
