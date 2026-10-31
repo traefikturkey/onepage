@@ -9,7 +9,7 @@ Standalone static frontend for GitHub Pages, with shared collection state in Con
 - The book table is marked 42.13.2 and the VHS table 42.20.4. The catalog includes newer Build 42 retail instructional tapes, but has not been reconciled with a 42.22 installation. Do not describe it as a complete verified latest-build export.
 - Misc is intentionally empty: no qualifying additional learning items were verified. It is not filled with speculative items.
 - “Skill videos” includes any tape documented to grant skill XP or recipes, including films or home recordings with learning effects. Boredom-only entertainment tapes, CDs, and modded items are excluded.
-- Development shared state is configured at `https://elegant-seahorse-1.convex.cloud` in the `pz-collection` Convex project. Two live client subscriptions were checked in both directions, including idempotent collection writes and invalid-input rejection. No production deployment has been made.
+- Production shared state is configured at `https://dependable-buzzard-736.convex.cloud` in the `pz-collection` Convex project. Development remains separate at `https://elegant-seahorse-1.convex.cloud`. The existing team's 77 collected items were copied to production with its team ID preserved.
 
 ## Local preview
 
@@ -30,7 +30,7 @@ bun run check:pz
 
 ## Convex setup (operator action)
 
-The operator completed CLI login and selected the existing `pz-collection` project. The development backend is deployed and its public URL is set in `config.js`. Dashboard: https://dashboard.convex.dev/d/elegant-seahorse-1. The steps below document setup and future production publishing. These commands connect to cloud resources and publish backend functions; run them only when authorized.
+The operator completed CLI login and selected the existing `pz-collection` project. Both development and production backends are deployed; `config.js` now points to production. Production dashboard: https://dashboard.convex.dev/d/dependable-buzzard-736. The steps below document setup and publishing. These commands connect to cloud resources and publish backend functions; run them only when authorized. Local frontend previews use production state unless you deliberately change `config.js` to the development URL.
 
 1. From the repository root, run `bun run convex:dev` and complete the CLI's browser login and project selection. This provisions/selects a development deployment and syncs the backend. `.env.local` is ignored by Git before setup.
 2. Set `CONVEX_URL` in `pz-tracker/config.js` to the development deployment's public `https://....convex.cloud` URL. This is a public URL, not a credential.
